@@ -36,7 +36,7 @@ function Navbar() {
             </div>
             <div class="block lg:hidden">
                 <button 
-                class="flex items-center px-3 py-2 border hover:bg-stone-100 hover:border-stone-100 hover:text-stone-900"
+                class="flex items-center px-3 py-2 border hover:bg-white hover:text-midnight hover:border-white"
                 onClick={handleClick}>
                     {toggle ?
                     (<MdClose className=""/>) :
@@ -46,19 +46,19 @@ function Navbar() {
             {(!smallScreen || toggle) &&
             <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
                 <div class="lg:flex-grow">
-                    <a href="#" class="block mt-4 lg:inline-block lg:mt-0 mr-4">
+                    <a href="#" class="block mt-4 lg:inline-block lg:mt-0 mr-10 hover:text-interactive">
                         Home
                     </a>
-                    <a href="#about" class="block mt-4 lg:inline-block lg:mt-0 mr-4">
+                    <a href="#about" class="block mt-4 lg:inline-block lg:mt-0 mr-10 hover:text-interactive">
                         About
                     </a>
-                    <a href="#projects" class="block mt-4 lg:inline-block lg:mt-0">
+                    <a href="#projects" class="block mt-4 lg:inline-block lg:mt-0 hover:text-interactive">
                         Projects
                     </a>
                 </div>
                 <a 
                 href="#contact" 
-                class="inline-block px-4 py-2 leading-none border text-white border-stone-100 hover:border-transparent hover:bg-stone-100 hover:text-stone-900 mt-4 lg:mt-0">
+                class="inline-block px-4 py-2 leading-none border text-white border-white hover:bg-white hover:text-midnight duration-300 mt-4 lg:mt-0">
                     Contact
                 </a>
             </div>

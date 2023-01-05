@@ -1,6 +1,6 @@
 {
-  "short_name": "Dmitrii's",
-  "name": "Dmitrii's web site",
+  "short_name": "DI",
+  "name": "Dmitrii Ivanushkin's web page",
   "icons": [
     {
       "src": "favicon.ico",
@@ -10,6 +10,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#164E63",
+  "background_color": "#164E63"
 }
