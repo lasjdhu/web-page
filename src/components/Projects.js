@@ -2,8 +2,8 @@ import React from "react";
 
 function About() {
     return (
-        <div className="">
-            <h1 className="text-center text-3xl">Projects</h1>
+        <div className="text-center">
+            <h1 className="text-3xl">Projects</h1>
             <p className="">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
             sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 

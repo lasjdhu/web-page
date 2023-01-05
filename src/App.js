@@ -1,16 +1,18 @@
 import React from "react";
 import Navbar from "./components/Navbar";
+import Home from "./components/Home";
 import About from "./components/About";
 import Projects from "./components/Projects";
-import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div className="bg-stone-900 text-stone-100">
+    <div className="bg-midnight text-white">
       <Navbar />
+      <Home />
       <About />
       <Projects />
-      <Contact />
+      <Footer />
     </div>
   );
 }
