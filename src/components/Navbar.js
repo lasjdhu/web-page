@@ -8,6 +8,7 @@ function Navbar() {
 
     const handleClick = () => {
         setToggle(!toggle);
+
     };
 
     useEffect(() => {
@@ -30,13 +31,13 @@ function Navbar() {
     };
 
     return (
-        <nav class="flex items-center justify-between flex-wrap p-10">
-            <div class="flex items-center flex-shrink-0 mr-16">
-                <span class="font-semibold text-4xl tracking-tight">DI</span>
+        <nav className="flex items-center justify-between flex-wrap p-10 bg-midnight">
+            <div className="flex items-center flex-shrink-0 mr-16">
+                <h1 className="font-semibold text-4xl tracking-tight">DI</h1>
             </div>
-            <div class="block lg:hidden">
+            <div className="block lg:hidden">
                 <button 
-                class="flex items-center px-3 py-2 border hover:bg-white hover:text-midnight hover:border-white"
+                className="flex items-center px-4 py-3 border hover:bg-white hover:text-midnight hover:border-white"
                 onClick={handleClick}>
                     {toggle ?
                     (<MdClose className=""/>) :
@@ -44,23 +45,19 @@ function Navbar() {
                 </button>
              </div>
             {(!smallScreen || toggle) &&
-            <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-                <div class="lg:flex-grow">
-                    <a href="#" class="block mt-4 lg:inline-block lg:mt-0 mr-10 hover:text-interactive">
-                        Home
-                    </a>
-                    <a href="#about" class="block mt-4 lg:inline-block lg:mt-0 mr-10 hover:text-interactive">
+            <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto text-center">
+                <div className="lg:flex-grow">
+                    <a href="#about" className="block lg:inline-block lg:mt-0 mt-4 mx-5 hover:text-interactive">
                         About
                     </a>
-                    <a href="#projects" class="block mt-4 lg:inline-block lg:mt-0 hover:text-interactive">
+                    <a href="#projects" className="block lg:inline-block lg:mt-0 mt-4 mx-5 hover:text-interactive">
                         Projects
                     </a>
                 </div>
-                <a 
-                href="#contact" 
-                class="inline-block px-4 py-2 leading-none border text-white border-white hover:bg-white hover:text-midnight duration-300 mt-4 lg:mt-0">
-                    Contact
-                </a>
+                <button 
+                className="block inline-block mt-4 px-4 py-2 lg:mt-0 leading-none border text-white border-white hover:bg-white hover:text-midnight duration-300">
+                    <a href="#contact">Contact</a>
+                </button>
             </div>
             }
         </nav>
