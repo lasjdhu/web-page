@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import Nav from "./forNavbar/Nav";
+import Lang from "./forNavbar/Lang";
 import { FiMenu } from "react-icons/fi";
 import { MdClose } from "react-icons/md";
 
@@ -8,7 +10,6 @@ function Navbar() {
 
     const handleClick = () => {
         setToggle(!toggle);
-
     };
 
     useEffect(() => {
@@ -29,7 +30,7 @@ function Navbar() {
             setSmallScreen(false);
         }
     };
-
+    
     return (
         <nav className="flex items-center justify-between flex-wrap p-10 bg-midnight">
             <div className="flex items-center flex-shrink-0 mr-16">
@@ -42,22 +43,12 @@ function Navbar() {
                     {toggle ?
                     (<MdClose className=""/>) :
                     (<FiMenu className=""/>)}
-                </button>
-             </div>
+                </button> 
+            </div>
             {(!smallScreen || toggle) &&
             <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto text-center">
-                <div className="lg:flex-grow">
-                    <a href="#about" className="block lg:inline-block lg:mt-0 mt-4 mx-5 hover:text-interactive">
-                        About
-                    </a>
-                    <a href="#projects" className="block lg:inline-block lg:mt-0 mt-4 mx-5 hover:text-interactive">
-                        Projects
-                    </a>
-                </div>
-                <button 
-                className="block inline-block mt-4 px-4 py-2 lg:mt-0 leading-none border text-white border-white hover:bg-white hover:text-midnight duration-300">
-                    <a href="#contact">Contact</a>
-                </button>
+                <Nav />
+                <Lang value='EN' />
             </div>
             }
         </nav>
