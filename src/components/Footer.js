@@ -6,8 +6,8 @@ const currentYear = () => {
 
 function Footer() {
     return (
-        <footer className="text-center py-10">
-            <p className="text-cyan-200">&copy; {currentYear()} Dmitrii Ivanushkin</p>
+        <footer className="">
+            <p className="text-center text-cyan-200 my-5">&copy; {currentYear()} Dmitrii Ivanushkin</p>
         </footer>
     );
 }

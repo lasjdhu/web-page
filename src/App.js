@@ -1,19 +1,13 @@
 import React from "react";
 import Navbar from "./components/Navbar";
-import Home from "./components/Home";
-import About from "./components/About";
-import Projects from "./components/Projects";
-import Contacts from "./components/Contacts";
+import Main from "./components/Main";
 import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div className="bg-midnight text-white">
+    <div className="bg-midnight text-white min-h-screen flex flex-col">
       <Navbar />
-      <Home />
-      <About />
-      <Projects />
-      <Contacts />
+      <Main />
       <Footer />
     </div>
   );
