@@ -7,7 +7,7 @@ const currentYear = () => {
 function Footer() {
     return (
         <footer className="">
-            <p className="text-center text-cyan-200 my-5">&copy; {currentYear()} Dmitrii Ivanushkin</p>
+            <p className="text-center text-interactive my-5">&copy; {currentYear()} Dmitrii Ivanushkin</p>
         </footer>
     );
 }

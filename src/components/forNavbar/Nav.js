@@ -1,19 +1,47 @@
 import React from "react";
+import { NavLink } from 'react-router-dom';
 
-function Menu() {
+function Nav() {
     return (
-    	<div className="lg:flex-grow">
-            <a href="#about" className="block lg:inline-block lg:mt-0 mt-4 mx-5 hover:text-interactive">
+        <div className="lg:flex-grow">
+            <NavLink 
+                to="/" 
+                className="block lg:inline-block lg:mt-0 mt-4 mx-5 hover:text-interactive " 
+                style={({ isActive }) => ({
+                    color: isActive ? '#678983' : 'white',
+                })}
+            >
+                Home
+            </NavLink>
+            <NavLink 
+                to="/about" 
+                className="block lg:inline-block lg:mt-0 mt-4 mx-5 hover:text-interactive " 
+                style={({ isActive }) => ({
+                    color: isActive ? '#678983' : 'white',
+                })}
+            >
                 About
-            </a>
-            <a href="#projects" className="block lg:inline-block lg:mt-0 mt-4 mx-5 hover:text-interactive">
+            </NavLink>
+            <NavLink 
+                to="/projects" 
+                className="block lg:inline-block lg:mt-0 mt-4 mx-5 hover:text-interactive " 
+                style={({ isActive }) => ({
+                    color: isActive ? '#678983' : 'white',
+                })}
+            >
                 Projects
-            </a>
-            <a href="#contacts" className="block lg:inline-block lg:mt-0 mt-4 mx-5 hover:text-interactive">
-                Contacts
-            </a>
+            </NavLink>
+            <NavLink 
+                to="/contact" 
+                className="block lg:inline-block lg:mt-0 mt-4 mx-5 hover:text-interactive " 
+                style={({ isActive }) => ({
+                    color: isActive ? '#678983' : 'white',
+                })}
+            >
+                Contact
+            </NavLink>    
         </div>
     );
 }
 
-export default Menu;
+export default Nav;
