@@ -9,15 +9,27 @@ function Lang() {
     }
 
     return (
-        <ul className="block">
-            <li className="inline-block mt-4 px-3 py-2 lg:mt-0">
-                <button onClick={changeLanguage} value="en">EN</button>
-            </li> 
-            <span>/</span>
-            <li className="inline-block mt-4 px-3 py-2 lg:mt-0">
-                <button onClick={changeLanguage} value="cz">CZ</button>
-            </li> 
-        </ul>
+        <div className="block">
+            <button 
+                onClick={changeLanguage} 
+                value="en"                className={i18n.language === 'en' ? 
+                'text-midnight inline-block mt-4 px-3 py-2 lg:mt-0 border border-transparent bg-white' 
+                : 
+                'text-white inline-block mt-4 px-3 py-2 lg:mt-0'}
+            >
+                EN
+            </button>
+            <button 
+                onClick={changeLanguage} 
+                value="cz"
+                className={i18n.language === 'cz' ? 
+                'text-midnight inline-block mt-4 px-3 py-2 lg:mt-0 border border-transparent bg-white' 
+                : 
+                'text-white inline-block mt-4 px-3 py-2 lg:mt-0'}
+            >
+                CZ
+            </button>
+        </div>
     );
 }
 
