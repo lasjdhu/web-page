@@ -50,7 +50,7 @@ function Navbar() {
                 <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto text-center">
                     <Nav />
                 </div>
-                <Lang value='EN' />
+                <Lang />
             </div>
             }
         </nav>
