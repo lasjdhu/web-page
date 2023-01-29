@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { NavLink } from 'react-router-dom';
 import { FiMenu } from "react-icons/fi";
 import { MdClose } from "react-icons/md";
 import Nav from "./forNavbar/Nav";
@@ -29,7 +30,12 @@ function Navbar() {
     return (
         <nav className="flex items-center justify-between flex-wrap pt-10 pl-10 pr-10 bg-midnight">
             <div className="flex items-center flex-shrink-0 mr-16">
-                <h1 className="font-semibold text-4xl tracking-tight">DI</h1>
+                <NavLink 
+                    to="/" 
+                    className="font-semibold text-4xl tracking-tight"
+                >
+                    <h1>DI</h1>
+                </NavLink>
             </div>
             <div className="block lg:hidden">
                 <button
