@@ -1,7 +1,10 @@
 import React from "react";
 import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 function Nav() {
+    const { t } = useTranslation();
+
     return (
         <div className="lg:flex-grow">
             <NavLink 
@@ -11,7 +14,7 @@ function Nav() {
                     color: isActive ? '#678983' : 'white',
                 }) }
             >
-                Home
+                {t('Home')}
             </NavLink>
             <NavLink 
                 to="/about" 
@@ -20,7 +23,7 @@ function Nav() {
                     color: isActive ? '#678983' : 'white',
                 })}
             >
-                About
+                {t('About')}
             </NavLink>
             <NavLink 
                 to="/projects" 
@@ -29,7 +32,7 @@ function Nav() {
                     color: isActive ? '#678983' : 'white',
                 })}
             >
-                Projects
+                {t('Projects')}
             </NavLink>
             <NavLink 
                 to="/contact" 
@@ -38,7 +41,7 @@ function Nav() {
                     color: isActive ? '#678983' : 'white',
                 })}
             >
-                Contact
+                {t('Contact')}
             </NavLink>    
         </div>
     );
