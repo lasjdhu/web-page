@@ -1,12 +1,12 @@
 import React from "react";
-import { SocialIcon } from 'react-social-icons';
+// import { SocialIcon } from 'react-social-icons';
 import Badge from "../tmp/Badge";
 
 function Contact() {
     return (
     	<div className="m-auto">
     		<Badge />
-	    	<ul className="flex pt-20">
+	    	{/*<ul className="block pt-20">
 	            <li className="inline-block px-5">
     				<p className="text-3xl">Social:</p>
 	            </li>
@@ -34,7 +34,7 @@ function Contact() {
 	                	style={{ height: 40, width: 40 }} 
 	                />
 	            </li>
-	        </ul>
+	        </ul>*/}
         </div>
     );
 }

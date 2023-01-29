@@ -10,7 +10,7 @@ import GameOfLife from "./components/pages/projects/GameOfLife";
 
 function App() {
   return (
-    <div id="wrapper" className="bg-midnight text-white min-h-screen flex flex-col">
+    <div id="wrapper" className="bg-midnight text-white h-screen flex flex-col">
       <Router>
         <Navbar />
         <Routes>
