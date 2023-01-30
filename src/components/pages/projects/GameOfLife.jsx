@@ -4,7 +4,7 @@ import Game from './game.js';
 const GameOfLife = () => {
   const canvasRef = React.useRef(null);
   const [running, setRunning] = useState(false);
-  const [game, setGame] = useState(new Game(50, 50));
+  const [game] = useState(new Game(50, 50));
   const [intervalId, setIntervalId] = useState();
 
   useEffect(() => {

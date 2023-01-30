@@ -9,36 +9,36 @@ function Nav() {
         <div className="lg:flex-grow">
             <NavLink 
                 to="/" 
-                className="block lg:inline-block lg:mt-0 mt-4 mx-5 hover:text-interactive " 
+                className="block lg:inline-block lg:mt-0 mt-4 mx-5" 
                 style={ ({ isActive }) => ({
-                    color: isActive ? '#678983' : 'white',
+                    color: isActive ? '#3698A7' : 'white',
                 }) }
             >
                 {t('Home')}
             </NavLink>
             <NavLink 
                 to="/about" 
-                className="block lg:inline-block lg:mt-0 mt-4 mx-5 hover:text-interactive " 
+                className="block lg:inline-block lg:mt-0 mt-4 mx-5" 
                 style={({ isActive }) => ({
-                    color: isActive ? '#678983' : 'white',
+                    color: isActive ? '#3698A7' : 'white',
                 })}
             >
                 {t('About')}
             </NavLink>
             <NavLink 
                 to="/projects" 
-                className="block lg:inline-block lg:mt-0 mt-4 mx-5 hover:text-interactive " 
+                className="block lg:inline-block lg:mt-0 mt-4 mx-5" 
                 style={({ isActive }) => ({
-                    color: isActive ? '#678983' : 'white',
+                    color: isActive ? '#3698A7' : 'white',
                 })}
             >
                 {t('Projects')}
             </NavLink>
             <NavLink 
                 to="/contact" 
-                className="block lg:inline-block lg:mt-0 mt-4 mx-5 hover:text-interactive " 
+                className="block lg:inline-block lg:mt-0 mt-4 mx-5" 
                 style={({ isActive }) => ({
-                    color: isActive ? '#678983' : 'white',
+                    color: isActive ? '#3698A7' : 'white',
                 })}
             >
                 {t('Contact')}
