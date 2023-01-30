@@ -28,7 +28,7 @@ function Navbar() {
     };
 
     return (
-        <nav className="flex items-center justify-between flex-wrap pt-10 pl-10 pr-10 bg-midnight">
+        <nav className="flex items-center justify-between flex-wrap pt-10 pl-10 pr-10">
             <div className="flex items-center flex-shrink-0 mr-16">
                 <NavLink 
                     to="/" 
