@@ -10,13 +10,13 @@ import GameOfLife from "./components/pages/projects/GameOfLife";
 
 function App() {
   return (
-    <div id="wrapper" className="bg-gradient-to-b from-midnight to-blue text-white min-h-screen flex flex-col">
+    <div id="wrapper" className="custom-grad text-white min-h-screen flex flex-col">
       <Router>
         <Navbar />
           <div className="m-auto">                  
             <Routes>
               <Route path='/' element={<Home />} />
-              <Route path='/about' element={<About />} />
+              <Route path='/about' element={<About/>} />
               <Route path='/projects' element={<Projects />} />
               <Route path='/projects/game-of-life' element={<GameOfLife />} />
               <Route path='/contact' element={<Contact />} />
