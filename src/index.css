@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.custom-grad {
+	background-image: linear-gradient(225deg, #3698A7, #153C6A, #0B223D);
+}
+
 @layer base {
 	html {
 		font-family: 'Poppins', sans-serif;
