@@ -14,7 +14,7 @@ module.exports = {
       black: colors.black,
       gray: colors.gray,
       'midnight': '#0B223D',
-      'grad' : '#3698A7',
+      'blue': '#3698A7',
     },
   },
   plugins: [],

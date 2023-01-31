@@ -4,7 +4,7 @@ import Badge from "../tmp/Badge";
 
 function Projects() {
     return (
-        <div className="m-auto">
+        <div className="">
             <Badge />
             {/*<Link to="/projects/game-of-life">First</Link>*/}
         </div>

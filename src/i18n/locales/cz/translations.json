@@ -1,10 +1,13 @@
 {
-	"Building": "Probíhá práce",
+	"Coming soon": "Už brzy tu bude",
 	"Home": "Hlavní",
 	"About": "O mně",
 	"Projects": "Projekty",
 	"Contact": "Kontakt",
-	"Welcome.": "Vítejte.",
+	"Welcome": "Vítejte",
 	"My name is Dmitrii Ivanushkin": "Jmenuju se Dmitrii Ivanushkin",
-	"I am a software developer": "Jsem software developer"
+	"I am a software developer": "Jsem software developer",
+	"LANGUAGES": "JAZYKY",
+	"FRAMEWORKS": "FRAMEWORKY",
+	"OTHERS": "OSTATNÍ"
 }

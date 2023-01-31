@@ -8,7 +8,7 @@ function Badge() {
 	return (
 		<div className="flex p-3 animate-pulse justify-center">
 			<FaHammer size="1.5em"/>
-			<p className="text-xl pl-5">{t('Building')} . . .</p>
+			<p className="text-xl pl-5">{t('Coming soon')} . . .</p>
 		</div>
 	);
 }

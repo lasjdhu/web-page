@@ -4,7 +4,7 @@ import Badge from "../tmp/Badge";
 
 function Contact() {
     return (
-    	<div className="m-auto">
+    	<div className="">
     		<Badge />
 	    	{/*<ul className="block pt-20">
 	            <li className="inline-block px-5">
