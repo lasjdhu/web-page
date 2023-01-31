@@ -9,7 +9,7 @@ function Nav() {
         <div className="lg:flex-grow">
             <NavLink 
                 to="/" 
-                className="block lg:inline-block lg:mt-0 mt-4 mx-5" 
+                className="block lg:inline-block lg:mt-0 mt-4 mx-5 duration:300" 
                 style={ ({ isActive }) => ({
                     color: isActive ? '#3698A7' : 'white',
                 }) }

@@ -1,10 +1,13 @@
 {
-	"Building": "Building",
+	"Coming soon": "Coming soon",
 	"Home": "Home",
 	"About": "About",
 	"Projects": "Projects",
 	"Contact": "Contact",
 	"Welcome": "Welcome",
 	"My name is Dmitrii Ivanushkin": "My name is Dmitrii Ivanushkin",
-	"I am a software developer": "I am a software developer"
+	"I am a software developer": "I am a software developer",
+	"LANGUAGES": "LANGUAGES",
+	"FRAMEWORKS": "FRAMEWORKS",
+	"OTHERS": "OTHERS"
 }

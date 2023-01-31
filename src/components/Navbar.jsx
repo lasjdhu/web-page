@@ -39,7 +39,7 @@ function Navbar() {
             </div>
             <div className="block lg:hidden">
                 <button
-                    className="flex items-center px-4 py-3 border hover:bg-white hover:text-midnight hover:border-white"
+                    className="flex items-center px-4 py-3 border bg-white text-midnight border-white"
                     onClick={() => setToggle(!toggle)}
                 >
                     {toggle ? <MdClose className="" /> : <FiMenu className="" />}
