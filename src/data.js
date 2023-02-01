@@ -10,6 +10,9 @@ export const langs = [{
   }, {
     id: 3,
     name: 'Python'
+  }, {
+    id: 4,
+    name: 'PostgreSQL'
 }];
 
 export const frameworks = [{
@@ -32,9 +35,6 @@ export const others = [{
   }, {
     id: 2,
     name: 'UML'
-  }, {
-    id: 3,
-    name: 'PostgreSQL'
 }];
 
 export const edu = [{
