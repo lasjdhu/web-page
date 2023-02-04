@@ -1,12 +1,11 @@
 import React from "react";
-// import { Link } from 'react-router-dom';
 import Badge from "../reusable/Badge";
 
 function Projects() {
     return (
         <div className="">
             <Badge />
-            {/*<Link to="/projects/game-of-life">First</Link>*/}
+            {/*<a to="/projects/game-of-life">First</a>*/}
         </div>
     );
 }
