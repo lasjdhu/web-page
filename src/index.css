@@ -4,32 +4,51 @@
 @tailwind components;
 @tailwind utilities;
 
-.loader-page {
+.loading-page {
     width: 100%;
     height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: fixed;
-    background: rgba(0, 0, 0, 0.7)
-        url("https://media.giphy.com/media/8agqybiK5LW8qrG3vJ/giphy.gif") center
-        no-repeat;
+    background: rgba(0, 0, 0, 0.7);
     z-index: 1;
 }
 
-.fade-enter {
+.spinner {
+    width: 64px;
+    height: 64px;
+    border: 8px solid;
+    border-color: #3698A7 transparent #3698A7 transparent;
+    border-radius: 50%;
+    animation: spin-anim 1.2s linear infinite;
+}
+
+@keyframes spin-anim {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.page-fade-enter {
   opacity: 0;
 }
 
-.fade-enter-active {
+.page-fade-enter-active {
   opacity: 1;
-  transition: opacity 300ms;
+  transition: opacity 2s;
 }
 
-.fade-exit {
+.page-fade-exit {
   opacity: 1;
 }
 
-.fade-exit-active {
+.page-fade-exit-active {
   opacity: 0;
-  transition: opacity 300ms;
+  transition: opacity 2s;
 }
 
 @layer base {
