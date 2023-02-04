@@ -1,7 +1,7 @@
 import React from "react";
 import { useTranslation } from 'react-i18next';
-import List from "../tmp/List";
-import { langs, frameworks, others, edu } from "../../data";
+import List from "../reusable/List";
+import { langs, frameworks, others, edu } from "./data";
 
 function About() {
     const { t } = useTranslation();
