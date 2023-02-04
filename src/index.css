@@ -4,9 +4,33 @@
 @tailwind components;
 @tailwind utilities;
 
-/*.custom-grad {
-	background-image: linear-gradient(225deg, #3698A7, #153C6A, #0B223D);
-}*/
+.loader-page {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.7)
+        url("https://media.giphy.com/media/8agqybiK5LW8qrG3vJ/giphy.gif") center
+        no-repeat;
+    z-index: 1;
+}
+
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 300ms;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 300ms;
+}
 
 @layer base {
 	html {

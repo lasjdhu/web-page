@@ -1,6 +1,6 @@
 import React from "react";
 // import { SocialIcon } from 'react-social-icons';
-import Badge from "../tmp/Badge";
+import Badge from "../reusable/Badge";
 
 function Contact() {
     return (

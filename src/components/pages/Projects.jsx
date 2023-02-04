@@ -1,6 +1,6 @@
 import React from "react";
 // import { Link } from 'react-router-dom';
-import Badge from "../tmp/Badge";
+import Badge from "../reusable/Badge";
 
 function Projects() {
     return (
