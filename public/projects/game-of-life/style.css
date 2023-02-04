@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Source+Code+Pro&display=swap');
+
+* {
+    box-sizing: border-box;
+    background-color: #000;
+    color: #fff;
+}
+
+body {
+    margin: 0;
+    overflow: scroll;
+}
+
+h1 {
+    font-family: 'Press Start 2P', serif;
+    font-size: 3rem;
+    text-align: center;
+}
+
+.gameButtons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.gameButtons button {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 1.2rem;
+    border: 1px solid #fff;
+    margin: auto 1.2rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.gameButtons button:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+.gameButtons button:active {
+    background-color: #fff;
+    color: #000;
+}
+
+.gameCanvas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #fff;
+    margin: 3rem auto;
+    padding: 1rem 1rem;
+}
+
