@@ -15,16 +15,24 @@
 </head>
 <body>
     <div class="game">
-        <h1>Game of Life</h1>
-        <div class="gameButtons">
-            <button class="randomizeButton">randomize</button>
-            <button class="startButton">start</button>
-            <button class="stopButton">stop</button>
-            <button class="clearButton">clear</button>
-        </div>
-        <canvas class="gameCanvas" width="480" height="300">
-            Your browser does not support HTML 5 canvas
-        </canvas>
+        <header>
+            <h1>Game of Life</h1>
+        </header>
+        <main>
+            <canvas class="gameCanvas" width="480" height="300">
+                Your browser does not support HTML 5 canvas
+            </canvas>
+            <section class="gameButtons">
+                <div>
+                    <button class="randomizeButton">randomize</button>
+                    <button class="startButton">start</button>
+                </div>
+                <div>
+                    <button class="stopButton">stop</button>
+                    <button class="clearButton">clear</button>
+                </div>
+            </section>
+        </main>
     </div>
     <script src="game.js"></script>
     <script src="index.js"></script> 

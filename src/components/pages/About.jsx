@@ -7,7 +7,7 @@ function About() {
     const { t } = useTranslation();
 
     return (
-        <main className="m-auto">
+        <main className="lg:m-auto m-auto my-20">
             <section className="lg:flex justify-center">
                 <div className="mt-10">
                     <h2 className="text-xl mb-3 font-bold tracking-widest">{t('EDUCATION')}</h2>
