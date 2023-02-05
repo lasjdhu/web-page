@@ -1,10 +1,10 @@
 import React from "react";
 // import { SocialIcon } from 'react-social-icons';
-import Badge from "../tmp/Badge";
+import Badge from "../reusable/Badge";
 
 function Contact() {
     return (
-    	<div className="">
+    	<main className="m-auto">
     		<Badge />
 	    	{/*<ul className="block pt-20">
 	            <li className="inline-block px-5">
@@ -35,7 +35,7 @@ function Contact() {
 	                />
 	            </li>
 	        </ul>*/}
-        </div>
+        </main>
     );
 }
 

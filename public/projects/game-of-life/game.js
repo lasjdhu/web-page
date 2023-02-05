@@ -17,7 +17,7 @@ class Cell {
 
 }
 
-export default class Game extends Cell {
+class Game extends Cell {
 
 	constructor(rows, cols) {
 		super();

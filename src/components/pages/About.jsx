@@ -1,13 +1,13 @@
 import React from "react";
 import { useTranslation } from 'react-i18next';
-import List from "../tmp/List";
-import { langs, frameworks, others, edu } from "../../data";
+import List from "../reusable/List";
+import { langs, frameworks, others, edu } from "./data";
 
 function About() {
     const { t } = useTranslation();
 
     return (
-        <div className="my-10 mx-20">
+        <main className="m-auto">
             <div className="lg:flex justify-center">
                 <div className="mt-10">
                     <p className="text-xl mb-3 font-bold tracking-widest">{t('EDUCATION')}</p>
@@ -28,7 +28,7 @@ function About() {
                     <List props={others} />
                 </div>
             </div>
-        </div>
+        </main>
     );
 }
 
