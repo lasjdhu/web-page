@@ -5,16 +5,16 @@ function Home() {
     const { t } = useTranslation();
     
     return (
-        <main className="m-auto">
+        <main className="lg:m-auto my-20">
             <h1 className="lg:text-8xl text-6xl text-center pb-5">
                 {t('Welcome')}.
             </h1>
-            <p className="lg:text-5xl text-4xl text-center pt-5 tracking-wide font-bold">
+            <h2 className="lg:text-5xl text-4xl text-center pt-5 tracking-wide font-bold">
                 {t('My name is Dmitrii Ivanushkin')}
-            </p>
-            <p className="lg:text-5xl text-4xl text-center pt-5 tracking-wide font-bold">
+            </h2>
+            <h2 className="lg:text-5xl text-4xl text-center pt-5 tracking-wide font-bold">
                 {t('I am a software developer')}
-            </p>
+            </h2>
         </main>
     );
 }
