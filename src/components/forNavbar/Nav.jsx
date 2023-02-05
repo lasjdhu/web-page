@@ -6,7 +6,7 @@ function Nav() {
     const { t } = useTranslation();
 
     return (
-        <div className="lg:flex-grow">
+        <nav className="lg:flex-grow">
             <NavLink 
                 to="/" 
                 className="block lg:inline-block lg:mt-0 mt-4 mx-5 duration:300" 
@@ -43,7 +43,7 @@ function Nav() {
             >
                 {t('Contact')}
             </NavLink>    
-        </div>
+        </nav>
     );
 }
 
