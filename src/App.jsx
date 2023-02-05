@@ -25,7 +25,6 @@ function App() {
     <div id="wrapper" className="bg-gradient-to-b from-midnight to-blue text-white min-h-screen flex flex-col">
     {loading && <LoadingScreen />}
       <Router>
-<<<<<<< HEAD
         <Navbar />         
           <Routes>
             <Route path='/' element={<Home />} />
@@ -37,21 +36,6 @@ function App() {
             }} />
             <Route path='/contact' element={<Contact />} />
           </Routes>
-=======
-        <Navbar />
-          <main className="m-auto">           
-            <Routes>
-              <Route path='/' element={<Home />} />
-              <Route path='/about' element={<About/>} />
-              <Route path='/projects' element={<Projects />} />
-              <Route path='/projects/game-of-life' render={() => {
-                window.location.href = '/projects/game-of-life/index.html'
-                return null
-              }} />
-              <Route path='/contact' element={<Contact />} />
-            </Routes>
-          </main>
->>>>>>> 0266218ebb38af3f67b35c09065d7219eecf9649
         <Footer />
       </Router>
     </div>
