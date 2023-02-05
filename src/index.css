@@ -54,6 +54,7 @@
 @layer base {
 	html {
 		font-family: 'Poppins', sans-serif;
+        overflow: scroll;
 	}
 	
 	h1 {
