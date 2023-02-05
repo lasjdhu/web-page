@@ -1,13 +1,12 @@
 import React from "react";
-// import { Link } from 'react-router-dom';
-import Badge from "../tmp/Badge";
+import Badge from "../reusable/Badge";
 
 function Projects() {
     return (
-        <div className="">
+        <main className="m-auto">
             <Badge />
-            {/*<Link to="/projects/game-of-life">First</Link>*/}
-        </div>
+            {/*<a to="/projects/game-of-life">First</a>*/}
+        </main>
     );
 }
 
