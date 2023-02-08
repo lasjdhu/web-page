@@ -34,7 +34,7 @@ function Navbar() {
                     <h1>DI</h1>
                 </NavLink>
             </div>
-            <div className="block lg:hidden">
+            <div className="block lg:hidden duration:300">
                 <button
                     className="flex items-center px-4 py-3 border bg-white text-midnight border-white"
                     onClick={() => setToggle(!toggle)}
