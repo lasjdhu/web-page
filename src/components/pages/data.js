@@ -12,7 +12,7 @@ export const langs = [{
     name: 'Python'
   }, {
     id: 4,
-    name: 'PostgreSQL'
+    name: 'SQL'
 }];
 
 export const frameworks = [{
@@ -20,18 +20,18 @@ export const frameworks = [{
     name: 'React'
   }, {
     id: 1,
-    name: 'TailwindCSS'
+    name: 'Tailwind'
   }, {
     id: 2,
-    name: 'Django'
+    name: 'Postgres, Oracle'
 }];
 
 export const others = [{
     id: 0,
-    name: 'Git'
+    name: 'Linux'
   }, {
     id: 1,
-    name: 'Linux administrating'
+    name: 'Git'
   }, {
     id: 2,
     name: 'UML'
@@ -39,8 +39,11 @@ export const others = [{
 
 export const edu = [{
     id: 0,
-    name: 'Business High School'
+    name: 'Brno University of Technology'
   }, {
     id: 1,
-    name: 'Brno University of Technology'
+    name: 'Skive College'
+  }, {
+    id: 2,
+    name: 'Business High School'
 }];

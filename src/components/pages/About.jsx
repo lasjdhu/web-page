@@ -20,12 +20,12 @@ function About() {
                     <List props={langs}/>
                 </div>
                 <div className="mt-20 lg:mr-32">
-                    <h2 className="text-xl font-bold tracking-widest">{t('FRAMEWORKS')}</h2>
-                    <h2 className="text-xl mb-3 font-bold tracking-widest">{t('AND LIBRARIES')}</h2>
+                    <h2 className="text-xl font-bold tracking-widest">{t('FRAMEWORKS')},</h2>
+                    <h2 className="text-xl mb-3 font-bold tracking-widest">{t('LIBRARIES ETC')}</h2>
                     <List props={frameworks} />
                 </div>
                 <div className="mt-20 mb-10">
-                    <h2 className="text-xl mb-3 font-bold tracking-widest">{t('OTHERS')}</h2>
+                    <h2 className="text-xl mb-3 font-bold tracking-widest">{t('TOOLS')}</h2>
                     <List props={others} />
                 </div>
             </section>
