@@ -28,7 +28,7 @@ function Navbar() {
     };
 
     return (
-        <header className="flex items-center justify-between flex-wrap pt-10 pl-10 pr-10">
+        <header className="flex items-center justify-between flex-wrap pt-10 pl-10 pr-10 mb-20">
             <div className="flex items-center flex-shrink-0 mr-16">
                 <NavLink to="/" className="font-semibold text-4xl tracking-tight">
                     <h1>DI</h1>

@@ -7,9 +7,9 @@ function About() {
     const { t } = useTranslation();
 
     return (
-        <main className="lg:m-auto m-auto my-20">
+        <main className="m-auto">
             <section className="lg:flex justify-center">
-                <div className="mt-10">
+                <div className="">
                     <h2 className="text-xl mb-3 font-bold tracking-widest">{t('EDUCATION')}</h2>
                     <List props={edu} />
                 </div>
@@ -24,7 +24,7 @@ function About() {
                     <h2 className="text-xl mb-3 font-bold tracking-widest">{t('LIBRARIES ETC')}</h2>
                     <List props={frameworks} />
                 </div>
-                <div className="mt-20 mb-10">
+                <div className="mt-20">
                     <h2 className="text-xl mb-3 font-bold tracking-widest">{t('TOOLS')}</h2>
                     <List props={others} />
                 </div>
