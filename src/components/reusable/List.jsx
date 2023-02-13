@@ -3,13 +3,13 @@ import React from "react";
 function List({props}) {
 
 	const listItems = props.map(value =>
-	    <li key={value.id}>
+	    <li className="py-2" key={value.id}>
 	      {value.name}
 	    </li>
   	);
 
 	return (
-		<ul className="list-disc list-inside bg-gray">
+		<ul className="list-inside text-white lg:mb-0 mb-16">
             {listItems}
         </ul>
 	);

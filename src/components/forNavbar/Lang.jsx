@@ -9,14 +9,14 @@ function Lang() {
     }
 
     return (
-        <div className="block">
+        <div className="block text-gray">
             <button 
                 onClick={changeLanguage} 
                 value="en"
                 className={i18n.language === 'en' ? 
-                'text-midnight inline-block mt-4 px-3 py-2 lg:mt-0 border border-transparent bg-white' 
+                'text-accent inline-block mt-4 px-3 py-2 lg:mt-0 border border-accent' 
                 : 
-                'text-white inline-block mt-4 px-3 py-2 lg:mt-0'}
+                'inline-block mt-4 px-3 py-2 lg:mt-0'}
             >
                 EN
             </button>
@@ -24,9 +24,9 @@ function Lang() {
                 onClick={changeLanguage} 
                 value="cz"
                 className={i18n.language === 'cz' ? 
-                'text-midnight inline-block mt-4 px-3 py-2 lg:mt-0 border border-transparent bg-white' 
+                'text-accent inline-block mt-4 px-3 py-2 lg:mt-0 border border-accent' 
                 : 
-                'text-white inline-block mt-4 px-3 py-2 lg:mt-0'}
+                'inline-block mt-4 px-3 py-2 lg:mt-0'}
             >
                 CZ
             </button>

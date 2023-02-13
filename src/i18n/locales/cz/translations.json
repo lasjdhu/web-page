@@ -7,9 +7,11 @@
 	"Welcome": "Vítejte",
 	"My name is Dmitrii Ivanushkin": "Jmenuju se Dmitrii Ivanushkin",
 	"I am a software developer": "Jsem software developer",
-	"EDUCATION": "VZDĚLÁNÍ",
+	"Education": "Vzdělání",
+	"Skills": "Dovednosti",
 	"LANGUAGES": "JAZYKY",
 	"FRAMEWORKS": "FRAMEWORKY",
-	"LIBRARIES ETC": "KNIHOVNY ATD.",
+	"LIBRARIES": "KNIHOVNY",
+	"AND OTHERS": "A JINÉ",
 	"TOOLS": "NÁSTROJE"
 }

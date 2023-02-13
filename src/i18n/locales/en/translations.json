@@ -7,9 +7,11 @@
 	"Welcome": "Welcome",
 	"My name is Dmitrii Ivanushkin": "My name is Dmitrii Ivanushkin",
 	"I am a software developer": "I am a software developer",
-	"EDUCATION": "EDUCATION" ,
+	"Education": "Education",
+	"Skills": "Skills",
 	"LANGUAGES": "LANGUAGES",
 	"FRAMEWORKS": "FRAMEWORKS",
-	"LIBRARIES ETC": "LIBRARIES ETC",
+	"LIBRARIES": "LIBRARIES",
+	"AND OTHERS": "AND OTHERS",
 	"TOOLS": "TOOLS"
 }

@@ -33,32 +33,29 @@
     }
 }
 
-.page-fade-enter {
-  opacity: 0;
-}
-
-.page-fade-enter-active {
-  opacity: 1;
-  transition: opacity 2s;
-}
-
-.page-fade-exit {
-  opacity: 1;
-}
-
-.page-fade-exit-active {
-  opacity: 0;
-  transition: opacity 2s;
-}
-
 @layer base {
 	html {
 		font-family: 'Poppins', sans-serif;
-    overflow-x: hidden;
-    overflow-y: scroll;
+        overflow-x: hidden;
+        overflow-y: scroll;
 	}
-	
-	h1 {
-		font-family: 'Lora', serif;
-	}
+
+    h1 {
+        font-family: 'Lora', serif;
+    }
+
+    main {
+        animation-duration: 2s;
+        animation-name: fadein;
+    }
+
+    @keyframes fadein {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
 }
