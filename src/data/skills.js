@@ -36,14 +36,3 @@ export const others = [{
     id: 2,
     name: 'UML'
 }];
-
-export const edu = [{
-    id: 0,
-    name: 'Brno University of Technology'
-  }, {
-    id: 1,
-    name: 'Skive College'
-  }, {
-    id: 2,
-    name: 'Business High School'
-}];
