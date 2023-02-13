@@ -8,15 +8,44 @@ html {
 }
 
 header {
-    font-family: 'Press Start 2P', serif;
+    display: flex;
     font-size: 1.5rem;
-    text-align: center;
-    margin-top: 2rem;
+    flex-direction: column;
+    align-items: center;
 }
 
-@media only screen and (max-width: 767px) {
+h1, h2 {
+    font-family: 'Press Start 2P', serif;
+}
+
+a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-decoration: none;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 1.2rem;
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 0.5rem 1rem;
+    margin: 3rem;
+    text-align: center;
+}
+
+@media only screen and (max-width: 1100px) {
     header {
         font-size: 1rem;
+    }
+
+    a {
+        position: relative;
+        margin: 0.5rem 0;
+    }
+
+    h1 {
+        margin-inline: 1.5rem;
+        text-align: center;
     }
 }
 
@@ -78,7 +107,8 @@ header {
 .gameCanvas {
     display: flex;
     border: 1px solid white;
-    margin: 3rem auto;
+    margin: auto;
+    margin-bottom: 3rem;
     padding: 1rem 1rem;
     width: 80%;
     max-width: 480px;
@@ -87,5 +117,31 @@ header {
 @media only screen and (max-width: 767px) {
     .gameCanvas {
         margin: 2rem auto;
+    }
+}
+
+.rules {
+    text-align: center;
+    margin: 2rem auto;
+    margin-top: 5rem;
+    width: 80%;
+    max-width: 480px;
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+@media only screen and (max-width: 767px) {
+    .rules {
+        margin-top: 2rem;
+    }
+
+    li {
+        font-size: 1em;
     }
 }

@@ -7,6 +7,7 @@ import Home from "./components/pages/Home";
 import About from "./components/pages/About";
 import Projects from "./components/pages/Projects";
 import Contact from "./components/pages/Contact";
+import GameOfLife from "./components/pages/projects/GameOfLife";
 
 function App() {
   useEffect(() => {
@@ -30,10 +31,7 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='/about' element={<About/>} />
             <Route path='/projects' element={<Projects />} />
-            <Route path='/projects/game-of-life' render={() => {
-              window.location.href = '/projects/game-of-life/index.html'
-              return null
-            }} />
+            <Route path='/projects/game-of-life' element={<GameOfLife />} />
             <Route path='/contact' element={<Contact />} />
           </Routes>
       </Router>
