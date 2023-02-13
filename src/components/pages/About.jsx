@@ -12,7 +12,7 @@ function About() {
     return (
          <main className="mb-auto">
             <h1 className="lg:text-8xl text-6xl text-center my-20">{t("Skills")}</h1>
-            <section className="lg:flex justify-center border-2 bg-white bg-opacity-5 border-white lg:mx-20 mx-5">
+            <section className="lg:flex justify-center border-2 bg-white bg-opacity-5 border-white lg:mx-20 mx-10">
                 <div className="lg:w-1/3 lg:border-r-2 border-white m-16 lg:mx-0 lg:px-16 px-0">
                     <h2 className="text-2xl text-white mb-5 tracking-widest">{t("LANGUAGES")}</h2>
                     <List props={langs}/>
@@ -30,11 +30,11 @@ function About() {
             </section>
             <h1 className="lg:text-8xl text-6xl text-center my-20">{t("Education")}</h1>
             <section className="lg:flex mb-20">
-                <EduNode school="Business High School" place="Russia" yrs="2018-2020" />
-                <div id="divider-hor1" className="lg:hidden mx-auto w-0.5 h-32 bg-white my-10"></div>
+                <EduNode school="Business High School" place="Russia" yrs="2018 - 2020" />
+                <div id="divider-hor1" className="lg:hidden mx-auto w-0.5 h-28 bg-white my-10"></div>
                 <EduNode school="Skive College" place="Denmark" yrs="2019" src={Skive} />
-                <div id="divider-hor2" className="lg:hidden mx-auto w-0.5 h-32 bg-white my-10"></div>
-                <EduNode school="Brno University of Technology" place="Czech Republic" yrs="2021-..." src={VUT} />
+                <div id="divider-hor2" className="lg:hidden mx-auto w-0.5 h-28 bg-white my-10"></div>
+                <EduNode school="Brno University of Technology" place="Czech Republic" yrs="2021 - ..." src={VUT} />
             </section>
         </main>
     );

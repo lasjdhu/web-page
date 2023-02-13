@@ -14,7 +14,6 @@ module.exports = {
       black: colors.black,
       'accent': '#FFCC00',
       'midnight': '#0B223D',
-      'next': '#222629',
       'gray': '#6B6E70',
     },
   },
