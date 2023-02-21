@@ -3,13 +3,13 @@ export const langs = [{
     name: 'C/C++'
   }, {
     id: 1,
-    name: 'HTML, CSS'
+    name: 'Python'
   }, {
     id: 2,
-    name: 'JavaScript'
+    name: 'HTML, CSS'
   }, {
     id: 3,
-    name: 'Python'
+    name: 'JavaScript, TypeScript'
   }, {
     id: 4,
     name: 'SQL'
@@ -34,5 +34,8 @@ export const others = [{
     name: 'Git'
   }, {
     id: 2,
+    name: 'Docker'
+  }, {
+    id: 3,
     name: 'UML'
 }];
