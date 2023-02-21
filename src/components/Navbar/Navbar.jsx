@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { NavLink } from 'react-router-dom';
 import { FiMenu } from "react-icons/fi";
 import { MdClose } from "react-icons/md";
-import Nav from "./forNavbar/Nav";
-import Lang from "./forNavbar/Lang";
+import Nav from "./Nav";
+import Lang from "./Lang";
 
 function Navbar() {
     const [toggle, setToggle] = useState(false);
