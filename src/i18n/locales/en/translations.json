@@ -9,12 +9,12 @@
 	"I am a software developer": "I am a software developer",
 	"Education": "Education",
 	"Skills": "Skills",
-	"LANGUAGES": "LANGUAGES",
-	"FRAMEWORKS": "FRAMEWORKS",
-	"LIBRARIES": "LIBRARIES",
-	"AND OTHERS": "AND OTHERS",
-	"TOOLS": "TOOLS",
+	"LINUX": "LINUX",
+	"ADMINISTRATION": "ADMINISTRATION",
 	"Russia": "Russia",
 	"Denmark": "Denmark",
-	"Czech Republic": "Czech Republic"
+	"Czech Republic": "Czech Republic",
+	"Marketing and data processing": "Marketing and data processing",
+	"International Exchange": "International Exchange",
+	"Information Technology": "Information Technology"
 }
