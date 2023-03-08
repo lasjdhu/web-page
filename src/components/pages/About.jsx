@@ -10,7 +10,7 @@ function About() {
     const { t } = useTranslation();
 
     return (
-         <main className="mb-auto">
+        <main className="mb-auto">
             <h1 className="lg:text-8xl text-6xl text-center my-20">{t("Skills")}</h1>
             <section className="lg:flex justify-center border-2 bg-white bg-opacity-5 border-white lg:mx-20 mx-10">
                 <div className="lg:w-1/3 lg:border-r-2 border-white m-16 lg:mx-0 lg:px-16 px-0">
