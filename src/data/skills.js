@@ -1,41 +1,47 @@
-export const langs = [{
+export const soft = [{
     id: 0,
-    name: 'C/C++'
+    name: 'C/C++, Qt'
   }, {
     id: 1,
     name: 'Python'
   }, {
     id: 2,
-    name: 'HTML, CSS'
+    name: 'PHP'
   }, {
     id: 3,
-    name: 'JavaScript, TypeScript'
+    name: 'Bash'
   }, {
     id: 4,
-    name: 'SQL'
+    name: 'UML'
 }];
 
-export const frameworks = [{
+export const web = [{
     id: 0,
-    name: 'React'
+    name: 'JavaScript, TypeScript'
   }, {
     id: 1,
-    name: 'Tailwind'
+    name: 'React, Node.js'
   }, {
     id: 2,
-    name: 'Postgres, Oracle'
+    name: 'HTML, CSS, Tailwind'
+  }, {
+    id: 3,
+    name: 'SQL (Postgres, Oracle)'
+  }, {
+    id: 4,
+    name: 'Google Cloud, Firebase'
 }];
 
-export const others = [{
+export const admin = [{
     id: 0,
     name: 'Linux'
   }, {
     id: 1,
-    name: 'Git'
+    name: 'Git, GitHub Actions'
   }, {
     id: 2,
-    name: 'Docker'
+    name: 'Docker, Kubernetes'
   }, {
     id: 3,
-    name: 'UML'
+    name: 'Networks and Servers (CCNA)'
 }];

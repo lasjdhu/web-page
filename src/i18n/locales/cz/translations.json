@@ -9,12 +9,12 @@
 	"I am a software developer": "Jsem software developer",
 	"Education": "Vzdělání",
 	"Skills": "Dovednosti",
-	"LANGUAGES": "JAZYKY",
-	"FRAMEWORKS": "FRAMEWORKY",
-	"LIBRARIES": "KNIHOVNY",
-	"AND OTHERS": "A JINÉ",
-	"TOOLS": "NÁSTROJE",
+	"LINUX": "LINUXOVÁ",
+	"ADMINISTRATION": "ADMINISTRACE",
 	"Russia": "Rusko",
 	"Denmark": "Dánsko",
-	"Czech Republic": "Česká republika"
+	"Czech Republic": "Česká republika",
+	"Marketing and data processing": "Marketing a zpracování dat",
+	"International Exchange": "Mezinárodní výměna",
+	"Information Technology": "Informační technologie"
 }
