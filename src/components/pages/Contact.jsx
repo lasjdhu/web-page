@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { SocialIcon } from "react-social-icons";
 import Badge from "../reusable/Badge";
 
