@@ -6,7 +6,7 @@ const currentYear = () => {
 
 function Footer() {
     return (
-        <footer className="text-center text-gray py-5">
+        <footer className="text-center text-light py-5">
             <p>© {currentYear()} Dmitrii Ivanushkin</p>
         </footer>
     );

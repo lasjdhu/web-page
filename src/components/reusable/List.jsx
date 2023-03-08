@@ -9,7 +9,7 @@ function List({props}) {
   	);
 
 	return (
-		<ul className="list-inside text-white lg:mb-0 mb-16">
+		<ul className="list-inside text-light lg:mb-0 mb-16">
             {listItems}
         </ul>
 	);
