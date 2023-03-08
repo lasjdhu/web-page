@@ -15,10 +15,10 @@ function EduNode(props) {
 	return (
 		<div className="lg:w-1/3 lg:flex justify-center">
             <div>
-                <h2 className="text-2xl text-white text-center tracking-widest">{props.school}</h2>
-                <p className="text-gray text-center">{t(props.place)}</p>
-                <p className="text-gray text-center">{props.yrs}</p>
-                <p className="text-gray text-center">{t(props.spec)}</p>
+                <h2 className="text-2xl text-white text-center font-bold mb-2 tracking-widest">{props.school}</h2>
+                <p className="text-light text-center">{t(props.place)}</p>
+                <p className="text-light text-center">{props.yrs}</p>
+                <p className="text-light text-center">{t(props.spec)}</p>
             </div>
             { image && <img src={props.src} alt="logo" loading="lazy" className="h-20 w-auto lg:mx-10 mx-auto lg:mt-0 mt-5" />}
         </div>

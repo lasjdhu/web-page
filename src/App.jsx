@@ -23,7 +23,7 @@ function App() {
   }, [])
 
   return (
-    <div id="wrapper" className="min-h-screen flex flex-col text-white bg-midnight">
+    <div id="wrapper" className="min-h-screen flex flex-col text-white bg-gradient-to-b from-midnight to-blue">
     {loading && <LoadingScreen />}
       <Router>
         <Navbar />         
