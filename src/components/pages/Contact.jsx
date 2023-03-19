@@ -42,22 +42,22 @@ function Contact() {
 		  	<button type="submit">Submit</button>
 			</form>*/}
 			<ul className="flex flex-row justify-center pt-10">
- 	            <li className="">
+ 	            <li className="px-10">
  	                <SocialIcon
  		                url="https://linkedin.com/in/dmitrii-ivanushkin"
- 		                className="hover:scale-125 duration-300"
+ 		                className="hover:scale-120 duration-300"
  		                fgColor="white"
  		                bgColor="black"
- 		                style={{ height: 40, width: 40 }}
+ 		                style={{ height: 50, width: 50 }}
  	                />
  	            </li>
  	            <li className="px-10">
  	                <SocialIcon
  	                	url="https://github.com/re-roll"
- 	                	className="hover:scale-125 duration-300" 
+ 	                	className="hover:scale-120 duration-300" 
  	                	fgColor="white"
  	                	bgColor="black"
- 	                	style={{ height: 40, width: 40 }} 
+ 	                	style={{ height: 50, width: 50 }} 
  	                />
  	            </li>
  	        </ul>
