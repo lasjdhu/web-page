@@ -11,8 +11,7 @@ function About() {
 
     return (
         <main className="mb-auto">
-            <h1 className="lg:text-8xl text-6xl text-center my-20">{t("Skills")}</h1>
-            <section className="lg:flex justify-center border-2 bg-white bg-opacity-5 border-white lg:mx-20 mx-10">
+            <section className="lg:flex justify-center border-2 bg-white bg-opacity-5 border-white lg:mx-20 mx-10 mt-6">
                 <div className="lg:w-1/3 lg:border-r-2 border-white m-16 lg:mx-0 lg:px-16 px-0">
                     <h2 className="text-2xl text-white font-bold tracking-widest">SOFTWARE</h2>
                     <h2 className="text-2xl text-white font-bold mb-5 tracking-widest">DEVELOPMENT</h2>
@@ -29,8 +28,7 @@ function About() {
                     <List props={admin} />
                 </div>
             </section>
-            <h1 className="lg:text-8xl text-6xl text-center my-20">{t("Education")}</h1>
-            <section className="lg:flex mb-20">
+            <section className="lg:flex mt-20 mx-20 mb-10">
                 <EduNode
                     school="Business High School"
                     place="Russia"
