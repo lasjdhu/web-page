@@ -6,12 +6,9 @@ export const soft = [{
     name: 'Python'
   }, {
     id: 2,
-    name: 'PHP'
-  }, {
-    id: 3,
     name: 'Bash'
   }, {
-    id: 4,
+    id: 3,
     name: 'UML'
 }];
 
@@ -20,7 +17,7 @@ export const web = [{
     name: 'JavaScript, TypeScript'
   }, {
     id: 1,
-    name: 'React, Node.js'
+    name: 'React, React Native'
   }, {
     id: 2,
     name: 'HTML, CSS, Tailwind'
@@ -29,7 +26,7 @@ export const web = [{
     name: 'SQL (Postgres, Oracle)'
   }, {
     id: 4,
-    name: 'Google Cloud, Firebase'
+    name: 'Google Cloud Platform, Firebase'
 }];
 
 export const admin = [{
@@ -37,11 +34,11 @@ export const admin = [{
     name: 'Linux'
   }, {
     id: 1,
-    name: 'Git, GitHub Actions'
+    name: 'Git'
   }, {
     id: 2,
     name: 'Docker, Kubernetes'
   }, {
     id: 3,
-    name: 'Networks and Servers (CCNA)'
+    name: 'Network Administration'
 }];

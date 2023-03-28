@@ -18,7 +18,7 @@ function About() {
                     <List props={soft}/>
                 </div>
                 <div className="lg:w-1/3 lg:border-r-2 border-white m-16 lg:mx-0 lg:px-16 px-0">
-                    <h2 className="text-2xl text-white font-bold tracking-widest">WEB</h2>
+                    <h2 className="text-2xl text-white font-bold tracking-widest">FRONT-END</h2>
                     <h2 className="text-2xl text-white font-bold mb-5 tracking-widest">DEVELOPMENT</h2>
                     <List props={web} />
                 </div>
