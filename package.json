@@ -30,7 +30,6 @@
 		"react-social-icons": "^5.15.0"
 	},
 	"devDependencies": {
-		"@babel/plugin-proposal-private-property-in-object": "^7.21.11",
 		"eslint": "^8.49.0",
 		"eslint-plugin-react": "^7.33.2",
 		"prettier": "^3.0.3"
