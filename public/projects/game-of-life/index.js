@@ -8,47 +8,52 @@ const cols = ctx.canvas.height / cellSize;
 const game = new Game(rows, cols);
 
 window.onload = () => {
-    function drawGrid() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        for (let i = 0; i < game.rows; i++) {
-          for (let j = 0; j < game.cols; j++) {
-            const cell = game.getCell(i, j);
-                if (cell.isAlive()) {
-                    ctx.fillStyle = '#fff';
-                    ctx.fillRect(i * cellSize, j * cellSize, cellSize, cellSize);
-                }
-            }
-        }
-    }
-    
-    let running = false;
+	function drawGrid() {
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
+		for (let i = 0; i < game.rows; i++) {
+			for (let j = 0; j < game.cols; j++) {
+				const cell = game.getCell(i, j);
+				if (cell.isAlive()) {
+					ctx.fillStyle = '#fff';
+					ctx.fillRect(
+						i * cellSize,
+						j * cellSize,
+						cellSize,
+						cellSize
+					);
+				}
+			}
+		}
+	}
 
-    const random = document.querySelector('.randomizeButton')
-    random.addEventListener('click', () => {
-        game.randomize();
-    });
+	let running = false;
 
-    document.querySelector('.clearButton').addEventListener('click', () => {
-        game.clear();
-    });
+	const random = document.querySelector('.randomizeButton');
+	random.addEventListener('click', () => {
+		game.randomize();
+	});
 
-    document.querySelector('.stopButton').addEventListener('click', () => {
-        running = false;
-    });
+	document.querySelector('.clearButton').addEventListener('click', () => {
+		game.clear();
+	});
 
-    document.querySelector('.startButton').addEventListener('click', () => {
-        running = true;
-    });
+	document.querySelector('.stopButton').addEventListener('click', () => {
+		running = false;
+	});
 
-    function gameLoop() {
-        if (running) game.nextGeneration();
-    }
+	document.querySelector('.startButton').addEventListener('click', () => {
+		running = true;
+	});
 
-    function drawLoop() {
-        drawGrid();
-        requestAnimationFrame(drawLoop);
-    }
+	function gameLoop() {
+		if (running) game.nextGeneration();
+	}
 
-    setInterval(gameLoop, 500);
-    window.requestAnimationFrame(drawLoop);
+	function drawLoop() {
+		drawGrid();
+		requestAnimationFrame(drawLoop);
+	}
+
+	setInterval(gameLoop, 500);
+	window.requestAnimationFrame(drawLoop);
 };

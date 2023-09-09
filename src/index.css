@@ -5,57 +5,57 @@
 @tailwind utilities;
 
 .loading-page {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    background: rgba(0, 0, 0, 0.7);
-    z-index: 1;
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	background: rgba(0, 0, 0, 0.7);
+	z-index: 1;
 }
 
 .spinner {
-    width: 64px;
-    height: 64px;
-    border: 8px solid;
-    border-color: #3698A7 transparent #3698A7 transparent;
-    border-radius: 50%;
-    animation: spin-anim 1.2s linear infinite;
+	width: 64px;
+	height: 64px;
+	border: 8px solid;
+	border-color: #3698a7 transparent #3698a7 transparent;
+	border-radius: 50%;
+	animation: spin-anim 1.2s linear infinite;
 }
 
 @keyframes spin-anim {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
 }
 
 @layer base {
 	html {
 		font-family: 'Poppins', sans-serif;
-        overflow-x: hidden;
-        overflow-y: scroll;
+		overflow-x: hidden;
+		overflow-y: scroll;
 	}
 
-    h1 {
-        font-family: 'Lora', serif;
-    }
+	h1 {
+		font-family: 'Lora', serif;
+	}
 
-    main {
-        animation-duration: 3s;
-        animation-name: fadein;
-    }
+	main {
+		animation-duration: 3s;
+		animation-name: fadein;
+	}
 
-    @keyframes fadein {
-        0% {
-            opacity: 0;
-        }
+	@keyframes fadein {
+		0% {
+			opacity: 0;
+		}
 
-        100% {
-            opacity: 1;
-        }
-    }
+		100% {
+			opacity: 1;
+		}
+	}
 }
