@@ -34,10 +34,6 @@ export const web = [
 		id: 3,
 		name: 'SQL (Postgres, Oracle)',
 	},
-	{
-		id: 4,
-		name: 'Google Cloud Platform, Firebase',
-	},
 ];
 
 export const admin = [
@@ -50,7 +46,11 @@ export const admin = [
 		name: 'Git',
 	},
 	{
-		id: 3,
+		id: 2,
 		name: 'Network Administration',
+	},
+	{
+		id: 3,
+		name: 'Google Cloud Platform, Firebase',
 	},
 ];
