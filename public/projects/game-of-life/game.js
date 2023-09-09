@@ -1,5 +1,4 @@
 class Cell {
-
 	constructor(x, y, alive = false) {
 		this.x = x;
 		this.y = y;
@@ -13,12 +12,10 @@ class Cell {
 
 	toggle() {
 		this.alive = !this.alive;
-	}	
-
+	}
 }
 
 class Game extends Cell {
-
 	constructor(rows, cols) {
 		super();
 
@@ -34,7 +31,6 @@ class Game extends Cell {
 			grid[i] = [];
 			for (let j = 0; j < this.cols; j++) {
 				grid[i][j] = new Cell(i, j, Math.random() > 0.5 ? true : false);
-				
 			}
 		}
 		return grid;
@@ -62,7 +58,7 @@ class Game extends Cell {
 	aliveNeighbours(x, y) {
 		let neighbours = this.getNeighbours(x, y);
 		let aliveNeighbours = 0;
-		neighbours.forEach(neighbour => {
+		neighbours.forEach((neighbour) => {
 			if (neighbour.isAlive()) {
 				aliveNeighbours++;
 			}
@@ -77,7 +73,10 @@ class Game extends Cell {
 			for (let j = 0; j < this.cols; j++) {
 				const cell = this.getCell(i, j);
 				const aliveNeighbours = this.aliveNeighbours(i, j);
-				if (cell.isAlive() && (aliveNeighbours < 2 || aliveNeighbours > 3)) {
+				if (
+					cell.isAlive() &&
+					(aliveNeighbours < 2 || aliveNeighbours > 3)
+				) {
 					nextAlive = false;
 				} else if (!cell.isAlive() && aliveNeighbours === 3) {
 					nextAlive = true;
@@ -85,10 +84,9 @@ class Game extends Cell {
 					nextAlive = cell.isAlive();
 				}
 				nextGeneration[i][j].alive = nextAlive;
-
 			}
 		}
-		
+
 		this.grid = nextGeneration;
 	}
 
@@ -107,5 +105,4 @@ class Game extends Cell {
 			}
 		}
 	}
-
 }
