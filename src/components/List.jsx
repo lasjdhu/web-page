@@ -7,9 +7,7 @@ function List({ props }) {
 		</li>
 	));
 
-	return (
-		<ul className="list-inside lg:mb-0 mb-16">{listItems}</ul>
-	);
+	return <ul className="list-inside lg:mb-0 mb-16">{listItems}</ul>;
 }
 
 export default List;
