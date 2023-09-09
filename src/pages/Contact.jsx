@@ -49,6 +49,8 @@ function Contact() {
 						fgColor="transparent"
 						bgColor="#0B223D"
 						style={{ height: 50, width: 50 }}
+						rel="noreferrer"
+						target="_blank"
 					/>
 				</li>
 				<li className="px-5">
@@ -57,6 +59,8 @@ function Contact() {
 						fgColor="transparent"
 						bgColor="#0B223D"
 						style={{ height: 50, width: 50 }}
+						rel="noreferrer"
+						target="_blank"
 					/>
 				</li>
 			</ul>

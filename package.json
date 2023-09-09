@@ -1,40 +1,36 @@
 {
+	"name": "web-page",
+	"private": true,
+	"version": "1.0.0",
+	"type": "module",
 	"scripts": {
-		"start": "react-scripts start",
-		"style": "prettier --write .",
+		"dev": "vite",
+		"build": "vite build",
 		"lint": "eslint --fix .",
-		"build": "react-scripts build",
-		"eject": "react-scripts eject"
-	},
-	"browserslist": {
-		"production": [
-			">0.2%",
-			"not dead",
-			"not op_mini all"
-		],
-		"development": [
-			"last 1 chrome version",
-			"last 1 firefox version",
-			"last 1 safari version"
-		]
+		"style": "prettier --write .",
+		"preview": "vite preview"
 	},
 	"dependencies": {
-		"i18next": "^22.4.10",
-		"intl-pluralrules": "^2.0.1",
+		"i18next": "^23.5.1",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
-		"react-i18next": "^12.1.5",
-		"react-icons": "^4.7.1",
-		"react-router-dom": "^6.8.1",
-		"react-scripts": "5.0.1",
-		"react-social-icons": "^5.15.0"
+		"react-i18next": "^13.2.2",
+		"react-icons": "^4.11.0",
+		"react-router-dom": "^6.15.0",
+		"react-social-icons": "^6.3.0"
 	},
 	"devDependencies": {
-		"eslint": "^8.49.0",
-		"eslint-plugin-react": "^7.33.2",
-		"prettier": "^3.0.3"
-	},
-	"name": "web-page",
-	"version": "1.0.0",
-	"private": true
+		"@types/react": "^18.2.15",
+		"@types/react-dom": "^18.2.7",
+		"@vitejs/plugin-react": "^4.0.3",
+		"autoprefixer": "^10.4.15",
+		"eslint": "^8.45.0",
+		"eslint-plugin-react": "^7.32.2",
+		"eslint-plugin-react-hooks": "^4.6.0",
+		"eslint-plugin-react-refresh": "^0.4.3",
+		"postcss": "^8.4.29",
+		"prettier": "^3.0.3",
+		"tailwindcss": "^3.3.3",
+		"vite": "^4.4.5"
+	}
 }

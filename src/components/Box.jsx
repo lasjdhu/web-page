@@ -27,6 +27,8 @@ function Box(props) {
 			<a
 				href={props.src}
 				className="text-center text-accent border-b mx-5"
+				rel="noreferrer"
+				target="_blank"
 			>
 				Source
 			</a>
