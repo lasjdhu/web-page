@@ -20,7 +20,7 @@
 	"vut_area": "Informační technologie",
 	"this_page": "Tato webová stránka :)",
 	"gol": "Hra života",
-	"gol_description": "Celulární automat, uživatel pouze určí výchozí konfiguraci a dále již hra běží automaticky.",
+	"gol_description": "Celulární automat, který svým chováním připomíná vývoj buňek. Uživatel určí výchozí konfiguraci a dále již hra běží automaticky.",
 	"gnc": "GNC",
 	"gnc_description": "Open source dynamický hub, určený pro lepší konfiguraci inteligentního distributora kompilačních úloh distcc.",
 	"soon": "Již brzy . . ."

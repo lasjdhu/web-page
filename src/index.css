@@ -35,13 +35,13 @@
 
 @layer base {
 	html {
-		font-family: 'Poppins', sans-serif;
+		font-family: 'Poppins';
 		overflow-x: hidden;
 		overflow-y: scroll;
 	}
 
 	h1 {
-		font-family: 'Lora', serif;
+		font-family: 'Lora';
 	}
 
 	main {

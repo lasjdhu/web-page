@@ -19,7 +19,6 @@
 		]
 	},
 	"dependencies": {
-		"cra-template": "1.2.0",
 		"i18next": "^22.4.10",
 		"intl-pluralrules": "^2.0.1",
 		"react": "^18.2.0",
@@ -31,6 +30,7 @@
 		"react-social-icons": "^5.15.0"
 	},
 	"devDependencies": {
+		"@babel/plugin-proposal-private-property-in-object": "^7.21.11",
 		"eslint": "^8.49.0",
 		"eslint-plugin-react": "^7.33.2",
 		"prettier": "^3.0.3"
