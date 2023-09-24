@@ -8,7 +8,7 @@ function EduNode(props) {
 					src={props.img_left}
 					alt="logo"
 					loading="lazy"
-					className="h-20 w-auto lg:mx-10 mx-auto lg:mt-0 mt-5"
+					className="h-20 w-auto lg:mx-10 mx-auto lg:mt-0 m-5"
 				/>
 			)}
 			<div>
@@ -24,7 +24,7 @@ function EduNode(props) {
 					src={props.img_right}
 					alt="logo"
 					loading="lazy"
-					className="h-20 w-auto lg:mx-10 mx-auto lg:mt-0 mt-5"
+					className="h-20 w-auto lg:mx-10 mx-auto lg:mt-0 m-5"
 				/>
 			)}
 		</div>

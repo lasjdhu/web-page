@@ -9,7 +9,7 @@ function Lang() {
 	}
 
 	return (
-		<div className="block text-gray">
+		<div className="block">
 			<button
 				onClick={changeLanguage}
 				value="en"

@@ -6,7 +6,7 @@ import { MdClose } from 'react-icons/md';
 import Nav from './Nav';
 import Lang from './Lang';
 
-function Navbar() {
+function Header() {
 	const [toggle, setToggle] = useState(false);
 	const [smallScreen, setSmallScreen] = useState(false);
 
@@ -28,22 +28,26 @@ function Navbar() {
 		}
 	};
 
+	const closeMenu = () => {
+		setToggle(false);
+	};
+
 	return (
-		<header className="flex items-center justify-between flex-wrap p-10">
+		<header className="flex items-center justify-between flex-wrap p-10 lg:mb-0 mb-12">
 			<div id="logo" className="flex items-center flex-shrink-0 mr-12">
-				<NavLink to="/" className="text-4xl tracking-tight">
-					<h1>DI</h1>
+				<NavLink to="/">
+					<h1 className="lg:text-5xl text-4xl tracking-tight">DI</h1>
 				</NavLink>
 			</div>
 			<button
 				className="flex lg:hidden items-center px-4 py-3 text-accent border border-accent"
 				onClick={() => setToggle(!toggle)}
 			>
-				{toggle ? <MdClose className="" /> : <FiMenu className="" />}
+				{toggle ? <MdClose /> : <FiMenu />}
 			</button>
 			{(!smallScreen || toggle) && (
 				<div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto text-center">
-					<Nav />
+					<Nav onCloseMenu={closeMenu} />
 					<Lang />
 				</div>
 			)}
@@ -51,4 +55,4 @@ function Navbar() {
 	);
 }
 
-export default Navbar;
+export default Header;
