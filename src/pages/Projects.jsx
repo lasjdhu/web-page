@@ -8,7 +8,7 @@ function Projects() {
 
 	return (
 		<main className="m-auto">
-			<div className="flex lg:flex-row flex-col">
+			<div className="lg:flex lg:flex-wrap justify-center">
 				<Box
 					title={t('gol')}
 					to="/projects/game-of-life"

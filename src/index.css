@@ -36,8 +36,6 @@
 @layer base {
 	html {
 		font-family: 'Poppins';
-		overflow-x: hidden;
-		overflow-y: scroll;
 	}
 
 	h1 {
