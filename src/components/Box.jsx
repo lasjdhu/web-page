@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 function Box(props) {
 	return (
-		<article className="w-96 flex flex-col text-center bg-white bg-opacity-5 center m-5">
+		<article className="lg:w-96 w-80 flex flex-col text-center bg-white bg-opacity-5 center m-5">
 			<h2 className="text-xl pt-5 mt-2 my-4">{props.title}</h2>
 			<p className="text-left text-light m-5">{props.desc}</p>
 			<div className="flex flex-row h-10 mb-6 mt-4 justify-center items-center">
