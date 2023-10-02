@@ -23,5 +23,7 @@
 	"gol_description": "Cellular automaton zero-player game, Evolution is determined by initial state, requiring no further input.",
 	"gnc": "GNC",
 	"gnc_description": "Open source dynamic hub of hosts for a better configuration of distcc smart distributor of compiling tasks.",
-	"soon": "Coming soon . . ."
+	"soon": "Coming soon . . .",
+	"run": "RUN",
+	"source": "Source"
 }
