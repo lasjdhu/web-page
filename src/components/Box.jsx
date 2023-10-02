@@ -1,7 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 function Box(props) {
+	const { t } = useTranslation();
+
 	return (
 		<article className="lg:w-96 w-80 flex flex-col text-center bg-white bg-opacity-5 center m-5">
 			<h2 className="text-xl pt-5 mt-2 my-4">{props.title}</h2>
@@ -10,7 +13,7 @@ function Box(props) {
 				{props.isEnabled && (
 					<div className="flex h-10 justify-center items-center mx-5 px-3 bg-transparent hover:bg-accent text-accent hover:text-midnight border-accent border cursor-pointer transition ease-in-out hover:-translate-y-1 duration-300">
 						<NavLink to={props.to} className="cursor-pointer">
-							RUN
+							{t('run')}
 						</NavLink>
 					</div>
 				)}
@@ -20,7 +23,7 @@ function Box(props) {
 					rel="noreferrer"
 					target="_blank"
 				>
-					Source
+					{t('source')}
 				</a>
 			</div>
 		</article>
