@@ -6,7 +6,7 @@ export default function Projects() {
   const { t } = useTranslation();
 
   return (
-    <main className="lg:my-auto m-auto">
+    <main className="lg:m-auto mb-12 mx-auto">
       <div className="lg:flex lg:flex-wrap">
         <Box
           title={t("gol")}
