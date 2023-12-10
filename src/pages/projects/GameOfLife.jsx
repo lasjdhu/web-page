@@ -1,11 +1,9 @@
-import React from 'react';
+import { useEffect } from "react";
 
-function GameOfLife() {
-	React.useEffect(() => {
-		window.location.href = '/projects/game-of-life/index.html';
-	}, []);
+export default function GameOfLife() {
+  useEffect(() => {
+    window.location.href = "/projects/game-of-life/index.html";
+  }, []);
 
-	return null;
+  return null;
 }
-
-export default GameOfLife;

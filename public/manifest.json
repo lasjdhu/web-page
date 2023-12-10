@@ -1,19 +1,19 @@
 {
-	"name": "Dmitrii Ivanushkin",
-	"icons": [
-		{
-			"src": "/assets/android-chrome-192x192.png",
-			"sizes": "192x192",
-			"type": "image/png"
-		},
-		{
-			"src": "/assets/android-chrome-512x512.png",
-			"sizes": "512x512",
-			"type": "image/png"
-		}
-	],
-	"start_url": ".",
-	"display": "standalone",
-	"theme_color": "#0B223D",
-	"background_color": "#0B223D"
+  "name": "Dmitrii Ivanushkin",
+  "icons": [
+    {
+      "src": "/assets/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#F1FA8C",
+  "background_color": "#F1FA8C"
 }
