@@ -122,7 +122,7 @@ export default function Model() {
     <div style={{ position: "relative" }}>
       <div
         ref={refContainer}
-        className="w-96 h-96 flex justify-center items-center align-center relative"
+        className="lg:w-96 lg:h-96 w-56 h-56 flex justify-center items-center align-center relative"
       ></div>
       {loading && (
         <div
