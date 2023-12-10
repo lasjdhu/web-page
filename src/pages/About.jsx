@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 
-import { soft, web, admin } from "../data";
+import { soft, web, admin } from "../utils/data";
 import List from "../components/List";
 import EduNode from "../components/EduNode";
 import Skive from "../assets/skive.png";
