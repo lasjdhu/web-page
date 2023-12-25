@@ -25,5 +25,16 @@
   "gnc_description": "Open source dynamic hub of hosts for a better configuration of distcc smart distributor of compiling tasks.",
   "soon": "Coming soon . . .",
   "run": "RUN",
-  "source": "Source"
+  "source": "Source",
+  "OK": "OK",
+  "name": "Name",
+  "placeholder_name": "John Doe",
+  "email": "E-mail",
+  "placeholder_email": "example@mail.com",
+  "subject": "Subject",
+  "message": "Message",
+  "placeholder_message": "Type your message...",
+  "send_message": "SEND",
+  "mail_success": "Your message was sent successfully",
+  "mail_failure": "An error has occured, the message was not sent"
 }

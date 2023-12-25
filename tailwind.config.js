@@ -7,12 +7,12 @@ export default {
   theme: {
     colors: {
       transparent: "transparent",
-      current: "currentColor",
-      white: colors.white,
-      black: colors.black,
-      accent: "#F1FA8C",
-      background: "#121212",
-      foreground: "#C5CBE3",
+      white: "#FEFDE5",
+      gray: colors.gray,
+      red: colors.red,
+      accent: "#F4E664",
+      background: "#0E0F0F",
+      foreground: "#F9F7F6",
     },
   },
   plugins: [],
