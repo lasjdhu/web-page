@@ -45,7 +45,7 @@ export default function Contact() {
   };
 
   return (
-    <main className="mx-6 lg:m-auto flex justify-center items-center mb-auto">
+    <main className="mx-6 m-auto flex justify-center items-center">
       <form
         className="flex flex-col lg:flex-row lg:h-full"
         ref={form}
