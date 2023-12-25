@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import RingLoader from "react-spinners/RingLoader";
+import ScaleLoader from "react-spinners/ScaleLoader";
 
 import { loadGLTFModel } from "../utils/model";
 
@@ -137,7 +137,7 @@ export default function Model() {
             alignItems: "center",
           }}
         >
-          <RingLoader
+          <ScaleLoader
             color="#F1FA8C"
             loading={loading}
             size={80}

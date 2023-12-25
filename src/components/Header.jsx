@@ -33,7 +33,7 @@ function Header() {
   };
 
   return (
-    <header className="flex items-center justify-between flex-wrap px-10 pt-12 lg:mb-0 mb-24">
+    <header className="flex items-center justify-between flex-wrap px-10 pt-12 lg:m-0 mb-12">
       <div id="logo" className="flex items-center flex-shrink-0 mr-12">
         <NavLink to="/">
           <h1 className="lg:text-6xl text-5xl tracking-wide">DI</h1>

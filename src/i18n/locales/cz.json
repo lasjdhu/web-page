@@ -25,5 +25,16 @@
   "gnc_description": "Dynamický hub s otevřenými zdroji, určený pro lepší konfiguraci inteligentního distributora kompilačních úloh distcc.",
   "soon": "Již brzy . . .",
   "run": "SPUSTIT",
-  "source": "Zdroj"
+  "source": "Zdroj",
+  "OK": "OK",
+  "name": "Jméno",
+  "placeholder_name": "Honza Novák",
+  "email": "E-mail",
+  "placeholder_email": "example@mail.com",
+  "subject": "Předmět",
+  "message": "Zpráva",
+  "placeholder_message": "Napište svou zprávu...",
+  "send_message": "ODESLAT",
+  "mail_success": "Vaše zpráva byla úspěšně odeslána",
+  "mail_failure": "Vyskytla se chyba, zpráva nebyla odeslána"
 }

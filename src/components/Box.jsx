@@ -12,7 +12,7 @@ export default function Box(props) {
       <p className="text-left text-foreground m-5">{props.desc}</p>
       <div className="flex flex-row h-10 mb-6 mt-4 justify-center items-center">
         {props.isEnabled ? (
-          <div className="flex h-10 justify-center items-center mx-5 px-3 bg-transparent hover:bg-accent text-accent hover:text-background border-accent border cursor-pointer transition ease-in-out hover:-translate-y-1 duration-300">
+          <div className="text-sm flex h-10 justify-center items-center mx-5 px-3 bg-transparent hover:bg-accent text-accent hover:text-background border-accent border cursor-pointer transition ease-in-out hover:-translate-y-1 duration-300">
             <NavLink to={props.to} className="cursor-pointer">
               {t("run")}
             </NavLink>
