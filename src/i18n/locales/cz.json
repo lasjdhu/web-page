@@ -19,6 +19,12 @@
   "lyceum_area": "Marketing a zpracování dat",
   "skive_area": "Mezinárodní výměna",
   "vut_area": "Informační technologie",
+  "masaryk": "Masarykova univerzita",
+  "masaryk_area": "Frot-End vyvojář",
+  "meta": "Meta",
+  "meta_area": "Úvod do vývoje Front-Endu",
+  "gostudy": "GoStudy jazykova škola",
+  "gostudy_area": "Čeština B2 (CEFR)",
   "gol": "Hra života",
   "gol_description": "Celulární automat, který svým chováním připomíná vývoj buňek. Uživatel určí pouze výchozí konfiguraci.",
   "gnc": "GNC",
@@ -36,5 +42,11 @@
   "placeholder_message": "Napište svou zprávu...",
   "send_message": "ODESLAT",
   "mail_success": "Vaše zpráva byla úspěšně odeslána",
-  "mail_failure": "Vyskytla se chyba, zpráva nebyla odeslána"
+  "mail_failure": "Vyskytla se chyba, zpráva nebyla odeslána",
+  "characters_remaining": "znaků",
+  "my_skills": "Mé dovednosti",
+  "education": "Vzdělávání",
+  "work_experience": "Pracovní zkušenosti",
+  "certificates": "Certifikáty",
+  "verify": "Ověřit"
 }

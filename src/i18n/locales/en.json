@@ -19,8 +19,14 @@
   "lyceum_area": "Marketing and data processing",
   "skive_area": "International Exchange",
   "vut_area": "Information Technology",
+  "masaryk": "Masaryk University",
+  "masaryk_area": "Frot-End developer",
+  "meta": "Meta",
+  "meta_area": "Introduction to Front-End Development",
+  "gostudy": "GoStudy language school",
+  "gostudy_area": "Czech B2 (CEFR)",
   "gol": "Game of Life",
-  "gol_description": "Cellular automaton zero-player game, Evolution is determined by initial state, requiring no further input.",
+  "gol_description": "Cellular automaton zero-player game. Evolution is determined by initial state, requiring no further input.",
   "gnc": "GNC",
   "gnc_description": "Open source dynamic hub of hosts for a better configuration of distcc smart distributor of compiling tasks.",
   "soon": "Coming soon . . .",
@@ -36,5 +42,11 @@
   "placeholder_message": "Type your message...",
   "send_message": "SEND",
   "mail_success": "Your message was sent successfully",
-  "mail_failure": "An error has occured, the message was not sent"
+  "mail_failure": "An error has occured, the message was not sent",
+  "characters_remaining": "characters",
+  "my_skills": "My skills",
+  "education": "Education",
+  "work_experience": "Work experience",
+  "certificates": "Certificates",
+  "verify": "Verify"
 }
