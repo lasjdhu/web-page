@@ -9,9 +9,6 @@ export default function Box(props) {
   const { t } = useTranslation();
   const [isHovered, setIsHovered] = useState(false);
 
-  const isDesktop = window.innerWidth >= 1024;
-  const shouldDisplayImage = props.isEnabled || !isDesktop;
-
   return (
     <article className="flex lg:flex-row flex-col mx-auto w-3/4 relative justify-center items-center">
       <div
@@ -19,28 +16,47 @@ export default function Box(props) {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        {shouldDisplayImage && (
+        {window.innerWidth >= 1024 ? (
+          props.isEnabled ? (
+            <NavLink to={props.to}>
+              <img
+                alt={props.title}
+                src={props.img}
+                className={`w-96 h-48 object-cover transition-opacity duration-300
+                ${isHovered ? "opacity-20" : "opacity-100"}`}
+              />
+              {isHovered && (
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <p className="text-bold text-xl">{t("run")}</p>
+                </div>
+              )}
+            </NavLink>
+          ) : (
+            <>
+              <img
+                alt={props.title}
+                src={props.img}
+                className={`w-96 h-48 object-cover opacity-20`}
+              />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <Badge name="soon" />
+              </div>
+            </>
+          )
+        ) : props.isEnabled ? (
           <NavLink to={props.to}>
             <img
               alt={props.title}
               src={props.img}
-              className={`w-96 h-48 object-cover transition-opacity duration-300 ${
-                isHovered && "opacity-10"
-              }`}
+              className={`w-96 h-48 object-cover`}
             />
-            {isHovered && (
-              <div className="absolute inset-0 flex items-center justify-center border border-accent text-accent">
-                <p className="text-bold text-xl">{t("run")}</p>
-              </div>
-            )}
           </NavLink>
-        )}
-        {!props.isEnabled && isDesktop && (
+        ) : (
           <>
             <img
               alt={props.title}
               src={props.img}
-              className="w-96 h-48 object-cover opacity-10"
+              className={`w-96 h-48 object-cover opacity-20`}
             />
             <div className="absolute inset-0 flex items-center justify-center">
               <Badge name="soon" />
@@ -68,8 +84,8 @@ export default function Box(props) {
                 {props.isEnabled ? (
                   <button
                     className="text-sm flex h-10 justify-center items-center mx-5 px-3
-                    bg-transparent hover:bg-accent text-accent hover:text-background border-accent
-                    border cursor-pointer transition ease-in-out hover:-translate-y-1 duration-300"
+                  bg-transparent hover:bg-accent text-accent hover:text-background border-accent
+                  border cursor-pointer transition ease-in-out hover:-translate-y-1 duration-300"
                   >
                     <NavLink to={props.to} className="cursor-pointer">
                       {t("run")}
