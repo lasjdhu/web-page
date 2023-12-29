@@ -12,6 +12,14 @@ export default function Contact() {
   const [isLoading, setIsLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [message, setMessage] = useState("");
+
+  const maxMessageLength = 500;
+
+  function handleTextareaChange(e) {
+    const input = e.target.value;
+    setMessage(input.slice(0, maxMessageLength));
+  }
 
   function handleSubmit(e) {
     setIsLoading(true);
@@ -47,7 +55,7 @@ export default function Contact() {
   return (
     <main className="mx-6 m-auto flex justify-center items-center">
       <form
-        className="flex flex-col lg:flex-row lg:h-full"
+        className="flex flex-col lg:flex-row w-full max-w-3xl"
         ref={form}
         onSubmit={handleSubmit}
       >
@@ -117,13 +125,19 @@ export default function Contact() {
               <span className="text-red-500"> *</span>
             </label>
             <textarea
-              rows="6"
+              rows="5"
               id="jasdajk"
               autoComplete="off"
               className="flex-1 p-2.5 w-full text-sm shadow-sm border border-gray-500 bg-background"
               placeholder={t("placeholder_message")}
+              maxLength={maxMessageLength}
               name="message"
+              value={message}
+              onChange={handleTextareaChange}
             />
+            <div className="flex justify-end text-sm text-gray-500 mt-1">
+              {message.length}/{maxMessageLength} {t("characters_remaining")}
+            </div>
             <button
               type="submit"
               className={`mt-5 flex h-12 justify-center items-center px-3 text-sm border cursor-pointer ${

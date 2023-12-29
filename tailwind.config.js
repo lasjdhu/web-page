@@ -7,7 +7,7 @@ export default {
   theme: {
     colors: {
       transparent: "transparent",
-      white: "#FEFDE5",
+      white: colors.white,
       gray: colors.gray,
       red: colors.red,
       accent: "#F4E664",

@@ -5,15 +5,11 @@ import ScaleLoader from "react-spinners/ScaleLoader";
 
 import { loadGLTFModel } from "../utils/model";
 
-function easeOutCirc(x) {
-  return Math.sqrt(1 - Math.pow(x - 1, 4));
-}
-
 export default function Model() {
   const refContainer = useRef();
   const [loading, setLoading] = useState(true);
   const refRenderer = useRef();
-  const url = "/assets/rubik.glb";
+  const url = "/assets/duck.glb";
 
   const handleWindowResize = useCallback(() => {
     const { current: renderer } = refRenderer;
@@ -38,20 +34,14 @@ export default function Model() {
       });
       renderer.setPixelRatio(window.devicePixelRatio);
       renderer.setSize(scW, scH);
-      renderer.outputEncoding = THREE.sRGBEncoding;
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
       container.appendChild(renderer.domElement);
       refRenderer.current = renderer;
       const scene = new THREE.Scene();
 
       const target = new THREE.Vector3(-0.5, 1.2, 0);
-      const initialCameraPosition = new THREE.Vector3(
-        20 * Math.sin(0.2 * Math.PI),
-        10,
-        20 * Math.cos(0.2 * Math.PI),
-      );
+      const initialCameraPosition = new THREE.Vector3(20, 10, 20);
 
-      // 640 -> 240
-      // 8   -> 6
       const scale = scH * 0.005 + 4.8;
       const camera = new THREE.OrthographicCamera(
         -scale,
@@ -80,25 +70,10 @@ export default function Model() {
       });
 
       let req = null;
-      let frame = 0;
       const animate = () => {
         req = requestAnimationFrame(animate);
 
-        frame = frame <= 100 ? frame + 1 : frame;
-
-        if (frame <= 100) {
-          const p = initialCameraPosition;
-          const rotSpeed = -easeOutCirc(frame / 120) * Math.PI * 20;
-
-          camera.position.y = 10;
-          camera.position.x =
-            p.x * Math.cos(rotSpeed) + p.z * Math.sin(rotSpeed);
-          camera.position.z =
-            p.z * Math.cos(rotSpeed) - p.x * Math.sin(rotSpeed);
-          camera.lookAt(target);
-        } else {
-          controls.update();
-        }
+        controls.update();
 
         renderer.render(scene, camera);
       };
@@ -122,7 +97,7 @@ export default function Model() {
     <div style={{ position: "relative" }}>
       <div
         ref={refContainer}
-        className="lg:w-96 lg:h-96 w-56 h-56 flex justify-center items-center align-center relative"
+        className="lg:w-96 lg:h-96 w-48 h-48 flex justify-center items-center align-center relative"
       ></div>
       {loading && (
         <div

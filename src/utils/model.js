@@ -4,6 +4,7 @@ export function loadGLTFModel(
   scene,
   glbPath,
   options = { receiveShadow: true, castShadow: true },
+  scale = 1.5,
 ) {
   const { receiveShadow, castShadow } = options;
 
@@ -14,9 +15,10 @@ export function loadGLTFModel(
       glbPath,
       (gltf) => {
         const obj = gltf.scene;
-        obj.name = "rubik";
+        obj.name = "duck";
         obj.position.x = 0;
-        obj.position.y = 0;
+        obj.position.y = -2;
+        obj.scale.set(scale, scale, scale);
         obj.receiveShadow = receiveShadow;
         obj.castShadow = castShadow;
         scene.add(obj);

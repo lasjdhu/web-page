@@ -13,7 +13,7 @@ export const soft = [
   },
   {
     id: 3,
-    name: "UML",
+    name: "Rust",
   },
 ];
 
@@ -43,14 +43,14 @@ export const admin = [
   },
   {
     id: 1,
-    name: "Git",
+    name: "Git, GitHub, GitLab",
   },
   {
     id: 2,
-    name: "Network Administration",
+    name: "Google Cloud Platform, Firebase",
   },
   {
     id: 3,
-    name: "Google Cloud Platform, Firebase",
+    name: "UML",
   },
 ];
