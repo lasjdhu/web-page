@@ -34,11 +34,14 @@ function Header() {
 
   return (
     <header className="flex items-center justify-between flex-wrap px-10 pt-12 lg:m-0 mb-12">
-      <div id="logo" className="flex items-center flex-shrink-0 mr-12">
-        <NavLink to="/">
+      <NavLink to="/">
+        <button
+          className="flex items-center flex-shrink-0 mr-12 cursor-pointer"
+          onClick={closeMenu}
+        >
           <h1 className="lg:text-6xl text-5xl tracking-wide">DI</h1>
-        </NavLink>
-      </div>
+        </button>
+      </NavLink>
       <button
         className="flex lg:hidden items-center px-4 py-3 text-accent border border-accent"
         onClick={() => setToggle(!toggle)}

@@ -26,7 +26,7 @@ export default function Box(props) {
                 ${isHovered ? "opacity-20" : "opacity-100"}`}
               />
               {isHovered && (
-                <div className="absolute inset-0 flex items-center justify-center">
+                <div className="absolute inset-0 flex items-center justify-center border border-accent text-accent">
                   <p className="text-bold text-xl">{t("run")}</p>
                 </div>
               )}
