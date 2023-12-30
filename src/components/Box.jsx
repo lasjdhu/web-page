@@ -22,7 +22,11 @@ export default function Box(props) {
               alt={props.title}
               src={props.img}
               className={`transition-opacity duration-300
-                ${isHovered && window.innerWidth > 1024 ? "opacity-10 rounded-0" : "opacity-100"}`}
+                ${
+                  isHovered && window.innerWidth > 1024
+                    ? "opacity-10 rounded-0"
+                    : "opacity-100"
+                }`}
             />
             {isHovered && window.innerWidth > 1024 && (
               <div className="absolute inset-0 flex items-center justify-center border border-accent text-accent">
@@ -32,11 +36,7 @@ export default function Box(props) {
           </NavLink>
         ) : (
           <div className="">
-            <img
-              alt={props.title}
-              src={props.img}
-              className="opacity-10"
-            />
+            <img alt={props.title} src={props.img} className="opacity-10" />
             <div className="absolute inset-0 flex items-center justify-center">
               <Badge name="soon" />
             </div>
