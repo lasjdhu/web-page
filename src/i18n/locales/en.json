@@ -34,7 +34,7 @@
   "source": "Source",
   "OK": "OK",
   "name": "Name",
-  "placeholder_name": "John Doe",
+  "placeholder_name": "Your Name",
   "email": "E-mail",
   "placeholder_email": "example@mail.com",
   "subject": "Subject",
