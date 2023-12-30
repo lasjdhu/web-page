@@ -47,8 +47,8 @@ export default function About() {
         <div className="flex flex-col">
           <EduNode
             school={t("lyceum")}
-            place={t("cz")}
-            yrs="2021 - ..."
+            place={t("ru")}
+            yrs="2018 - 2020"
             spec={t("lyceum_area")}
             img={lyceum_logo}
           />
@@ -95,7 +95,7 @@ export default function About() {
           <div className="mt-12"></div>
           <CertNode
             school={t("gostudy")}
-            yrs="2021"
+            yrs="2020 - 2021"
             spec={t("gostudy_area")}
             img={gostudy}
           />
