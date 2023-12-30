@@ -16,52 +16,31 @@ export default function Box(props) {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        {window.innerWidth >= 1024 ? (
-          props.isEnabled ? (
-            <NavLink to={props.to}>
-              <img
-                alt={props.title}
-                src={props.img}
-                className={`w-96 h-48 object-cover transition-opacity duration-300
-                ${isHovered ? "opacity-20" : "opacity-100"}`}
-              />
-              {isHovered && (
-                <div className="absolute inset-0 flex items-center justify-center border border-accent text-accent">
-                  <p className="text-bold text-xl">{t("run")}</p>
-                </div>
-              )}
-            </NavLink>
-          ) : (
-            <>
-              <img
-                alt={props.title}
-                src={props.img}
-                className={`w-96 h-48 object-cover opacity-20`}
-              />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <Badge name="soon" />
-              </div>
-            </>
-          )
-        ) : props.isEnabled ? (
+        {props.isEnabled ? (
           <NavLink to={props.to}>
             <img
               alt={props.title}
               src={props.img}
-              className={`w-96 h-48 object-cover`}
+              className={`transition-opacity duration-300
+                ${isHovered && window.innerWidth > 1024 ? "opacity-10 rounded-0" : "opacity-100"}`}
             />
+            {isHovered && window.innerWidth > 1024 && (
+              <div className="absolute inset-0 flex items-center justify-center border border-accent text-accent">
+                <p className="text-bold text-xl">{t("run")}</p>
+              </div>
+            )}
           </NavLink>
         ) : (
-          <>
+          <div className="">
             <img
               alt={props.title}
               src={props.img}
-              className={`w-96 h-48 object-cover opacity-20`}
+              className="opacity-10"
             />
             <div className="absolute inset-0 flex items-center justify-center">
               <Badge name="soon" />
             </div>
-          </>
+          </div>
         )}
       </div>
       <div className="flex flex-col mt-4 lg:mt-0 lg:ml-8">
