@@ -37,6 +37,7 @@ export default function Contact() {
             setIsLoading(false);
             setIsSuccess(true);
             setShowModal(true);
+            setMessage("");
             form.current.reset();
           },
           () => {
