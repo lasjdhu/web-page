@@ -135,6 +135,7 @@ export default function Contact() {
               name="message"
               value={message}
               onChange={handleTextareaChange}
+              required
             />
             <div className="flex justify-end text-sm text-gray-500 mt-1">
               {message.length}/{maxMessageLength} {t("characters_remaining")}
