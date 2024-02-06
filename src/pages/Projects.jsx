@@ -18,16 +18,6 @@ export default function Projects() {
         desc={t("gol_description")}
         isEnabled={true}
       />
-      <div className="mt-24"></div>
-      <Box
-        title={t("gnc")}
-        img={gnc}
-        yrs="2023"
-        to="/"
-        href="https://github.com/Cheloved/gnc"
-        desc={t("gnc_description")}
-        isEnabled={false}
-      />
     </main>
   );
 }
