@@ -7,7 +7,7 @@ export default function Projects() {
   const { t } = useTranslation();
 
   return (
-        <main className="m-auto flex justify-center align-center items-center">
+    <main className="m-auto flex justify-center align-center items-center">
       <Box
         title={t("gol")}
         img={gol}
