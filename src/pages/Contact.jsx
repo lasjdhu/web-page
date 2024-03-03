@@ -30,21 +30,23 @@ export default function Contact() {
           import.meta.env.VITE_SERVICE_ID,
           import.meta.env.VITE_TEMPLATE_ID,
           form.current,
-          import.meta.env.VITE_PUBLIC_KEY,
+          import.meta.env.VITE_PUBLIC_KEY
         )
         .then(
-          () => {
+          // eslint-disable-next-line no-unused-vars
+          (response) => {
             setIsLoading(false);
             setIsSuccess(true);
             setShowModal(true);
             setMessage("");
             form.current.reset();
           },
-          () => {
+          // eslint-disable-next-line no-unused-vars
+          (error) => {
             setIsLoading(false);
             setIsSuccess(false);
             setShowModal(true);
-          },
+          }
         );
     }
   }
@@ -54,9 +56,9 @@ export default function Contact() {
   };
 
   return (
-    <main className="mx-6 m-auto flex justify-center items-center">
+    <main className="flex items-center justify-center m-auto mx-6">
       <form
-        className="flex flex-col lg:flex-row w-full max-w-3xl"
+        className="flex flex-col w-full max-w-3xl lg:flex-row"
         ref={form}
         onSubmit={handleSubmit}
       >
@@ -64,7 +66,7 @@ export default function Contact() {
           <div>
             <label
               htmlFor="jkasdhasl"
-              className="block mb-2 text-left text-sm font-medium text-white"
+              className="block mb-2 text-sm font-medium text-left text-white"
             >
               {t("name")}
               <span className="text-red-500"> *</span>
@@ -83,7 +85,7 @@ export default function Contact() {
           <div>
             <label
               htmlFor="kjksadhn"
-              className="block mt-4 mb-2 text-left text-sm font-medium text-white"
+              className="block mt-4 mb-2 text-sm font-medium text-left text-white"
             >
               {t("email")}
               <span className="text-red-500"> *</span>
@@ -102,7 +104,7 @@ export default function Contact() {
           <div>
             <label
               htmlFor="kljasdlk"
-              className="block mt-4 mb-2 text-left text-sm font-medium text-white"
+              className="block mt-4 mb-2 text-sm font-medium text-left text-white"
             >
               {t("subject")}
             </label>
@@ -110,17 +112,17 @@ export default function Contact() {
               type="text"
               id="kljasdlk"
               autoComplete="off"
-              className="block p-3 w-full text-sm border border-gray-500 shadow-sm bg-background"
+              className="block w-full p-3 text-sm border border-gray-500 shadow-sm bg-background"
               maxLength="30"
               name="subject"
             />
           </div>
         </div>
-        <div className="lg:w-1/2 lg:pl-4 mt-4 lg:mt-0">
+        <div className="mt-4 lg:w-1/2 lg:pl-4 lg:mt-0">
           <div className="flex flex-col h-full">
             <label
               htmlFor="jasdajk"
-              className="block mb-2 text-left text-sm font-medium text-white"
+              className="block mb-2 text-sm font-medium text-left text-white"
             >
               {t("message")}
               <span className="text-red-500"> *</span>
@@ -137,7 +139,7 @@ export default function Contact() {
               onChange={handleTextareaChange}
               required
             />
-            <div className="flex justify-end text-sm text-gray-500 mt-1">
+            <div className="flex justify-end mt-1 text-sm text-gray-500">
               {message.length}/{maxMessageLength} {t("characters_remaining")}
             </div>
             <button
@@ -176,13 +178,12 @@ export default function Contact() {
         />
       </form>
       {showModal && (
-        <div className="fixed inset-0 bg-background bg-opacity-80 flex flex-col justify-center items-center">
-          <p className="text-lg font-semibold mb-2">
+        <div className="fixed inset-0 flex flex-col items-center justify-center bg-background bg-opacity-80">
+          <p className="mb-2 text-lg font-semibold">
             {isSuccess ? t("mail_success") : t("mail_failure")}
           </p>
           <button
-            className="mt-5 flex h-12 w-16 justify-center items-center px-3 bg-transparent text-sm
-                    hover:bg-accent text-accent hover:text-background border-accent border cursor-pointer"
+            className="flex items-center justify-center w-16 h-12 px-3 mt-5 text-sm bg-transparent border cursor-pointer hover:bg-accent text-accent hover:text-background border-accent"
             onClick={closeModal}
           >
             {t("OK")}
