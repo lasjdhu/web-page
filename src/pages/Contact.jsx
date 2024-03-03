@@ -30,7 +30,7 @@ export default function Contact() {
           import.meta.env.VITE_SERVICE_ID,
           import.meta.env.VITE_TEMPLATE_ID,
           form.current,
-          import.meta.env.VITE_PUBLIC_KEY
+          import.meta.env.VITE_PUBLIC_KEY,
         )
         .then(
           // eslint-disable-next-line no-unused-vars
@@ -46,7 +46,7 @@ export default function Contact() {
             setIsLoading(false);
             setIsSuccess(false);
             setShowModal(true);
-          }
+          },
         );
     }
   }
