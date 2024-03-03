@@ -22,8 +22,6 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
       - run: npm ci
-      - run: npm run style
-      - run: npm run lint
       - run: npx prettier --check .
       - run: npx eslint .
       - run: npm run build
