@@ -6,8 +6,8 @@ const currentYear = () => {
 
 export default function Footer() {
   return (
-    <footer className="flex flex-row align-center items-center justify-center text-center py-5">
-      <p>© {currentYear()} Dmitrii Ivanushkin</p>
+    <footer className="flex flex-row items-center justify-center py-5 text-center align-center">
+      <p className="text-sm">© {currentYear()} Dmitrii Ivanushkin</p>
       <ul className="flex flex-row justify-center">
         <li className="pl-5">
           <SocialIcon

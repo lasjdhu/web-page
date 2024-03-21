@@ -10,6 +10,7 @@ export default {
       white: colors.white,
       gray: colors.gray,
       red: colors.red,
+      green: "#50C878",
       accent: "#F4E664",
       background: "#0E0F0F",
       foreground: "#F9F7F6",

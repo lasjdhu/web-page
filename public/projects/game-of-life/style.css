@@ -8,36 +8,52 @@
   box-sizing: border-box;
   background-color: black;
   color: white;
+  font-family: "Inter", sans-serif;
 }
 
 main {
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-h1,
-h2 {
+h1 {
   font-family: "Press Start 2P", serif;
 }
 
 header {
-  margin: 3% 0%;
+  margin-top: 15px;
   display: flex;
+  height: 100px;
   font-size: 1.5rem;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 header a {
   position: absolute;
+  padding: 0.5%;
   top: 0;
   left: 0;
   text-decoration: none;
-  font-family: "Source Code Pro", monospace;
   font-size: 1.2rem;
   color: #ffffff;
   border-bottom: 1px solid #ffffff;
   margin: 3rem;
   text-align: center;
+}
+
+header a:hover {
+  color: #000000;
+  background-color: #ffffff;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
 }
 
 .game {
@@ -57,12 +73,11 @@ header a {
 }
 
 .gameButtons button {
-  font-family: "Source Code Pro", monospace;
   font-size: 1.2rem;
   background-color: #000000;
   color: #ffffff;
   border: 1px solid #ffffff;
-  width: 156px;
+  width: 140px;
   margin: 0.5em 0.5rem;
   padding: 0.5em 1em;
   cursor: pointer;
@@ -77,17 +92,21 @@ header a {
 .rules {
   width: 50%;
   padding: 0% 5%;
+  list-style-position: inside;
 }
 
 .rules h2 {
-  text-align: center;
   margin-bottom: 5%;
 }
 
 .rules li {
-  font-family: "Source Code Pro", monospace;
-  font-size: 1.3rem;
   margin-bottom: 2rem;
+}
+
+@media only screen and (min-width: 1100px) {
+  main {
+    height: calc(100vh - (115px + 50px));
+  }
 }
 
 @media only screen and (max-width: 1100px) {
@@ -98,25 +117,30 @@ header a {
 
   header a {
     position: relative;
-    margin: 0.5rem 0;
+    margin: 1rem 0;
   }
 
   header h1 {
-    margin-top: 10%;
-    margin: 0.5rem 0.5rem;
+    font-size: 1.6rem;
   }
 
   main {
     flex-direction: column;
+    margin: 0% 3%;
   }
 
   .game {
     width: 100%;
+    margin-top: 10%;
   }
 
   .rules {
     width: 100%;
     margin-top: 10%;
+  }
+
+  .rules h2 {
+    text-align: center;
   }
 
   .rules li {

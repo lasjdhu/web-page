@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { FiMenu } from "react-icons/fi";
 import { MdClose } from "react-icons/md";
@@ -33,23 +33,23 @@ function Header() {
   };
 
   return (
-    <header className="flex items-center justify-between flex-wrap px-10 pt-12 lg:m-0 mb-12">
+    <header className="flex flex-wrap items-center justify-between px-10 pt-12 mb-12 lg:m-0">
       <NavLink to="/">
         <button
           className="flex items-center flex-shrink-0 mr-12 cursor-pointer"
           onClick={closeMenu}
         >
-          <h1 className="lg:text-6xl text-5xl tracking-wide">DI</h1>
+          <h1 className="text-5xl tracking-wide lg:text-6xl">DI</h1>
         </button>
       </NavLink>
       <button
-        className="flex lg:hidden items-center px-4 py-3 text-accent border border-accent"
+        className="flex items-center px-4 py-3 border rounded-sm lg:hidden text-accent border-accent"
         onClick={() => setToggle(!toggle)}
       >
         {toggle ? <MdClose /> : <FiMenu />}
       </button>
       {(!smallScreen || toggle) && (
-        <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto text-center">
+        <div className="flex-grow block w-full text-center lg:flex lg:items-center lg:w-auto">
           <Nav onCloseMenu={closeMenu} />
           <Lang />
         </div>
