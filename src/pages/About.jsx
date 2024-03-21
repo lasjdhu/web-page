@@ -15,26 +15,26 @@ export default function About() {
   const { t } = useTranslation();
 
   return (
-    <main className="container mx-auto lg:mt-16 lg:mb-20 mt-12 mb-12">
+    <main className="container mx-auto mt-12 mb-12 lg:mt-16 lg:mb-20">
       <section>
-        <h1 className="text-4xl text-center mb-6">{t("my_skills")}</h1>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 bg-white bg-opacity-5 mx-10 mt-6 p-12">
-          <div className="col-span-1 lg:col-span-1 lg:mt-0 mt-6 ml-6 lg:border-r-2 border-white">
-            <h2 className="text-2xl text-white font-bold tracking-widest mb-4">
+        <h1 className="mb-6 text-4xl text-center">{t("my_skills")}</h1>
+        <div className="grid grid-cols-1 gap-8 p-12 mx-10 mt-6 bg-white rounded-md lg:grid-cols-3 bg-opacity-5">
+          <div className="col-span-1 mt-6 ml-6 border-white lg:col-span-1 lg:mt-0 lg:border-r-2">
+            <h2 className="mb-4 text-2xl font-bold tracking-widest text-white">
               {t("soft")}
             </h2>
             <List props={soft} />
           </div>
 
-          <div className="col-span-1 lg:col-span-1 ml-6 lg:border-r-2 border-white">
-            <h2 className="text-2xl text-white font-bold tracking-widest mb-4">
+          <div className="col-span-1 ml-6 border-white lg:col-span-1 lg:border-r-2">
+            <h2 className="mb-4 text-2xl font-bold tracking-widest text-white">
               {t("web")}
             </h2>
             <List props={web} />
           </div>
 
-          <div className="col-span-1 lg:col-span-1 ml-6">
-            <h2 className="text-2xl text-white font-bold tracking-widest mb-4">
+          <div className="col-span-1 ml-6 lg:col-span-1">
+            <h2 className="mb-4 text-2xl font-bold tracking-widest text-white">
               {t("others")}
             </h2>
             <List props={admin} />
@@ -42,8 +42,8 @@ export default function About() {
         </div>
       </section>
 
-      <section className="lg:mt-14 mt-24 flex lg:flex-row flex-col mx-10">
-        <h1 className="text-4xl w-1/2 lg:mb-0 mb-8">{t("education")}</h1>
+      <section className="flex flex-col mx-10 mt-24 lg:mt-14 lg:flex-row">
+        <h1 className="w-1/2 mb-8 text-4xl lg:mb-0">{t("education")}</h1>
         <div className="flex flex-col">
           <EduNode
             school={t("lyceum")}
@@ -71,8 +71,8 @@ export default function About() {
         </div>
       </section>
 
-      <section className="mt-24 flex lg:flex-row flex-col mx-10">
-        <h1 className="text-4xl w-1/2 lg:mb-0 mb-8">{t("work_experience")}</h1>
+      <section className="flex flex-col mx-10 mt-24 lg:flex-row">
+        <h1 className="w-1/2 mb-8 text-4xl lg:mb-0">{t("work_experience")}</h1>
         <EduNode
           school={t("masaryk")}
           place={t("cz")}
@@ -82,8 +82,8 @@ export default function About() {
         />
       </section>
 
-      <section className="mt-24 flex lg:flex-row flex-col mx-10">
-        <h1 className="text-4xl w-1/2 lg:mb-0 mb-8">{t("certificates")}</h1>
+      <section className="flex flex-col mx-10 mt-24 lg:flex-row">
+        <h1 className="w-1/2 mb-8 text-4xl lg:mb-0">{t("certificates")}</h1>
         <div className="flex flex-col">
           <CertNode
             school={t("meta")}

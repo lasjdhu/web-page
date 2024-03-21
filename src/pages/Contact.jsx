@@ -75,7 +75,7 @@ export default function Contact() {
               type="text"
               id="jkasdhasl"
               autoComplete="off"
-              className="shadow-sm border border-gray-500 text-sm block w-full p-2.5 bg-background"
+              className="shadow-sm border border-gray-500 text-sm block w-full p-2.5 bg-background rounded-sm"
               placeholder={t("placeholder_name")}
               name="from_name"
               maxLength="30"
@@ -94,7 +94,7 @@ export default function Contact() {
               type="email"
               id="kjksadhn"
               autoComplete="off"
-              className="shadow-sm border border-gray-500 text-sm block w-full p-2.5 bg-background"
+              className="shadow-sm border border-gray-500 text-sm block w-full p-2.5 bg-background rounded-sm"
               placeholder={t("placeholder_email")}
               name="from_email"
               maxLength="30"
@@ -112,7 +112,7 @@ export default function Contact() {
               type="text"
               id="kljasdlk"
               autoComplete="off"
-              className="block w-full p-3 text-sm border border-gray-500 shadow-sm bg-background"
+              className="block w-full p-3 text-sm border border-gray-500 rounded-sm shadow-sm bg-background"
               maxLength="30"
               name="subject"
             />
@@ -131,7 +131,7 @@ export default function Contact() {
               rows="5"
               id="jasdajk"
               autoComplete="off"
-              className="flex-1 p-2.5 w-full text-sm shadow-sm border border-gray-500 bg-background"
+              className="flex-1 p-2.5 w-full text-sm shadow-sm border border-gray-500 bg-background rounded-sm"
               placeholder={t("placeholder_message")}
               maxLength={maxMessageLength}
               name="message"
@@ -144,7 +144,7 @@ export default function Contact() {
             </div>
             <button
               type="submit"
-              className={`mt-5 flex h-12 justify-center items-center px-3 text-sm border cursor-pointer ${
+              className={`mt-5 flex h-12 justify-center items-center px-3 text-sm border cursor-pointer rounded-sm transition duration-300 ease-in-out bg-transparent hover:bg-accent text-accent hover:text-background border-accent hover:-translate-y-1 ${
                 isLoading
                   ? "bg-accent text-background border-accent"
                   : "bg-transparent text-accent hover:bg-accent hover:text-background border-accent"
