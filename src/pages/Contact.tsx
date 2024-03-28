@@ -6,7 +6,7 @@ import ScaleLoader from "react-spinners/ScaleLoader";
 export default function Contact() {
   const { t } = useTranslation();
 
-  const form = useRef();
+  const form = useRef<HTMLFormElement>(null);
   const [fake_field, setFakeField] = useState("");
   const [fake_email, setFakeEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -16,15 +16,19 @@ export default function Contact() {
 
   const maxMessageLength = 500;
 
-  function handleTextareaChange(e) {
-    const input = e.target.value;
+  function handleTextareaChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
+    const input = event.target.value;
     setMessage(input.slice(0, maxMessageLength));
   }
 
-  function handleSubmit(e) {
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     setIsLoading(true);
-    e.preventDefault();
-    if (fake_field === "" && fake_email === "") {
+    event.preventDefault();
+    if (
+      fake_field === "" &&
+      fake_email === "" &&
+      form.current instanceof HTMLFormElement
+    ) {
       emailjs
         .sendForm(
           import.meta.env.VITE_SERVICE_ID,
@@ -33,16 +37,14 @@ export default function Contact() {
           import.meta.env.VITE_PUBLIC_KEY,
         )
         .then(
-          // eslint-disable-next-line no-unused-vars
-          (response) => {
+          (_response) => {
             setIsLoading(false);
             setIsSuccess(true);
             setShowModal(true);
             setMessage("");
-            form.current.reset();
+            form.current?.reset();
           },
-          // eslint-disable-next-line no-unused-vars
-          (error) => {
+          (_error) => {
             setIsLoading(false);
             setIsSuccess(false);
             setShowModal(true);
@@ -78,7 +80,7 @@ export default function Contact() {
               className="shadow-sm border border-gray-500 text-sm block w-full p-2.5 bg-background rounded-sm"
               placeholder={t("placeholder_name")}
               name="from_name"
-              maxLength="30"
+              maxLength={30}
               required
             />
           </div>
@@ -97,7 +99,7 @@ export default function Contact() {
               className="shadow-sm border border-gray-500 text-sm block w-full p-2.5 bg-background rounded-sm"
               placeholder={t("placeholder_email")}
               name="from_email"
-              maxLength="30"
+              maxLength={30}
               required
             />
           </div>
@@ -113,7 +115,7 @@ export default function Contact() {
               id="kljasdlk"
               autoComplete="off"
               className="block w-full p-3 text-sm border border-gray-500 rounded-sm shadow-sm bg-background"
-              maxLength="30"
+              maxLength={30}
               name="subject"
             />
           </div>
@@ -128,7 +130,7 @@ export default function Contact() {
               <span className="text-red-500"> *</span>
             </label>
             <textarea
-              rows="5"
+              rows={5}
               id="jasdajk"
               autoComplete="off"
               className="flex-1 p-2.5 w-full text-sm shadow-sm border border-gray-500 bg-background rounded-sm"

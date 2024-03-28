@@ -5,10 +5,11 @@
   "type": "module",
   "scripts": {
     "start": "vite",
+    "preview": "vite preview",
     "build": "vite build",
-    "lint": "eslint --fix .",
     "style": "prettier --write .",
-    "preview": "vite preview"
+    "lint": "eslint --fix .",
+    "ts:check": "tsc --noEmit"
   },
   "dependencies": {
     "@emailjs/browser": "^3.11.0",
@@ -25,6 +26,7 @@
   "devDependencies": {
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
+    "@types/three": "^0.162.0",
     "@vitejs/plugin-react": "^4.0.3",
     "autoprefixer": "^10.4.15",
     "eslint": "^8.45.0",
@@ -34,6 +36,8 @@
     "postcss": "^8.4.29",
     "prettier": "^3.1.0",
     "tailwindcss": "^3.3.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.3",
     "vite": "^4.4.5"
   }
 }

@@ -1,32 +1,27 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import ScaleLoader from "react-spinners/ScaleLoader";
-
 import { loadGLTFModel } from "../utils/model";
 
 export default function Model() {
-  const refContainer = useRef();
   const [loading, setLoading] = useState(true);
-  const refRenderer = useRef();
+  const refRenderer = useRef<THREE.WebGLRenderer>();
   const url = "/assets/duck.glb";
 
   const handleWindowResize = useCallback(() => {
     const { current: renderer } = refRenderer;
-    const { current: container } = refContainer;
+    const container = document.getElementById("model-container");
     if (container && renderer) {
-      const scW = container.clientWidth;
-      const scH = container.clientHeight;
-
+      const { clientWidth: scW, clientHeight: scH } = container;
       renderer.setSize(scW, scH);
     }
   }, []);
 
   useEffect(() => {
-    const { current: container } = refContainer;
+    const container = document.getElementById("model-container");
     if (container) {
-      const scW = container.clientWidth;
-      const scH = container.clientHeight;
+      const { clientWidth: scW, clientHeight: scH } = container;
 
       const renderer = new THREE.WebGLRenderer({
         antialias: true,
@@ -37,8 +32,8 @@ export default function Model() {
       renderer.outputColorSpace = THREE.SRGBColorSpace;
       container.appendChild(renderer.domElement);
       refRenderer.current = renderer;
-      const scene = new THREE.Scene();
 
+      const scene = new THREE.Scene();
       const target = new THREE.Vector3(-0.5, 1.2, 0);
       const initialCameraPosition = new THREE.Vector3(20, 10, 20);
 
@@ -69,12 +64,10 @@ export default function Model() {
         setLoading(false);
       });
 
-      let req = null;
+      let req: number;
       const animate = () => {
         req = requestAnimationFrame(animate);
-
         controls.update();
-
         renderer.render(scene, camera);
       };
 
@@ -96,8 +89,8 @@ export default function Model() {
   return (
     <div style={{ position: "relative" }}>
       <div
-        ref={refContainer}
-        className="lg:w-96 lg:h-96 w-48 h-48 flex justify-center items-center align-center relative"
+        id="model-container"
+        className="relative flex items-center justify-center w-48 h-48 lg:w-96 lg:h-96 align-center"
       ></div>
       {loading && (
         <div
@@ -115,7 +108,6 @@ export default function Model() {
           <ScaleLoader
             color="#F1FA8C"
             loading={loading}
-            size={80}
             aria-label="Loading Spinner"
           />
         </div>
