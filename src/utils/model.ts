@@ -1,8 +1,9 @@
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { GLTFLoader, GLTF } from "three/examples/jsm/loaders/GLTFLoader.js";
+import * as THREE from "three";
 
 export function loadGLTFModel(
-  scene,
-  glbPath,
+  scene: THREE.Scene,
+  glbPath: string,
   options = { receiveShadow: true, castShadow: true },
   scale = 1.5,
 ) {
@@ -13,7 +14,7 @@ export function loadGLTFModel(
 
     loader.load(
       glbPath,
-      (gltf) => {
+      (gltf: GLTF) => {
         const obj = gltf.scene;
         obj.name = "duck";
         obj.position.x = 0;
@@ -23,16 +24,16 @@ export function loadGLTFModel(
         obj.castShadow = castShadow;
         scene.add(obj);
 
-        obj.traverse(function (child) {
-          if (child.isMesh) {
-            child.castShadow = castShadow;
+        obj.traverse(function (object: THREE.Object3D<THREE.Object3DEventMap>) {
+          if (object instanceof THREE.Mesh) {
+            object.castShadow = castShadow;
           }
         });
 
         resolve(obj);
       },
       undefined,
-      function (error) {
+      function (error: any) {
         reject(error);
       },
     );

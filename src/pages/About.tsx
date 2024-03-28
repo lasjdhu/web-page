@@ -2,8 +2,8 @@ import { useTranslation } from "react-i18next";
 
 import { soft, web, admin } from "../utils/data";
 import List from "../components/List";
-import EduNode from "../components/EduNode";
-import CertNode from "../components/CertNode";
+import CompanyBox from "../components/CompanyBox";
+import CeertificationBox from "../components/CertificationBox";
 import lyceum_logo from "../assets/lyceum_logo.png";
 import Skive from "../assets/skive.png";
 import VUT from "../assets/vut.png";
@@ -23,21 +23,21 @@ export default function About() {
             <h2 className="mb-4 text-2xl font-bold tracking-widest text-white">
               {t("soft")}
             </h2>
-            <List props={soft} />
+            <List items={soft} />
           </div>
 
           <div className="col-span-1 ml-6 border-white lg:col-span-1 lg:border-r-2">
             <h2 className="mb-4 text-2xl font-bold tracking-widest text-white">
               {t("web")}
             </h2>
-            <List props={web} />
+            <List items={web} />
           </div>
 
           <div className="col-span-1 ml-6 lg:col-span-1">
             <h2 className="mb-4 text-2xl font-bold tracking-widest text-white">
               {t("others")}
             </h2>
-            <List props={admin} />
+            <List items={admin} />
           </div>
         </div>
       </section>
@@ -45,25 +45,25 @@ export default function About() {
       <section className="flex flex-col mx-10 mt-24 lg:mt-14 lg:flex-row">
         <h1 className="w-1/2 mb-8 text-4xl lg:mb-0">{t("education")}</h1>
         <div className="flex flex-col">
-          <EduNode
-            school={t("lyceum")}
-            place={t("ru")}
+          <CompanyBox
+            company={t("lyceum")}
+            location={t("ru")}
             yrs="2018 - 2020"
             spec={t("lyceum_area")}
             img={lyceum_logo}
           />
           <div className="mt-12"></div>
-          <EduNode
-            school={t("skive")}
-            place={t("dk")}
+          <CompanyBox
+            company={t("skive")}
+            location={t("dk")}
             yrs="2019"
             spec={t("skive_area")}
             img={Skive}
           />
           <div className="mt-12"></div>
-          <EduNode
-            school={t("vut")}
-            place={t("cz")}
+          <CompanyBox
+            company={t("vut")}
+            location={t("cz")}
             yrs="2021 - ..."
             spec={t("vut_area")}
             img={VUT}
@@ -73,9 +73,9 @@ export default function About() {
 
       <section className="flex flex-col mx-10 mt-24 lg:flex-row">
         <h1 className="w-1/2 mb-8 text-4xl lg:mb-0">{t("work_experience")}</h1>
-        <EduNode
-          school={t("masaryk")}
-          place={t("cz")}
+        <CompanyBox
+          company={t("masaryk")}
+          location={t("cz")}
           yrs="2023 - ..."
           spec={t("masaryk_area")}
           img={MUNI}
@@ -85,7 +85,7 @@ export default function About() {
       <section className="flex flex-col mx-10 mt-24 lg:flex-row">
         <h1 className="w-1/2 mb-8 text-4xl lg:mb-0">{t("certificates")}</h1>
         <div className="flex flex-col">
-          <CertNode
+          <CeertificationBox
             school={t("meta")}
             yrs="2022"
             spec={t("meta_area")}
@@ -93,7 +93,7 @@ export default function About() {
             img={meta}
           />
           <div className="mt-12"></div>
-          <CertNode
+          <CeertificationBox
             school={t("gostudy")}
             yrs="2020 - 2021"
             spec={t("gostudy_area")}

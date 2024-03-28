@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-export default function Nav({ onCloseMenu }) {
+export default function Nav({ onCloseMenu }: { onCloseMenu: () => void }) {
   const { t } = useTranslation();
 
   const handleNavLinkClick = () => {
@@ -12,7 +12,7 @@ export default function Nav({ onCloseMenu }) {
     <nav className="lg:flex-grow">
       <NavLink
         to="/"
-        className="block lg:inline-block text-accent lg:my-0 my-8 lg:mx-12"
+        className="block my-8 lg:inline-block text-accent lg:my-0 lg:mx-12"
         onClick={handleNavLinkClick}
         style={({ isActive }) => ({
           color: isActive ? "" : "white",
@@ -23,7 +23,7 @@ export default function Nav({ onCloseMenu }) {
       </NavLink>
       <NavLink
         to="/about"
-        className="block lg:inline-block text-accent lg:my-0 my-8 lg:mx-12"
+        className="block my-8 lg:inline-block text-accent lg:my-0 lg:mx-12"
         onClick={handleNavLinkClick}
         style={({ isActive }) => ({
           color: isActive ? "" : "white",
@@ -34,7 +34,7 @@ export default function Nav({ onCloseMenu }) {
       </NavLink>
       <NavLink
         to="/projects"
-        className="block lg:inline-block text-accent lg:my-0 my-8 lg:mx-12"
+        className="block my-8 lg:inline-block text-accent lg:my-0 lg:mx-12"
         onClick={handleNavLinkClick}
         style={({ isActive }) => ({
           color: isActive ? "" : "white",
@@ -45,7 +45,7 @@ export default function Nav({ onCloseMenu }) {
       </NavLink>
       <NavLink
         to="/contact"
-        className="block lg:inline-block text-accent lg:my-0 my-8 lg:mx-12"
+        className="block my-8 lg:inline-block text-accent lg:my-0 lg:mx-12"
         onClick={handleNavLinkClick}
         style={({ isActive }) => ({
           color: isActive ? "" : "white",

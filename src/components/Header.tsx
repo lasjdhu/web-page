@@ -7,26 +7,21 @@ import Nav from "./Nav";
 import Lang from "./Lang";
 
 function Header() {
-  const [toggle, setToggle] = useState(false);
-  const [smallScreen, setSmallScreen] = useState(false);
+  const [toggle, setToggle] = useState<boolean>(false);
+  const [smallScreen, setSmallScreen] = useState<boolean>(false);
 
   useEffect(() => {
-    const media = window.matchMedia("(max-width: 1023px)");
-    media.addListener(handleMediaChange);
-    handleMediaChange(media);
+    const media: MediaQueryList = window.matchMedia("(max-width: 1023px)");
+    const handleMediaChange = (mediaQuery: MediaQueryListEvent) => {
+      setSmallScreen(mediaQuery.matches);
+    };
+
+    media.addEventListener("change", handleMediaChange);
 
     return () => {
-      media.removeListener(handleMediaChange);
+      media.removeEventListener("change", handleMediaChange);
     };
   }, []);
-
-  const handleMediaChange = (media) => {
-    if (media.matches) {
-      setSmallScreen(true);
-    } else {
-      setSmallScreen(false);
-    }
-  };
 
   const closeMenu = () => {
     setToggle(false);

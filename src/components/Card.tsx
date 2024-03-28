@@ -2,7 +2,23 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { FiExternalLink } from "react-icons/fi";
 
-export default function Box(props) {
+export default function Card({
+  link,
+  title,
+  img,
+  inProgress,
+  source,
+  yrs,
+  desc,
+}: {
+  link?: string;
+  title: string;
+  img: string;
+  inProgress?: boolean;
+  source: string;
+  yrs: string;
+  desc: string;
+}) {
   const { t } = useTranslation();
   const [isHovered, setIsHovered] = useState(false);
 
@@ -13,27 +29,27 @@ export default function Box(props) {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <a href={props.to}>
+        <a href={link}>
           <img
-            alt={props.title}
-            src={props.img}
+            alt={title}
+            src={img}
             className={`transition-opacity duration-300 ${
-              isHovered && window.innerWidth > 1024 && !props.inProgress
+              isHovered && window.innerWidth > 1024 && !inProgress
                 ? "opacity-100"
                 : "opacity-50"
-            } ${props.inProgress ? "blur-sm" : ""}`}
+            } ${inProgress ? "blur-sm" : ""}`}
           />
         </a>
       </div>
       <div className="flex flex-col mt-4 lg:mt-0">
-        <h2 className="mb-4 text-2xl font-bold">{props.title}</h2>
-        <p className="mb-2 font-thin text-foreground">{props.yrs}</p>
-        <p className="mb-4 text-foreground">{props.desc}</p>
+        <h2 className="mb-4 text-2xl font-bold">{title}</h2>
+        <p className="mb-2 font-thin text-foreground">{yrs}</p>
+        <p className="mb-4 text-foreground">{desc}</p>
         <div className="flex flex-row items-center">
           <div className="flex items-center">
-            {props.href && (
+            {source && (
               <a
-                href={props.href}
+                href={source}
                 className="flex justify-center mr-5 align-center place-items-center text-accent"
                 rel="noreferrer"
                 target="_blank"
@@ -42,8 +58,8 @@ export default function Box(props) {
                 <FiExternalLink className="ml-2" />
               </a>
             )}
-            {props.to ? (
-              <a href={props.to}>
+            {link ? (
+              <a href={link}>
                 <button className="flex items-center justify-center h-10 px-6 text-sm transition duration-300 ease-in-out bg-transparent border rounded-sm cursor-pointer hover:bg-accent text-accent hover:text-background border-accent hover:-translate-y-1">
                   {t("run")}
                 </button>

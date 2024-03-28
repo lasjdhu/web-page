@@ -3,8 +3,11 @@ import { useTranslation } from "react-i18next";
 export default function Lang() {
   const { i18n } = useTranslation();
 
-  function changeLanguage(e) {
-    i18n.changeLanguage(e.target.value);
+  function changeLanguage(
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) {
+    const target = event.target as HTMLButtonElement;
+    i18n.changeLanguage(target.value);
   }
 
   return (
