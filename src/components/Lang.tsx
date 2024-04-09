@@ -17,7 +17,7 @@ export default function Lang() {
         value="en"
         className={
           i18n.language === "en"
-            ? "text-accent inline-block mt-4 px-3 py-2 lg:mt-0 border border-accent text-sm rounded-sm"
+            ? "text-accent inline-block mt-4 px-3 py-2 lg:mt-0 border-b-2 border-b-accent text-sm"
             : "inline-block mt-4 px-3 py-2 lg:mt-0 text-sm"
         }
       >
@@ -28,7 +28,7 @@ export default function Lang() {
         value="cz"
         className={
           i18n.language === "cz"
-            ? "text-accent inline-block mt-4 px-3 py-2 lg:mt-0 border border-accent text-sm"
+            ? "text-accent inline-block mt-4 px-3 py-2 lg:mt-0 border-b-2 border-b-accent text-sm"
             : "inline-block mt-4 px-3 py-2 lg:mt-0 text-sm"
         }
       >

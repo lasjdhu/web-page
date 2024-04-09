@@ -49,5 +49,6 @@
   "education": "Education",
   "work_experience": "Work experience",
   "certificates": "Certificates",
-  "verify": "Verify"
+  "verify": "Verify",
+  "captcha_error": "Please verify that you are not a robot by checking the box"
 }

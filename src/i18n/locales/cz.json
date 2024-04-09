@@ -49,5 +49,6 @@
   "education": "Vzdělávání",
   "work_experience": "Pracovní zkušenosti",
   "certificates": "Certifikáty",
-  "verify": "Ověřit"
+  "verify": "Ověřit",
+  "captcha_error": "Ověřte, že nejste robot zaškrtnutím políčka"
 }

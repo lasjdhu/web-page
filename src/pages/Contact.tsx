@@ -1,40 +1,76 @@
-import { useState, useRef } from "react";
+/*
+ * https://www.emailjs.com/docs/faq/is-it-okay-to-expose-my-public-key/
+ *
+ */
+
+import { useState, useRef, createRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import emailjs from "@emailjs/browser";
+import ReCAPTCHA from "react-google-recaptcha";
 import ScaleLoader from "react-spinners/ScaleLoader";
 
 export default function Contact() {
   const { t } = useTranslation();
 
+  const refCaptcha = createRef<ReCAPTCHA>();
   const form = useRef<HTMLFormElement>(null);
-  const [fake_field, setFakeField] = useState("");
-  const [fake_email, setFakeEmail] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [showModal, setShowModal] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [message, setMessage] = useState("");
-
+  const [smallScreen, setSmallScreen] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [isValid, setIsValid] = useState<boolean | undefined>(false);
+  const [isSuccess, setIsSuccess] = useState<boolean>(false);
+  const [message, setMessage] = useState<string>("");
+  const [errorMessage, setErrorMessage] = useState<string>("");
   const maxMessageLength = 500;
 
+  useEffect(() => {
+    const media: MediaQueryList = window.matchMedia("(max-width: 1023px)");
+    const handleMediaChange = (mediaQuery: MediaQueryListEvent) => {
+      setSmallScreen(mediaQuery.matches);
+    };
+
+    media.addEventListener("change", handleMediaChange);
+
+    return () => {
+      media.removeEventListener("change", handleMediaChange);
+    };
+  }, []);
+
   function handleTextareaChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
+    setIsValid(form.current?.checkValidity());
     const input = event.target.value;
     setMessage(input.slice(0, maxMessageLength));
   }
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    setIsLoading(true);
     event.preventDefault();
-    if (
-      fake_field === "" &&
-      fake_email === "" &&
-      form.current instanceof HTMLFormElement
-    ) {
+    setIsLoading(true);
+    setErrorMessage("");
+
+    const token = refCaptcha.current?.getValue();
+    if (!token) {
+      setIsLoading(false);
+      setIsSuccess(false);
+      setErrorMessage(t("captcha_error"));
+      setShowModal(true);
+      return;
+    }
+
+    const params = {
+      from_name: form.current?.from_name.value,
+      from_email: form.current?.from_email.value,
+      subject: form.current?.subject.value,
+      message_html: form.current?.message.value,
+      "g-recaptcha-response": token ?? "",
+    };
+
+    if (form.current?.checkValidity() && token) {
       emailjs
-        .sendForm(
-          import.meta.env.VITE_SERVICE_ID,
-          import.meta.env.VITE_TEMPLATE_ID,
-          form.current,
-          import.meta.env.VITE_PUBLIC_KEY,
+        .send(
+          import.meta.env.VITE_EMAILJS_SERVICE_ID,
+          import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+          params,
+          import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
         )
         .then(
           (_response) => {
@@ -42,6 +78,7 @@ export default function Contact() {
             setIsSuccess(true);
             setShowModal(true);
             setMessage("");
+            setIsValid(false);
             form.current?.reset();
           },
           (_error) => {
@@ -49,7 +86,12 @@ export default function Contact() {
             setIsSuccess(false);
             setShowModal(true);
           },
-        );
+        )
+        .catch((_error) => {
+          setIsLoading(false);
+          setIsSuccess(false);
+          setShowModal(true);
+        });
     }
   }
 
@@ -58,82 +100,98 @@ export default function Contact() {
   };
 
   return (
-    <main className="flex items-center justify-center m-auto mx-6">
+    <main className="flex items-center justify-center mx-6 my-12 lg:my-auto md:my-auto">
       <form
-        className="flex flex-col w-full max-w-3xl lg:flex-row"
+        className="flex flex-col w-full max-w-3xl lg:w-1/2"
         ref={form}
         onSubmit={handleSubmit}
       >
-        <div className="lg:w-1/2 lg:pr-4">
-          <div>
-            <label
-              htmlFor="jkasdhasl"
-              className="block mb-2 text-sm font-medium text-left text-white"
-            >
-              {t("name")}
-              <span className="text-red-500"> *</span>
-            </label>
-            <input
-              type="text"
-              id="jkasdhasl"
-              autoComplete="off"
-              className="shadow-sm border border-gray-500 text-sm block w-full p-2.5 bg-background rounded-sm"
-              placeholder={t("placeholder_name")}
-              name="from_name"
-              maxLength={30}
-              required
-            />
+        <div className="flex flex-col lg:flex-row">
+          <div className="flex flex-col lg:pr-4 lg:w-1/2">
+            <div className="mb-4">
+              <label
+                htmlFor="name"
+                className="block mb-2 text-sm font-medium text-left text-white"
+              >
+                {t("name")}
+                <span className="text-red-500"> *</span>
+              </label>
+              <input
+                type="text"
+                id="name"
+                autoComplete="off"
+                className="shadow-sm border border-gray-500 text-sm block w-full p-2.5 bg-background rounded-sm"
+                placeholder={t("placeholder_name")}
+                name="from_name"
+                maxLength={30}
+                onChange={(_event) => {
+                  setIsValid(form.current?.checkValidity());
+                }}
+                required
+              />
+            </div>
+            <div className="mb-4">
+              <label
+                htmlFor="email"
+                className="block mb-2 text-sm font-medium text-left text-white"
+              >
+                {t("email")}
+                <span className="text-red-500"> *</span>
+              </label>
+              <input
+                type="email"
+                id="email"
+                autoComplete="off"
+                className="shadow-sm border border-gray-500 text-sm block w-full p-2.5 bg-background rounded-sm"
+                placeholder={t("placeholder_email")}
+                name="from_email"
+                maxLength={30}
+                onChange={(_event) => {
+                  setIsValid(form.current?.checkValidity());
+                }}
+                required
+              />
+            </div>
+            <div className="mb-4">
+              <label
+                htmlFor="subject"
+                className="block mb-2 text-sm font-medium text-left text-white"
+              >
+                {t("subject")}
+              </label>
+              <input
+                type="text"
+                id="subject"
+                autoComplete="off"
+                className="shadow-sm border border-gray-500 text-sm block w-full p-2.5 bg-background rounded-sm"
+                maxLength={30}
+                onChange={(_event) => {
+                  setIsValid(form.current?.checkValidity());
+                }}
+                name="subject"
+              />
+            </div>
+            {!smallScreen && (
+              <ReCAPTCHA
+                aria-required="true"
+                sitekey={import.meta.env.VITE_GOOGLE_SITE_KEY}
+                ref={refCaptcha}
+              />
+            )}
           </div>
-          <div>
+          <div className="mt-4 lg:w-1/2 lg:pl-4 lg:mt-0">
             <label
-              htmlFor="kjksadhn"
-              className="block mt-4 mb-2 text-sm font-medium text-left text-white"
-            >
-              {t("email")}
-              <span className="text-red-500"> *</span>
-            </label>
-            <input
-              type="email"
-              id="kjksadhn"
-              autoComplete="off"
-              className="shadow-sm border border-gray-500 text-sm block w-full p-2.5 bg-background rounded-sm"
-              placeholder={t("placeholder_email")}
-              name="from_email"
-              maxLength={30}
-              required
-            />
-          </div>
-          <div>
-            <label
-              htmlFor="kljasdlk"
-              className="block mt-4 mb-2 text-sm font-medium text-left text-white"
-            >
-              {t("subject")}
-            </label>
-            <input
-              type="text"
-              id="kljasdlk"
-              autoComplete="off"
-              className="block w-full p-3 text-sm border border-gray-500 rounded-sm shadow-sm bg-background"
-              maxLength={30}
-              name="subject"
-            />
-          </div>
-        </div>
-        <div className="mt-4 lg:w-1/2 lg:pl-4 lg:mt-0">
-          <div className="flex flex-col h-full">
-            <label
-              htmlFor="jasdajk"
+              htmlFor="message"
               className="block mb-2 text-sm font-medium text-left text-white"
             >
               {t("message")}
               <span className="text-red-500"> *</span>
             </label>
             <textarea
-              rows={5}
-              id="jasdajk"
+              rows={10}
+              id="message"
               autoComplete="off"
-              className="flex-1 p-2.5 w-full text-sm shadow-sm border border-gray-500 bg-background rounded-sm"
+              className="p-1.5 w-full text-sm shadow-sm border border-gray-500 bg-background rounded-sm"
               placeholder={t("placeholder_message")}
               maxLength={maxMessageLength}
               name="message"
@@ -144,46 +202,36 @@ export default function Contact() {
             <div className="flex justify-end mt-1 text-sm text-gray-500">
               {message.length}/{maxMessageLength} {t("characters_remaining")}
             </div>
+            {smallScreen && (
+              <ReCAPTCHA
+                aria-required="true"
+                className="mt-4 mb-6"
+                sitekey={import.meta.env.VITE_GOOGLE_SITE_KEY}
+                ref={refCaptcha}
+              />
+            )}
             <button
               type="submit"
-              className={`mt-5 flex h-12 justify-center items-center px-3 text-sm border cursor-pointer rounded-sm transition duration-300 ease-in-out bg-transparent hover:bg-accent text-accent hover:text-background border-accent hover:-translate-y-1 ${
-                isLoading
-                  ? "bg-accent text-background border-accent"
-                  : "bg-transparent text-accent hover:bg-accent hover:text-background border-accent"
-              }`}
+              disabled={!isValid}
+              className={` w-full flex items-center justify-center h-12 mt-4 px-6 text-sm border rounded-sm cursor-pointer
+                transition duration-300 ease-in-out hover:-translate-y-1
+                disabled:border-gray-500 disabled:text-gray-500 disabled:cursor-not-allowed disabled:translate-y-0 disabled:hover:bg-transparent ${
+                  isLoading
+                    ? "bg-accent text-background border-accent"
+                    : "bg-transparent hover:bg-accent text-accent hover:text-background border-accent"
+                }`}
             >
               {isLoading ? <ScaleLoader /> : t("send_message")}
             </button>
           </div>
         </div>
-        <label className="ohnohoney" htmlFor="name"></label>
-        <input
-          className="ohnohoney"
-          autoComplete="off"
-          type="text"
-          id="name"
-          name="name"
-          placeholder="Your name here"
-          value={fake_field}
-          onChange={(e) => setFakeField(e.target.value)}
-        />
-        <label className="ohnohoney" htmlFor="email"></label>
-        <input
-          className="ohnohoney"
-          autoComplete="off"
-          type="email"
-          id="email"
-          name="email"
-          placeholder="Your e-mail here"
-          value={fake_email}
-          onChange={(e) => setFakeEmail(e.target.value)}
-        />
       </form>
       {showModal && (
-        <div className="fixed inset-0 flex flex-col items-center justify-center bg-background bg-opacity-80">
+        <div className="fixed inset-0 flex flex-col items-center justify-center p-8 bg-background bg-opacity-80">
           <p className="mb-2 text-lg font-semibold">
             {isSuccess ? t("mail_success") : t("mail_failure")}
           </p>
+          <p>{!isSuccess && errorMessage}</p>
           <button
             className="flex items-center justify-center w-16 h-12 px-3 mt-5 text-sm bg-transparent border cursor-pointer hover:bg-accent text-accent hover:text-background border-accent"
             onClick={closeModal}

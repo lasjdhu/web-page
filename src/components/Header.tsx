@@ -38,7 +38,11 @@ function Header() {
         </button>
       </NavLink>
       <button
-        className="flex items-center px-4 py-3 border rounded-sm lg:hidden text-accent border-accent"
+        className={`flex items-center px-4 py-3 border rounded-sm lg:hidden ${
+          toggle
+            ? "text-accent border-accent"
+            : "bg-accent text-background border-accent"
+        }`}
         onClick={() => setToggle(!toggle)}
       >
         {toggle ? <MdClose /> : <FiMenu />}
