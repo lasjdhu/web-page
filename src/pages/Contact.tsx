@@ -25,6 +25,9 @@ export default function Contact() {
 
   useEffect(() => {
     const media: MediaQueryList = window.matchMedia("(max-width: 1023px)");
+
+    setSmallScreen(media.matches);
+
     const handleMediaChange = (mediaQuery: MediaQueryListEvent) => {
       setSmallScreen(mediaQuery.matches);
     };
@@ -173,13 +176,14 @@ export default function Contact() {
             </div>
             {!smallScreen && (
               <ReCAPTCHA
+                className="mb-4"
                 aria-required="true"
                 sitekey={import.meta.env.VITE_GOOGLE_SITE_KEY}
                 ref={refCaptcha}
               />
             )}
           </div>
-          <div className="mt-4 lg:w-1/2 lg:pl-4 lg:mt-0">
+          <div className="lg:w-1/2 lg:pl-4 lg:mt-0">
             <label
               htmlFor="message"
               className="block mb-2 text-sm font-medium text-left text-white"

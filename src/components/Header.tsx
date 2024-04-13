@@ -12,6 +12,9 @@ function Header() {
 
   useEffect(() => {
     const media: MediaQueryList = window.matchMedia("(max-width: 1023px)");
+
+    setSmallScreen(media.matches);
+
     const handleMediaChange = (mediaQuery: MediaQueryListEvent) => {
       setSmallScreen(mediaQuery.matches);
     };
