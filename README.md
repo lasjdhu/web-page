@@ -2,4 +2,8 @@
 
 ## 2022 - ...
 
-## Made with: React, Tailwind CSS and Three JS
+### Made with
+
+- React
+- Tailwind CSS
+- Three JS
