@@ -2,104 +2,86 @@ class Cell {
   constructor(x, y, alive = false) {
     this.x = x;
     this.y = y;
-
     this.alive = alive;
-  }
-
-  isAlive() {
-    return this.alive;
-  }
-
-  toggle() {
-    this.alive = !this.alive;
   }
 }
 
-class Game extends Cell {
+class Game {
   constructor(rows, cols) {
-    super();
-
     this.rows = rows;
     this.cols = cols;
-
     this.grid = this.initGrid();
   }
 
   initGrid() {
-    const grid = [];
-    for (let i = 0; i < this.rows; i++) {
-      grid[i] = [];
-      for (let j = 0; j < this.cols; j++) {
-        grid[i][j] = new Cell(i, j, Math.random() > 0.5 ? true : false);
-      }
-    }
-    return grid;
+    return Array.from({ length: this.rows }, (_, i) =>
+      Array.from(
+        { length: this.cols },
+        (_, j) => new Cell(i, j, Math.random() > 0.5),
+      ),
+    );
   }
 
   getCell(x, y) {
-    return this.grid[x][y];
+    return this.grid[(x + this.rows) % this.rows][(y + this.cols) % this.cols];
   }
 
   getNeighbours(x, y) {
-    const neighbours = [];
-    for (let i = -1; i < 2; i++) {
-      for (let j = -1; j < 2; j++) {
-        if (i === 0 && j === 0) {
-          continue;
-        }
-        const row = (x + i + this.rows) % this.rows;
-        const col = (y + j + this.cols) % this.cols;
-        neighbours.push(this.getCell(row, col));
-      }
-    }
-    return neighbours;
+    const offsets = [-1, 0, 1];
+    return offsets
+      .flatMap((dx) =>
+        offsets.map((dy) =>
+          // Exclude the cell itself from the neighbours
+          dx !== 0 || dy !== 0 ? this.getCell(x + dx, y + dy) : null,
+        ),
+      )
+      .filter(Boolean);
   }
 
   aliveNeighbours(x, y) {
-    let neighbours = this.getNeighbours(x, y);
-    let aliveNeighbours = 0;
-    neighbours.forEach((neighbour) => {
-      if (neighbour.isAlive()) {
-        aliveNeighbours++;
-      }
-    });
-    return aliveNeighbours;
+    return this.getNeighbours(x, y).reduce(
+      (count, neighbour) => count + neighbour.alive,
+      0,
+    );
   }
 
   nextGeneration() {
-    let nextAlive = false;
     const nextGeneration = this.initGrid();
     for (let i = 0; i < this.rows; i++) {
       for (let j = 0; j < this.cols; j++) {
         const cell = this.getCell(i, j);
         const aliveNeighbours = this.aliveNeighbours(i, j);
-        if (cell.isAlive() && (aliveNeighbours < 2 || aliveNeighbours > 3)) {
-          nextAlive = false;
-        } else if (!cell.isAlive() && aliveNeighbours === 3) {
-          nextAlive = true;
+        if (
+          (cell.alive && (aliveNeighbours === 2 || aliveNeighbours === 3)) ||
+          (!cell.alive && aliveNeighbours === 3)
+        ) {
+          nextGeneration[i][j].alive = true;
         } else {
-          nextAlive = cell.isAlive();
+          nextGeneration[i][j].alive = false;
         }
-        nextGeneration[i][j].alive = nextAlive;
       }
     }
-
     this.grid = nextGeneration;
   }
 
   randomize() {
-    for (let i = 0; i < this.rows; i++) {
-      for (let j = 0; j < this.cols; j++) {
-        this.getCell(i, j).alive = Math.random() > 0.5 ? true : false;
-      }
-    }
+    this.grid.forEach((row) =>
+      row.forEach((cell) => (cell.alive = Math.random() > 0.5)),
+    );
   }
 
   clear() {
+    this.grid.forEach((row) => row.forEach((cell) => (cell.alive = false)));
+  }
+
+  allCellsDead() {
     for (let i = 0; i < this.rows; i++) {
       for (let j = 0; j < this.cols; j++) {
-        this.getCell(i, j).alive = false;
+        if (this.grid[i][j].alive) {
+          return false;
+        }
       }
     }
+    return true;
   }
 }
