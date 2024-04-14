@@ -67,8 +67,8 @@ footer {
   margin-bottom: 1rem;
   margin-left: auto;
   margin-right: auto;
-  padding: 1rem;
-  width: 80%;
+  padding: 10px;
+  width: 90%;
   max-width: 480px;
 }
 
@@ -77,8 +77,8 @@ footer {
   background-color: #000000;
   color: #ffffff;
   border: 1px solid #ffffff;
-  width: 140px;
-  margin: 0.5em 0.5rem;
+  width: 160px;
+  margin: 0.5em 0.5em;
   padding: 0.5em 1em;
   cursor: pointer;
   text-align: center;
