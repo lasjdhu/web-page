@@ -1,6 +1,6 @@
 # Portfolio web page
 
-## 2022 - ...
+## 2022 - now
 
 ### Made with
 
