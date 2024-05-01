@@ -3,7 +3,7 @@
  *
  */
 
-import { useState, useRef, createRef, useEffect } from "react";
+import { useState, useRef, createRef } from "react";
 import { useTranslation } from "react-i18next";
 import emailjs from "@emailjs/browser";
 import ReCAPTCHA from "react-google-recaptcha";
@@ -14,7 +14,6 @@ export default function Contact() {
 
   const refCaptcha = createRef<ReCAPTCHA>();
   const form = useRef<HTMLFormElement>(null);
-  const [smallScreen, setSmallScreen] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [isValid, setIsValid] = useState<boolean | undefined>(false);
@@ -23,78 +22,65 @@ export default function Contact() {
   const [errorMessage, setErrorMessage] = useState<string>("");
   const maxMessageLength = 500;
 
-  useEffect(() => {
-    const media: MediaQueryList = window.matchMedia("(max-width: 1023px)");
-
-    setSmallScreen(media.matches);
-
-    const handleMediaChange = (mediaQuery: MediaQueryListEvent) => {
-      setSmallScreen(mediaQuery.matches);
-    };
-
-    media.addEventListener("change", handleMediaChange);
-
-    return () => {
-      media.removeEventListener("change", handleMediaChange);
-    };
-  }, []);
-
   function handleTextareaChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
     setIsValid(form.current?.checkValidity());
     const input = event.target.value;
     setMessage(input.slice(0, maxMessageLength));
   }
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  function sendEmail(token: string) {
+    const params = {
+      from_name: form.current?.from_name.value,
+      from_email: form.current?.from_email.value,
+      subject: form.current?.subject.value,
+      message_html: form.current?.message.value,
+      "g-recaptcha-response": token,
+    };
+
+    emailjs
+      .send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        params,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+      )
+      .then(
+        (_response) => {
+          setIsLoading(false);
+          setIsSuccess(true);
+          setShowModal(true);
+          setMessage("");
+          setIsValid(false);
+          form.current?.reset();
+          refCaptcha.current?.reset();
+        },
+        (_error) => {
+          setIsLoading(false);
+          setIsSuccess(false);
+          setShowModal(true);
+        },
+      )
+      .catch((_error) => {
+        setIsLoading(false);
+        setIsSuccess(false);
+        setShowModal(true);
+      });
+  }
+
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setIsLoading(true);
     setErrorMessage("");
 
-    const token = refCaptcha.current?.getValue();
+    const token = await refCaptcha.current?.executeAsync();
     if (!token) {
       setIsLoading(false);
       setIsSuccess(false);
       setErrorMessage(t("captcha_error"));
       setShowModal(true);
       return;
-    }
-
-    const params = {
-      from_name: form.current?.from_name.value,
-      from_email: form.current?.from_email.value,
-      subject: form.current?.subject.value,
-      message_html: form.current?.message.value,
-      "g-recaptcha-response": token ?? "",
-    };
-
-    if (form.current?.checkValidity() && token) {
-      emailjs
-        .send(
-          import.meta.env.VITE_EMAILJS_SERVICE_ID,
-          import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-          params,
-          import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
-        )
-        .then(
-          (_response) => {
-            setIsLoading(false);
-            setIsSuccess(true);
-            setShowModal(true);
-            setMessage("");
-            setIsValid(false);
-            form.current?.reset();
-          },
-          (_error) => {
-            setIsLoading(false);
-            setIsSuccess(false);
-            setShowModal(true);
-          },
-        )
-        .catch((_error) => {
-          setIsLoading(false);
-          setIsSuccess(false);
-          setShowModal(true);
-        });
+    } else {
+      sendEmail(token);
     }
   }
 
@@ -174,14 +160,6 @@ export default function Contact() {
                 name="subject"
               />
             </div>
-            {!smallScreen && (
-              <ReCAPTCHA
-                className="mb-4"
-                aria-required="true"
-                sitekey={import.meta.env.VITE_GOOGLE_SITE_KEY}
-                ref={refCaptcha}
-              />
-            )}
           </div>
           <div className="lg:w-1/2 lg:pl-4 lg:mt-0">
             <label
@@ -206,29 +184,25 @@ export default function Contact() {
             <div className="flex justify-end mt-1 text-sm text-gray-500">
               {message.length}/{maxMessageLength} {t("characters_remaining")}
             </div>
-            {smallScreen && (
-              <ReCAPTCHA
-                aria-required="true"
-                className="mt-4 mb-6"
-                sitekey={import.meta.env.VITE_GOOGLE_SITE_KEY}
-                ref={refCaptcha}
-              />
-            )}
-            <button
-              type="submit"
-              disabled={!isValid}
-              className={` w-full flex items-center justify-center h-12 mt-4 px-6 text-sm border rounded-sm cursor-pointer
-                transition duration-300 ease-in-out hover:-translate-y-1
-                disabled:border-gray-500 disabled:text-gray-500 disabled:cursor-not-allowed disabled:translate-y-0 disabled:hover:bg-transparent ${
-                  isLoading
-                    ? "bg-accent text-background border-accent"
-                    : "bg-transparent hover:bg-accent text-accent hover:text-background border-accent"
-                }`}
-            >
-              {isLoading ? <ScaleLoader /> : t("send_message")}
-            </button>
           </div>
         </div>
+        <button
+          type="submit"
+          disabled={!isValid}
+          className={` w-full flex items-center justify-center h-12 mt-4 px-6 text-sm border rounded-sm cursor-pointer
+                transition duration-300 ease-in-out hover:-translate-y-1
+                disabled:border-gray-500 disabled:text-gray-500 disabled:cursor-not-allowed disabled:translate-y-0 disabled:hover:bg-transparent ${isLoading
+              ? "bg-accent text-background border-accent"
+              : "bg-transparent hover:bg-accent text-accent hover:text-background border-accent"
+            }`}
+        >
+          {isLoading ? <ScaleLoader /> : t("send_message")}
+        </button>
+        <ReCAPTCHA
+          size="invisible"
+          sitekey={import.meta.env.VITE_GOOGLE_SITE_KEY}
+          ref={refCaptcha}
+        />
       </form>
       {showModal && (
         <div className="fixed inset-0 flex flex-col items-center justify-center p-8 bg-background bg-opacity-80">
