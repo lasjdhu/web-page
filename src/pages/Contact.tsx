@@ -191,10 +191,11 @@ export default function Contact() {
           disabled={!isValid}
           className={` w-full flex items-center justify-center h-12 mt-4 px-6 text-sm border rounded-sm cursor-pointer
                 transition duration-300 ease-in-out hover:-translate-y-1
-                disabled:border-gray-500 disabled:text-gray-500 disabled:cursor-not-allowed disabled:translate-y-0 disabled:hover:bg-transparent ${isLoading
-              ? "bg-accent text-background border-accent"
-              : "bg-transparent hover:bg-accent text-accent hover:text-background border-accent"
-            }`}
+                disabled:border-gray-500 disabled:text-gray-500 disabled:cursor-not-allowed disabled:translate-y-0 disabled:hover:bg-transparent ${
+                  isLoading
+                    ? "bg-accent text-background border-accent"
+                    : "bg-transparent hover:bg-accent text-accent hover:text-background border-accent"
+                }`}
         >
           {isLoading ? <ScaleLoader /> : t("send_message")}
         </button>
