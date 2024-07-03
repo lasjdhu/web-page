@@ -64,7 +64,7 @@ export default function About() {
           <CompanyBox
             company={t("vut")}
             location={t("cz")}
-            yrs="2021 - ..."
+            yrs="2023 - ..."
             spec={t("vut_area")}
             img={VUT}
           />
