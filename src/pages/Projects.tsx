@@ -14,7 +14,7 @@ export default function Projects() {
         <Card
           title={t("gol")}
           img={gol}
-          yrs="2021"
+          yrs="2022"
           link="/projects/game-of-life/index.html"
           source="https://github.com/lasjdhu/game-of-life"
           desc={t("gol_description")}
@@ -22,7 +22,7 @@ export default function Projects() {
         <Card
           title={t("web_project")}
           img={web}
-          yrs="2022 - ..."
+          yrs="2023 - ..."
           desc={t("web_description")}
           source="https://github.com/lasjdhu/web-page"
         />
