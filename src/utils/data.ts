@@ -24,15 +24,15 @@ export const web = [
   },
   {
     id: 1,
-    name: "React, React Native",
+    name: "React, React Native, Next.js",
   },
   {
     id: 2,
-    name: "HTML, CSS, Tailwind",
+    name: "HTML, CSS, Tailwind, MUI",
   },
   {
     id: 3,
-    name: "SQL (Postgres, Oracle)",
+    name: "Redux, Zustand",
   },
 ];
 
@@ -51,6 +51,6 @@ export const admin = [
   },
   {
     id: 3,
-    name: "UML",
+    name: "Jest, Cypress",
   },
 ];
