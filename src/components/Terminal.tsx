@@ -1,6 +1,19 @@
 import { useState, useEffect, useRef } from 'react';
 
-const INITIAL_HISTORY = [
+// Define types for history entries
+type EntryType = 'system' | 'input' | 'output';
+
+interface HistoryEntry {
+  content: string;
+  type: EntryType;
+}
+
+// Define available commands
+type Command = 'help' | 'clear' | 'date' | 'echo' | 'pwd' | 'ls' | 'whoami';
+
+const AVAILABLE_COMMANDS: Command[] = ['help', 'clear', 'date', 'echo', 'pwd', 'ls', 'whoami'];
+
+const INITIAL_HISTORY: HistoryEntry[] = [
   {
     content: 'Welcome to Enhanced Terminal v1.0.0',
     type: 'system',
@@ -11,12 +24,30 @@ const INITIAL_HISTORY = [
   },
 ];
 
+// Define command output templates
+const HELP_TEXT = `Available commands:
+  help     Show this help
+  clear    Clear terminal
+  date     Show current date
+  echo     Display text
+  pwd      Print working directory
+  ls       List directory contents
+  whoami   Display current user`;
+
+const LS_OUTPUT = `Documents/
+Downloads/
+Pictures/
+Projects/
+.bashrc
+.gitconfig`;
+
 export default function Terminal() {
-  const [input, setInput] = useState('');
-  const [history, setHistory] = useState(INITIAL_HISTORY);
-  const [isFullscreen, setIsFullscreen] = useState(false);
-  const [currentPath, setCurrentPath] = useState('~/user');
-  const [caretPosition, setCaretPosition] = useState(0);
+  const [input, setInput] = useState<string>('');
+  const [history, setHistory] = useState<HistoryEntry[]>(INITIAL_HISTORY);
+  const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
+  const [currentPath, setCurrentPath] = useState<string>('~/user');
+  const [caretPosition, setCaretPosition] = useState<number>(0);
+
   const terminalRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -26,7 +57,7 @@ export default function Terminal() {
     }
   }, [history]);
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>): void => {
     const newCaretPosition = textareaRef.current?.selectionStart || 0;
     setCaretPosition(Math.max(0, newCaretPosition - (currentPath.length + 2)));
 
@@ -46,8 +77,7 @@ export default function Terminal() {
       }
     } else if (e.key === 'Tab') {
       e.preventDefault();
-      const commands = ['help', 'clear', 'date', 'echo', 'pwd', 'ls'];
-      const matchingCommand = commands.find(
+      const matchingCommand = AVAILABLE_COMMANDS.find(
         (cmd) => cmd.startsWith(input.toLowerCase()) && cmd !== input.toLowerCase()
       );
       if (matchingCommand) {
@@ -62,52 +92,41 @@ export default function Terminal() {
     }
   };
 
-  const handleCommand = (cmd: string) => {
+  const handleCommand = (cmd: string): string => {
     const command = cmd.trim().toLowerCase();
+    const [baseCommand, ...args] = command.split(' ');
 
-    switch (command.split(' ')[0]) {
+    switch (baseCommand as Command) {
       case 'clear':
         setTimeout(() => setHistory([]), 0);
         return '';
       case 'help':
-        return `Available commands:
-  help     Show this help
-  clear    Clear terminal
-  date     Show current date
-  echo     Display text
-  pwd      Print working directory
-  ls       List directory contents
-  whoami   Display current user`;
+        return HELP_TEXT;
       case 'date':
         return new Date().toLocaleString();
       case 'pwd':
         return currentPath;
       case 'ls':
-        return `Documents/
-Downloads/
-Pictures/
-Projects/
-.bashrc
-.gitconfig`;
+        return LS_OUTPUT;
       case 'whoami':
         return 'user';
+      case 'echo':
+        return args.join(' ');
       default:
-        if (command.startsWith('echo ')) {
-          return cmd.trim().slice(5);
-        }
-        return `Command not found: ${command.split(' ')[0]}\nType "help" for available commands.`;
+        return `Command not found: ${baseCommand}\nType "help" for available commands.`;
     }
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>): void => {
     const newValue = e.target.value;
+    const pathPrefix = `${currentPath}$ `;
 
-    if (!newValue.startsWith(`${currentPath}$ `)) {
+    if (!newValue.startsWith(pathPrefix)) {
       setInput('');
       setCaretPosition(0);
     } else {
-      setInput(newValue.replace(`${currentPath}$ `, ''));
-      const newCaretPosition = e.target.selectionStart - (currentPath.length + 2);
+      setInput(newValue.replace(pathPrefix, ''));
+      const newCaretPosition = e.target.selectionStart - pathPrefix.length;
       setCaretPosition(Math.max(0, newCaretPosition));
     }
 
@@ -173,7 +192,7 @@ Projects/
             >
               <span className="text-green-400 whitespace-nowrap select-none">{currentPath}$ </span>
               <span className="text-gray-400 break-words select-text relative group">
-                {input == '' ? ' ' : input}
+                {input === '' ? ' ' : input}
                 <span
                   className="absolute w-[6px] h-[1.2em] bg-gray-400 animate-blink pointer-events-none"
                   style={{
