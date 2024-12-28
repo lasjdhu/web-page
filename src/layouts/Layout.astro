@@ -1,0 +1,61 @@
+---
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import PostHog from "../components/Posthog.astro";
+const { title, description } = Astro.props;
+import { ClientRouter } from "astro:transitions";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description || "Personal website"} />
+
+    <meta property="og:title" content={title || "Dmitrii Ivanushkin"} />
+    <meta
+      property="og:description"
+      content={description || "Default description"}
+    />
+    <meta property="og:image" content="/path-to-image.jpg" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:type" content="website" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title || "Dmitrii Ivanushkin"} />
+    <meta
+      name="twitter:description"
+      content={description || "Default description"}
+    />
+    <meta name="twitter:image" content="/path-to-image.jpg" />
+
+    <link rel="canonical" href={Astro.url} />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <title>{title || "Dmitrii Ivanushkin"}</title>
+
+    <ClientRouter />
+    <PostHog />
+  </head>
+  <body class="flex flex-col min-h-screen text-white bg-black">
+    <Header />
+    <main
+      class="flex flex-col items-center justify-center my-auto mx-12 lg:flex-row align-center"
+      transition:animate="fade"
+    >
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+  }
+</style>

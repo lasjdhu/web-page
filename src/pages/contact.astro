@@ -1,0 +1,47 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ContactForm from "../components/ContactForm.astro";
+import GitHubIcon from "../components/icons/GitHubIcon.astro";
+import LinkedInIcon from "../components/icons/LinkedInIcon.astro";
+---
+
+<Layout
+  title="Contact"
+  description="Contact me for questions or collaborations"
+>
+  <div class="flex flex-col md:flex-row max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section class="py-8 md:pr-12">
+      <h1 class="text-2xl md:text-4xl font-bold tracking-tight mb-6">
+        Have a question? Want to work together?
+      </h1>
+      <p class="text-gray-300 mb-6">
+        Leave me a message and I'll get in touch with you as soon as possible.
+        <br />
+        You can also find me on social media.
+      </p>
+
+      <div class="flex space-x-4 mb-8">
+        <a
+          href="https://github.com/lasjdhu"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center justify-center w-12 h-12 rounded-full border-2 border-gray-300 hover:bg-gray-600 hover:bg-opacity-50 text-gray-300 transition-colors duration-200"
+        >
+          <GitHubIcon />
+        </a>
+        <a
+          href="https://linkedin.com/in/dmitrii-ivanushkin"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center justify-center w-12 h-12 rounded-full border-2 border-gray-300 hover:bg-blue-800 hover:bg-opacity-50 text-gray-300 transition-colors duration-200"
+        >
+          <LinkedInIcon />
+        </a>
+      </div>
+    </section>
+
+    <section class="flex mx-auto">
+      <ContactForm />
+    </section>
+  </div>
+</Layout>
