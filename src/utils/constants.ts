@@ -4,12 +4,7 @@ export const AVAILABLE_COMMANDS = ['help', 'clear', 'date', 'echo', 'pwd', 'ls',
 
 export const INITIAL_HISTORY: HistoryEntry[] = [
   {
-    content: 'Welcome to Enhanced Terminal v1.0.0',
-    type: 'system',
-    timestamp: new Date(),
-  },
-  {
-    content: 'Type "help" for available commands',
+    content: "Navigate my website using this terminal\nStart by typing 'help' to see available commands",
     type: 'system',
     timestamp: new Date(),
   },

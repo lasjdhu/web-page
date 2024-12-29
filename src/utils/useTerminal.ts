@@ -70,12 +70,13 @@ export function useTerminal({ terminalRef, textareaRef }: UseTerminalProps): Use
   const ls = (path: string, args: string[]): string => {
     const currentDir = getDirectory(path);
     if (!currentDir || currentDir.type !== 'dir') return 'No such directory';
-    if (args.length > 2) return 'Usage: ls [-a] [-l]';
-    if (args[0] && args[0] !== '-a' && args[0] !== '-l') return 'Usage: ls [-a] [-l]';
-    if (args[1] && args[1] !== '-a' && args[1] !== '-l') return 'Usage: ls [-a] [-l]';
+    if (args.length > 2) return "Too many args for ls command";
+    if (args.length === 2 && !['-a', '-l', '-al', '-la'].includes(args[0])) {
+      return `ls: invalid option: ${args[0]}`;
+    }
 
-    const showHidden = args.includes('-a');
-    const showDetails = args.includes('-l');
+    const showHidden = args.includes('-a') || args.includes('-al') || args.includes('-la');
+    const showDetails = args.includes('-l') || args.includes('-al') || args.includes('-la');
 
     const items = Object.entries(currentDir.contents)
       .filter(([name]) => showHidden || !name.startsWith('.'))
@@ -144,6 +145,46 @@ export function useTerminal({ terminalRef, textareaRef }: UseTerminalProps): Use
     return { output: `Switched to ${ROOT_USER}`, type: 'output' };
   };
 
+  const date = (args: string[]): { output: string; type: EntryType } => {
+    let output = new Date().toLocaleString();
+    if (args.length > 0) {
+      const format = args[0].toLowerCase();
+      let dateFormatOptions: Intl.DateTimeFormatOptions = {};
+
+      switch (format) {
+        case 'mm/dd/yyyy':
+          dateFormatOptions = { year: 'numeric', month: '2-digit', day: '2-digit' };
+          break;
+        case 'yyyy-mm-dd':
+          dateFormatOptions = { year: 'numeric', month: '2-digit', day: '2-digit' };
+          break;
+        case 'dd-mm-yyyy':
+          dateFormatOptions = { day: '2-digit', month: '2-digit', year: 'numeric' };
+          break;
+        case 'long':
+          dateFormatOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+          break;
+        case 'time':
+          dateFormatOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit' };
+          break;
+        default:
+          return {
+            output: `Invalid date format. Supported formats:
+  mm/dd/yyyy
+  yyyy-mm-dd
+  dd-mm-yyyy
+  long
+  time`,
+            type: 'error'
+          };
+      }
+
+      output = new Intl.DateTimeFormat('en-US', dateFormatOptions).format(new Date());
+    }
+    return { output: output, type: 'output' };
+
+  }
+
   const handleCommand = (cmd: string): { output: string; type: EntryType } => {
     const command = cmd.trim();
     const [baseCommand, ...args] = command.split(' ');
@@ -157,9 +198,7 @@ export function useTerminal({ terminalRef, textareaRef }: UseTerminalProps): Use
         if (args.length > 0) return { output: 'Usage: help', type: 'error' };
         return { output: HELP_TEXT, type: 'output' };
       case 'date':
-        // TODO: Add support for date format
-        if (args.length > 0) return { output: 'Usage: date', type: 'error' };
-        return { output: new Date().toLocaleString(), type: 'output' };
+        return date(args);
       case 'pwd':
         if (args.length > 0) return { output: 'pwd: expected 0 arguments; got 1', type: 'error' };
         return { output: currentPath, type: 'output' };
@@ -257,7 +296,7 @@ export function useTerminal({ terminalRef, textareaRef }: UseTerminalProps): Use
     setCaretPosition(newIndex === -1 ? 0 : commandHistory[newIndex].length);
   };
 
-  const getPrompt = () => `${currentUser}:${currentPath}$ `;
+  const getPrompt = () => `${currentUser}@${navigator.userAgent.split('/')[0]}:${currentPath} `;
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>): void => {
     const newCaretPosition = textareaRef.current?.selectionStart || 0;
@@ -266,13 +305,23 @@ export function useTerminal({ terminalRef, textareaRef }: UseTerminalProps): Use
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       if (input.trim()) {
+        const existingIndex = commandHistory.findIndex(entry => entry === input);
+
+        if (existingIndex !== -1) {
+          const newCommandHistory = [...commandHistory];
+          newCommandHistory.splice(existingIndex, 1);
+          newCommandHistory.push(input);
+          setCommandHistory(newCommandHistory);
+        } else {
+          setCommandHistory(prev => [...prev, input]);
+        }
+
         const { output, type } = handleCommand(input);
         setHistory((prev) => [
           ...prev,
           { content: input, type: 'input', timestamp: new Date(), prompt: getPrompt() },
           { content: output, type, timestamp: new Date() },
         ]);
-        setCommandHistory((prev) => [...prev, input]);
       } else {
         setHistory((prev) => [
           ...prev,
@@ -319,12 +368,12 @@ export function useTerminal({ terminalRef, textareaRef }: UseTerminalProps): Use
     const promptPrefix = getPrompt();
 
     if (!newValue.startsWith(promptPrefix)) {
-      setInput('');
-      setCaretPosition(0);
+      // Instead of clearing the input entirely, restore the prompt and append the new character
+      setInput(newValue.replace(/^[^\s]* /, '')); // Remove unexpected prefix
+      setCaretPosition(newValue.length - promptPrefix.length); // Correct caret position
     } else {
       setInput(newValue.slice(promptPrefix.length));
-      const newCaretPosition = e.target.selectionStart - promptPrefix.length;
-      setCaretPosition(Math.max(0, newCaretPosition));
+      setCaretPosition(Math.max(0, e.target.selectionStart - promptPrefix.length));
     }
 
     if (textareaRef.current) {
@@ -339,6 +388,13 @@ export function useTerminal({ terminalRef, textareaRef }: UseTerminalProps): Use
       });
     }
   };
+
+  useEffect(() => {
+    if (textareaRef.current) {
+      textareaRef.current.focus();
+      setCaretPosition(input.length);
+    }
+  }, [textareaRef, input]);
 
   useEffect(() => {
     if (terminalRef.current) {
