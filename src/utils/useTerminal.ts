@@ -71,7 +71,8 @@ export function useTerminal({ terminalRef, textareaRef }: UseTerminalProps): Use
     const currentDir = getDirectory(path);
     if (!currentDir || currentDir.type !== 'dir') return 'No such directory';
     if (args.length > 2) return 'Usage: ls [-a] [-l]';
-    if (args[0] && !args[0].startsWith('-')) return 'Usage: ls [-a] [-l]';
+    if (args[0] && args[0] !== '-a' && args[0] !== '-l') return 'Usage: ls [-a] [-l]';
+    if (args[1] && args[1] !== '-a' && args[1] !== '-l') return 'Usage: ls [-a] [-l]';
 
     const showHidden = args.includes('-a');
     const showDetails = args.includes('-l');
@@ -95,6 +96,8 @@ export function useTerminal({ terminalRef, textareaRef }: UseTerminalProps): Use
       return '';
     }
 
+    if (args.length > 1) return "Too many args for cd command";
+
     const path = args[0];
     if (path === '..') {
       const pathParts = currentPath.split('/').filter(Boolean);
@@ -112,7 +115,7 @@ export function useTerminal({ terminalRef, textareaRef }: UseTerminalProps): Use
       return '';
     }
 
-    return `cd: no such directory: ${path}`;
+    return `cd: The directory '${path}' does not exist`;
   };
 
   const cat = (args: string[]): { output: string; type: EntryType } => {
@@ -122,7 +125,7 @@ export function useTerminal({ terminalRef, textareaRef }: UseTerminalProps): Use
     const file = getFile(path);
 
     if (!file) return { output: `cat: ${path}: No such file`, type: 'error' };
-    if (file.type !== 'file') return { output: `cat: ${path}: Is a directory`, type: 'error' };
+    if (file.type !== 'file') return { output: `cat: ${path}/: Is a directory`, type: 'error' };
 
     return { output: file.content, type: 'output' };
   };
@@ -147,29 +150,38 @@ export function useTerminal({ terminalRef, textareaRef }: UseTerminalProps): Use
 
     switch (baseCommand) {
       case 'clear':
+        if (args.length > 0) return { output: 'Usage: clear', type: 'error' };
         setTimeout(() => setHistory([]), 0);
         return { output: '', type: 'output' };
       case 'help':
+        if (args.length > 0) return { output: 'Usage: help', type: 'error' };
         return { output: HELP_TEXT, type: 'output' };
       case 'date':
+        // TODO: Add support for date format
+        if (args.length > 0) return { output: 'Usage: date', type: 'error' };
         return { output: new Date().toLocaleString(), type: 'output' };
       case 'pwd':
+        if (args.length > 0) return { output: 'pwd: expected 0 arguments; got 1', type: 'error' };
         return { output: currentPath, type: 'output' };
       case 'ls':
         return { output: ls(currentPath, args), type: 'output' };
       case 'whoami':
+        if (args.length > 0) return { output: 'whoami: extra operand ‘asd’', type: 'error' };
         return { output: currentUser, type: 'output' };
       case 'echo':
         return { output: args.join(' '), type: 'output' };
       case 'cd':
         return { output: cd(args), type: 'output' };
       case 'history':
+        //TODO: Add support for pattern matching
+        if (args.length > 0) return { output: 'Usage: history', type: 'error' };
         return { output: commandHistory.map((cmd, i) => `${i + 1}  ${cmd}`).join('\n'), type: 'output' };
       case 'cat':
         return cat(args);
       case 'su':
         return su(args);
       case 'exit':
+        if (args.length > 0) return { output: 'Usage: exit', type: 'error' };
         if (currentUser === ROOT_USER) {
           setCurrentUser('user');
           setIsAuthenticated(false);
@@ -225,11 +237,19 @@ export function useTerminal({ terminalRef, textareaRef }: UseTerminalProps): Use
     if (commandHistory.length === 0) return;
 
     let newIndex = historyIndex;
+
     if (direction === 'up') {
-      newIndex = historyIndex === -1 ? commandHistory.length - 1 : Math.max(0, historyIndex - 1);
+      if (historyIndex === 0) {
+        newIndex = 0;
+      } else {
+        newIndex = historyIndex === -1 ? commandHistory.length - 1 : Math.max(0, historyIndex - 1);
+      }
     } else {
-      newIndex = Math.min(commandHistory.length - 1, historyIndex + 1);
-      if (newIndex === commandHistory.length - 1) newIndex = -1;
+      if (historyIndex === commandHistory.length - 1) {
+        newIndex = commandHistory.length - 1;
+      } else {
+        newIndex = Math.min(commandHistory.length - 1, historyIndex + 1);
+      }
     }
 
     setHistoryIndex(newIndex);
@@ -253,21 +273,16 @@ export function useTerminal({ terminalRef, textareaRef }: UseTerminalProps): Use
           { content: output, type, timestamp: new Date() },
         ]);
         setCommandHistory((prev) => [...prev, input]);
-        setHistoryIndex(-1);
-        setInput('');
-        setCaretPosition(0);
       } else {
-        // Send an empty command (do nothing)
         setHistory((prev) => [
           ...prev,
           { content: '', type: 'input', timestamp: new Date(), prompt: getPrompt() },
           { content: '', type: 'output', timestamp: new Date() },
         ]);
-        setCommandHistory((prev) => [...prev, '']);
-        setHistoryIndex(-1);
-        setInput('');
-        setCaretPosition(0);
       }
+      setHistoryIndex(-1);
+      setInput('');
+      setCaretPosition(0);
     } else if (e.key === 'Tab') {
       e.preventDefault();
       handleTabCompletion();
@@ -287,18 +302,17 @@ export function useTerminal({ terminalRef, textareaRef }: UseTerminalProps): Use
       setHistory([]);
     } else if (e.ctrlKey && e.key === 'c') {
       e.preventDefault();
-      // Send an empty command when Ctrl+C is pressed
       setHistory((prev) => [
         ...prev,
         { content: '', type: 'input', timestamp: new Date(), prompt: getPrompt() },
         { content: '', type: 'output', timestamp: new Date() },
       ]);
-      setCommandHistory((prev) => [...prev, '']);
       setHistoryIndex(-1);
       setInput('');
       setCaretPosition(0);
     }
   };
+
 
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>): void => {
     const newValue = e.target.value;

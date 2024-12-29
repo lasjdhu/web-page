@@ -18,7 +18,7 @@ export default function Terminal() {
 
   return (
     <div
-      className={`${isFullscreen ? 'fixed inset-0 z-50' : 'rounded-xl w-[600px] h-96 border-2 border-gray-800/50'}
+      className={`${isFullscreen ? 'fixed inset-0 z-50' : 'rounded-xl w-96 md:w-[600px] h-96 border-2 border-gray-800/50'}
         bg-gray-950 overflow-hidden font-mono shadow-xl transition-all duration-200`}
     >
       <div className="bg-gray-800/50 p-2 flex items-center justify-between select-none">
@@ -39,7 +39,7 @@ export default function Terminal() {
       <div
         onClick={() => textareaRef.current?.focus()}
         ref={terminalRef}
-        className="p-4 h-[calc(100%-2.5rem)] overflow-y-auto text-white cursor-text"
+        className="p-4 h-[calc(100%-2rem)] overflow-y-auto text-white cursor-text"
       >
         <div className="break-words cursor-text">
           {history.map((entry, i) => (
