@@ -1,0 +1,28 @@
+---
+let activeLink = new URL(Astro.request.url).pathname;
+const { navStyle } = Astro.props;
+const links = [
+  { href: "/", text: "Home" },
+  { href: "/about", text: "About" },
+  //{ href: "/blog", text: "Blog" },
+  { href: "/projects", text: "Projects" },
+  { href: "/contact", text: "Contact" },
+];
+---
+
+<nav class={navStyle}>
+  {
+    links.map(({ href, text }) => (
+      <a
+        href={href}
+        class={`
+          hover:text-gray-100 focus:text-gray-100 active:text-gray-100
+          transition-all duration-300
+          ${activeLink === href ? "text-gray-100 font-bold" : "text-gray-400 font-medium"}
+        `}
+      >
+        {text}
+      </a>
+    ))
+  }
+</nav>
