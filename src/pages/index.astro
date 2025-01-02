@@ -5,7 +5,43 @@ import Terminal from "../components/Terminal";
 
 <Layout
   title="Dmitrii Ivanushkin"
-  description="Personal portfolio, playground, blog and more"
+  description="Software developer crafting digital experiences with a retro twist"
 >
-  <Terminal client:only="react" />
+  <section
+    class="h-[calc(90vh)] md:h-[100%] md:w-1/2 flex flex-col justify-center px-3 md:px-16 max-w-3xl"
+  >
+    <h1 class="text-4xl md:text-6xl font-bold tracking-tight mb-4">
+      Hi! <br class="md:hidden" />I'm Dmitrii
+    </h1>
+    <p
+      class="text-base md:text-xl text-gray-300 leading-relaxed mb-8 tracking-wide"
+    >
+      Welcome to my digital playground where modern meets retro. As a software
+      developer, I've created this space to showcase my projects, share insights
+      through my blog, and experiment with unique interactions. For a nostalgic
+      twist, try out the terminal interface – it's not just for show, it's a
+      fully functional way to explore my world. Whether you prefer clicking
+      through pages or typing commands, there's something here for both the GUI
+      lovers and CLI enthusiasts.
+    </p>
+    <div class="flex gap-4 flex-col md:flex-row">
+      <a
+        href="/blog"
+        class="w-full md:w-auto px-4 py-2.5 text-black bg-gray-300 rounded hover:bg-gray-50 transition-colors text-center md:text-left"
+      >
+        Visit blog
+      </a>
+      <a
+        href="/about"
+        class="w-full md:w-auto px-4 py-2.5 text-gray-400 rounded border border-gray-800 bg-gray-900/50 hover:bg-gray-800/50 transition-colors text-center md:text-left"
+      >
+        Learn more
+      </a>
+    </div>
+  </section>
+  <section
+    class="h-[calc(50vh)] md:h-[100%] md:w-1/2 flex items-center justify-center mb-8 md:mb-0"
+  >
+    <Terminal client:only="react" />
+  </section>
 </Layout>

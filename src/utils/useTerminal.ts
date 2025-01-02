@@ -296,7 +296,20 @@ export function useTerminal({ terminalRef, textareaRef }: UseTerminalProps): Use
     setCaretPosition(newIndex === -1 ? 0 : commandHistory[newIndex].length);
   };
 
-  const getPrompt = () => `${currentUser}@${navigator.userAgent.split('/')[0]}:${currentPath} `;
+  const getOS = () => {
+    const platform = navigator.platform.toLowerCase();
+    if (platform.includes('win')) return 'windows';
+    if (platform.includes('mac')) return 'macOS';
+    if (platform.includes('linux')) return 'linux';
+    if (platform.includes('iphone') || platform.includes('ipad')) return 'iOS';
+    if (platform.includes('android')) return 'android';
+    return 'unknownOS';
+  };
+
+  const getPrompt = () => {
+    const os = getOS();
+    return `${currentUser}@${os}:${currentPath} `;
+  };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>): void => {
     const newCaretPosition = textareaRef.current?.selectionStart || 0;
@@ -388,13 +401,6 @@ export function useTerminal({ terminalRef, textareaRef }: UseTerminalProps): Use
       });
     }
   };
-
-  useEffect(() => {
-    if (textareaRef.current) {
-      textareaRef.current.focus();
-      setCaretPosition(input.length);
-    }
-  }, [textareaRef, input]);
 
   useEffect(() => {
     if (terminalRef.current) {

@@ -36,7 +36,10 @@ export default function Terminal() {
   return (
     <div
       className={`
-        ${isFullscreen ? 'fixed inset-0 z-50' : 'rounded-xl w-96 md:w-[600px] h-96 border-2 border-gray-800'}
+        ${isFullscreen
+          ? 'fixed inset-0 z-50'
+          : 'md:w-3/4 w-full h-[400px] border-2 border-gray-800 rounded-xl'
+        }
         bg-gray-950 overflow-hidden font-mono shadow-xl transition-all duration-200
         ${isVisible ? 'opacity-100' : 'opacity-0'}
       `}
@@ -58,7 +61,7 @@ export default function Terminal() {
       <div
         onClick={() => textareaRef.current?.focus()}
         ref={terminalRef}
-        className="p-4 h-[calc(100%-2rem)] overflow-y-auto text-white cursor-text"
+        className="p-4 h-[calc(100%-2.5rem)] overflow-y-auto text-white cursor-text"
       >
         <div className="break-words cursor-text">
           {history.map((entry, i) => (
@@ -72,7 +75,7 @@ export default function Terminal() {
                 }`}
             >
               {entry.type === 'input' ? (
-                <pre className="inset-0 pointer-events-none whitespace-pre-wrap text-green-400">
+                <pre className="pointer-events-none whitespace-pre-wrap text-green-400 break-words">
                   <span
                     className={`whitespace-nowrap ${entry.prompt?.includes('root') ? 'text-red-500' : 'text-green-400'
                       }`}
@@ -89,11 +92,11 @@ export default function Terminal() {
 
           <div className="relative w-full overflow-hidden">
             <pre
-              className="absolute inset-0 pointer-events-auto whitespace-pre-wrap text-green-400"
+              className="relative pointer-events-auto whitespace-pre-wrap text-green-400 break-words"
               aria-hidden="true"
             >
               <span
-                className={`text-green-400 whitespace-nowrap select-none ${getPrompt().includes('root') ? 'text-red-500' : 'text-green-400'
+                className={`whitespace-nowrap select-none ${getPrompt().includes('root') ? 'text-red-500' : 'text-green-400'
                   }`}
               >
                 {getPrompt()}
@@ -116,7 +119,7 @@ export default function Terminal() {
               onKeyDown={handleKeyDown}
               onFocus={handleFocus}
               spellCheck={false}
-              className="w-full bg-transparent outline-none text-transparent caret-transparent resize-none overflow-hidden break-words select-none"
+              className="w-full bg-transparent outline-none text-transparent caret-transparent resize-none overflow-hidden break-words select-none absolute top-0 left-0"
               style={{
                 minHeight: '1.5rem',
                 lineHeight: '1.5rem',
