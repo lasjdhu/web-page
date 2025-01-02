@@ -1,4 +1,4 @@
-export type EntryType = 'system' | 'input' | 'output' | 'error';
+export type EntryType = "system" | "input" | "output" | "error";
 
 export interface HistoryEntry {
   content: string;
@@ -7,10 +7,22 @@ export interface HistoryEntry {
   prompt?: string;
 }
 
-export type Command = 'help' | 'clear' | 'date' | 'echo' | 'pwd' | 'ls' | 'whoami' | 'cd' | 'history' | 'cat' | 'su' | 'exit';
+export type Command =
+  | "help"
+  | "clear"
+  | "date"
+  | "echo"
+  | "pwd"
+  | "ls"
+  | "whoami"
+  | "cd"
+  | "history"
+  | "cat"
+  | "su"
+  | "exit";
 
 export interface File {
-  type: 'file';
+  type: "file";
   content: string;
   permissions: string;
   owner: string;
@@ -19,7 +31,7 @@ export interface File {
 }
 
 export interface Directory {
-  type: 'dir';
+  type: "dir";
   contents: Record<string, File | Directory>;
   permissions: string;
   owner: string;

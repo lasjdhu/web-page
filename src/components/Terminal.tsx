@@ -1,5 +1,5 @@
-import { useRef, useState, useEffect } from 'react';
-import { useTerminal } from '../utils/useTerminal';
+import { useRef, useState, useEffect } from "react";
+import { useTerminal } from "../utils/useTerminal";
 
 export default function Terminal() {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -36,12 +36,13 @@ export default function Terminal() {
   return (
     <div
       className={`
-        ${isFullscreen
-          ? 'fixed inset-0 z-50'
-          : 'md:w-3/4 w-full h-[400px] border-2 border-gray-800 rounded-xl'
+        ${
+          isFullscreen
+            ? "fixed inset-0 z-50"
+            : "md:w-3/4 w-full h-[400px] border-2 border-gray-800 rounded-xl"
         }
         bg-gray-950 overflow-hidden font-mono shadow-xl transition-all duration-200
-        ${isVisible ? 'opacity-100' : 'opacity-0'}
+        ${isVisible ? "opacity-100" : "opacity-0"}
       `}
     >
       <div className="bg-gray-800 p-2 flex items-center justify-between select-none relative">
@@ -67,22 +68,28 @@ export default function Terminal() {
           {history.map((entry, i) => (
             <div
               key={i}
-              className={`whitespace-pre-wrap mb-1 ${entry.type === 'system'
-                ? 'text-blue-400'
-                : entry.type === 'input'
-                  ? 'text-green-400'
-                  : 'text-gray-400'
-                }`}
+              className={`whitespace-pre-wrap mb-1 ${
+                entry.type === "system"
+                  ? "text-blue-400"
+                  : entry.type === "input"
+                    ? "text-green-400"
+                    : "text-gray-400"
+              }`}
             >
-              {entry.type === 'input' ? (
+              {entry.type === "input" ? (
                 <pre className="pointer-events-none whitespace-pre-wrap text-green-400 break-words">
                   <span
-                    className={`whitespace-nowrap ${entry.prompt?.includes('root') ? 'text-red-500' : 'text-green-400'
-                      }`}
+                    className={`whitespace-nowrap ${
+                      entry.prompt?.includes("root")
+                        ? "text-red-500"
+                        : "text-green-400"
+                    }`}
                   >
                     {entry.prompt}
                   </span>
-                  <span className="text-white break-words select-text">{entry.content}</span>
+                  <span className="text-white break-words select-text">
+                    {entry.content}
+                  </span>
                 </pre>
               ) : (
                 entry.content
@@ -96,18 +103,21 @@ export default function Terminal() {
               aria-hidden="true"
             >
               <span
-                className={`whitespace-nowrap select-none ${getPrompt().includes('root') ? 'text-red-500' : 'text-green-400'
-                  }`}
+                className={`whitespace-nowrap select-none ${
+                  getPrompt().includes("root")
+                    ? "text-red-500"
+                    : "text-green-400"
+                }`}
               >
                 {getPrompt()}
               </span>
               <span className="text-white break-words select-text relative group">
-                {input === '' ? ' ' : input}
+                {input === "" ? " " : input}
                 <span
                   className="absolute w-[8px] h-[1.2em] bg-gray-400 animate-blink pointer-events-none"
                   style={{
                     left: `${caretPosition}ch`,
-                    top: '0',
+                    top: "0",
                   }}
                 />
               </span>
@@ -121,12 +131,12 @@ export default function Terminal() {
               spellCheck={false}
               className="w-full bg-transparent outline-none text-transparent caret-transparent resize-none overflow-hidden break-words select-none absolute top-0 left-0"
               style={{
-                minHeight: '1.5rem',
-                lineHeight: '1.5rem',
-                WebkitUserSelect: 'none',
-                MozUserSelect: 'none',
-                msUserSelect: 'none',
-                userSelect: 'none',
+                minHeight: "1.5rem",
+                lineHeight: "1.5rem",
+                WebkitUserSelect: "none",
+                MozUserSelect: "none",
+                msUserSelect: "none",
+                userSelect: "none",
               }}
               rows={1}
             />

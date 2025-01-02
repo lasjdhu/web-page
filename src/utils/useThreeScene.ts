@@ -1,7 +1,10 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import { GLTFLoader, type GLTF } from "three/examples/jsm/loaders/GLTFLoader.js";
+import {
+  GLTFLoader,
+  type GLTF,
+} from "three/examples/jsm/loaders/GLTFLoader.js";
 
 interface ThreeSceneOptions {
   modelPath: string;
@@ -32,7 +35,7 @@ export const useThreeScene = ({
 
   const loadModel = async (
     scene: THREE.Scene,
-    options: ModelOptions = { receiveShadow: false, castShadow: false }
+    options: ModelOptions = { receiveShadow: false, castShadow: false },
   ) => {
     try {
       const loader = new GLTFLoader();
@@ -59,58 +62,61 @@ export const useThreeScene = ({
     }
   };
 
-  const setupScene = useCallback((container: HTMLElement) => {
-    const { clientWidth: width, clientHeight: height } = container;
+  const setupScene = useCallback(
+    (container: HTMLElement) => {
+      const { clientWidth: width, clientHeight: height } = container;
 
-    // Initialize renderer
-    const renderer = new THREE.WebGLRenderer({
-      antialias: true,
-      alpha: true,
-    });
-    renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setSize(width, height);
-    renderer.outputColorSpace = THREE.SRGBColorSpace;
-    container.appendChild(renderer.domElement);
+      // Initialize renderer
+      const renderer = new THREE.WebGLRenderer({
+        antialias: true,
+        alpha: true,
+      });
+      renderer.setPixelRatio(window.devicePixelRatio);
+      renderer.setSize(width, height);
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+      container.appendChild(renderer.domElement);
 
-    // Initialize scene
-    const scene = new THREE.Scene();
-    const scale = height * 0.005 + 4.8;
-    const camera = new THREE.OrthographicCamera(
-      -scale,
-      scale,
-      scale,
-      -scale,
-      0.01,
-      50000
-    );
-    camera.position.copy(initialCameraPosition);
-    camera.lookAt(targetPosition);
+      // Initialize scene
+      const scene = new THREE.Scene();
+      const scale = height * 0.005 + 4.8;
+      const camera = new THREE.OrthographicCamera(
+        -scale,
+        scale,
+        scale,
+        -scale,
+        0.01,
+        50000,
+      );
+      camera.position.copy(initialCameraPosition);
+      camera.lookAt(targetPosition);
 
-    // Add lighting
-    const ambientLight = new THREE.AmbientLight(0xcccccc, Math.PI);
-    scene.add(ambientLight);
+      // Add lighting
+      const ambientLight = new THREE.AmbientLight(0xcccccc, Math.PI);
+      scene.add(ambientLight);
 
-    // Setup controls
-    const controls = new OrbitControls(camera, renderer.domElement);
-    controls.autoRotate = true;
-    controls.target = targetPosition;
+      // Setup controls
+      const controls = new OrbitControls(camera, renderer.domElement);
+      controls.autoRotate = true;
+      controls.target = targetPosition;
 
-    sceneRef.current = {
-      scene,
-      camera,
-      renderer,
-      controls,
-      animationFrame: 0,
-    };
+      sceneRef.current = {
+        scene,
+        camera,
+        renderer,
+        controls,
+        animationFrame: 0,
+      };
 
-    // Load model and start animation
-    loadModel(scene)
-      .then(() => {
-        setLoading(false);
-        animate();
-      })
-      .catch((error) => console.error("Failed to load model:", error));
-  }, [initialCameraPosition, targetPosition, modelScale, modelPath]);
+      // Load model and start animation
+      loadModel(scene)
+        .then(() => {
+          setLoading(false);
+          animate();
+        })
+        .catch((error) => console.error("Failed to load model:", error));
+    },
+    [initialCameraPosition, targetPosition, modelScale, modelPath],
+  );
 
   const animate = useCallback(() => {
     if (!sceneRef.current) return;
@@ -164,5 +170,3 @@ export const useThreeScene = ({
 
   return { loading };
 };
-
-
