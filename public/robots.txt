@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Sitemap: https://dmitrii.online/sitemap-index.xml
+
+Disallow: /*.pdf$
