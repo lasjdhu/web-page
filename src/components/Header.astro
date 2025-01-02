@@ -1,0 +1,74 @@
+---
+import Model from "./Model";
+import NavLinks from "./NavLinks.astro";
+import MenuIcon from "./icons/MenuIcon.astro";
+import CloseIcon from "./icons/CloseIcon.astro";
+---
+
+<header class="flex flex-wrap items-center justify-between px-5 py-5 md:px-10">
+  <a href="/" class="flex items-center">
+    <Model client:load transition:persist />
+    <h1 class="text-md font-semibold tracking-tighter ml-4 md:text-2xl">
+      Dmitrii Ivanushkin
+    </h1>
+  </a>
+
+  <div class="lg:hidden">
+    <button
+      type="button"
+      id="menu-toggle"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      class="inline-flex items-center justify-center p-2 text-gray-700 transition-all duration-300 ease-in-out hover:text-white"
+      onclick="toggleMenu()"
+    >
+      <span class="sr-only">Open main menu</span>
+      <MenuIcon />
+    </button>
+  </div>
+
+  <NavLinks navStyle="hidden lg:flex space-x-12" />
+
+  <div
+    id="mobile-menu"
+    class="fixed inset-0 z-10 bg-black bg-opacity-50 hidden"
+    onclick="toggleMenu()"
+  >
+  </div>
+  <div
+    id="mobile-menu-content"
+    class="fixed inset-y-0 right-0 z-20 w-3/4 bg-black px-6 py-6 hidden"
+  >
+    <div class="flex items-center justify-between">
+      <button
+        type="button"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        class="inline-flex items-center justify-center p-2 text-gray-700 transition-all duration-300 ease-in-out hover:text-white"
+        onclick="toggleMenu()"
+      >
+        <span class="sr-only">Close menu</span>
+        <CloseIcon />
+      </button>
+    </div>
+
+    <NavLinks navStyle="flex flex-col mt-6 space-y-4" />
+  </div>
+</header>
+
+<script is:inline>
+  const toggleMenu = () => {
+    const menu = document.getElementById("mobile-menu");
+    const menuContent = document.getElementById("mobile-menu-content");
+    const isOpen = menu.classList.contains("hidden");
+    if (isOpen) {
+      menu.classList.remove("hidden");
+      menuContent.classList.remove("hidden");
+      menu.setAttribute("aria-expanded", "true");
+    } else {
+      menu.classList.add("hidden");
+      menuContent.classList.add("hidden");
+      menu.setAttribute("aria-expanded", "false");
+    }
+  };
+</script>

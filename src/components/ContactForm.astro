@@ -1,0 +1,207 @@
+---
+import { WEB3_ACCESS_KEY } from "astro:env/client";
+import EmailIcon from "./icons/EmailIcon.astro";
+import ProfileIcon from "./icons/ProfileIcon.astro";
+---
+
+<form
+  action="https://api.web3forms.com/submit"
+  method="POST"
+  id="form"
+  class="needs-validation max-w-xl w-72 md:w-96"
+  data-astro-reload
+  novalidate
+>
+  <input type="hidden" name="access_key" value={WEB3_ACCESS_KEY} />
+  <input type="checkbox" class="hidden" style="display:none" name="botcheck" />
+
+  <div class="mb-3">
+    <label for="full_name" class="block mb-2 text-sm font-semibold">
+      Name
+    </label>
+    <div class="input-wrapper">
+      <div class="relative">
+        <div
+          class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none"
+        >
+          <ProfileIcon />
+        </div>
+        <input
+          id="full_name"
+          type="text"
+          placeholder="John Doe"
+          required
+          class="border text-sm rounded block w-full ps-10 p-2.5 border-gray-800 bg-gray-900/50 placeholder-gray-400 text-white focus:ring-gray-500 focus:border-gray-500 focus:ring-gray-500 focus:border-gray-500"
+          name="name"
+        />
+      </div>
+      <div class="empty-feedback text-rose-500 text-sm mt-2">
+        Please provide your name.
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="email_address" class="block mb-2 text-sm font-semibold">
+      Email Address
+    </label>
+    <div class="input-wrapper">
+      <div class="relative">
+        <div
+          class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none"
+        >
+          <EmailIcon />
+        </div>
+        <input
+          id="email_address"
+          type="email"
+          placeholder="example@mail.com"
+          name="email"
+          required
+          class="border text-sm rounded block w-full ps-10 p-2.5 border-gray-800 bg-gray-900/50 placeholder-gray-400 text-white focus:ring-gray-500 focus:border-gray-500 focus:ring-gray-500 focus:border-gray-500"
+        />
+      </div>
+      <div class="empty-feedback text-rose-500 text-sm mt-2">
+        Please provide your email address.
+      </div>
+      <div class="invalid-feedback text-rose-500 text-sm mt-2">
+        Please provide a valid email address.
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-5">
+    <label for="message" class="block mb-2 text-sm font-semibold"
+      >Your Message</label
+    >
+    <div class="input-wrapper">
+      <textarea
+        id="message"
+        name="message"
+        required
+        class="border text-sm rounded block w-full p-2.5 border-gray-800 bg-gray-900/50 placeholder-gray-400 text-white focus:ring-gray-500 focus:border-gray-500 focus:ring-gray-500 focus:border-gray-500 h-36"
+      ></textarea>
+      <div class="empty-feedback invalid-feedback text-rose-500 text-sm mt-1">
+        Please enter your message.
+      </div>
+    </div>
+  </div>
+
+  <button
+    class="w-full px-4 py-2.5 text-black bg-gray-300 rounded hover:bg-gray-50 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors"
+    type="submit"
+  >
+    Send Message
+  </button>
+  <div id="result" class="mt-6 text-center h-6 transition-opacity duration-300">
+  </div>
+</form>
+
+<style>
+  .invalid-feedback,
+  .empty-feedback {
+    display: none;
+  }
+
+  .was-validated
+    .input-wrapper:has(:placeholder-shown:invalid)
+    .empty-feedback {
+    display: block;
+  }
+
+  .was-validated
+    .input-wrapper:has(:not(:placeholder-shown):invalid)
+    .invalid-feedback {
+    display: block;
+  }
+
+  .is-invalid,
+  .was-validated :invalid {
+    border-color: #f43f5e;
+  }
+</style>
+
+<script is:inline>
+  document.addEventListener(
+    "astro:page-load",
+    () => {
+      const form = document.getElementById("form");
+      const result = document.getElementById("result");
+      const button = form.querySelector("button");
+      const originalButtonText = button.innerHTML;
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        form.classList.add("was-validated");
+        if (!form.checkValidity()) {
+          form.querySelectorAll(":invalid")[0].focus();
+          return;
+        }
+        const formData = new FormData(form);
+        const object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
+
+        button.disabled = true;
+        button.innerHTML = `
+          <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-black inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+          Send Message
+        `;
+
+        fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: json,
+        })
+          .then(async (response) => {
+            let json = await response.json();
+            if (response.status == 200) {
+              result.classList.add("text-emerald-500");
+              result.style.opacity = "0";
+              setTimeout(() => {
+                result.innerHTML = json.message;
+                result.style.opacity = "1";
+              }, 150);
+            } else {
+              console.log(response);
+              result.classList.add("text-rose-500");
+              result.style.opacity = "0";
+              setTimeout(() => {
+                result.innerHTML = json.message;
+                result.style.opacity = "1";
+              }, 150);
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+            result.classList.add("text-rose-500");
+            result.style.opacity = "0";
+            setTimeout(() => {
+              result.innerHTML = "Something went wrong!";
+              result.style.opacity = "1";
+            }, 150);
+          })
+          .then(function () {
+            button.disabled = false;
+            button.innerHTML = originalButtonText;
+
+            form.reset();
+            form.classList.remove("was-validated");
+            setTimeout(() => {
+              result.style.opacity = "0";
+              setTimeout(() => {
+                result.innerHTML = "";
+                result.classList.remove("text-emerald-500", "text-rose-500");
+              }, 300);
+            }, 5000);
+          });
+      });
+    },
+    { once: true },
+  );
+</script>

@@ -1,0 +1,286 @@
+---
+import Layout from "../layouts/Layout.astro";
+import TimelineItem from "../components/TimelineItem.astro";
+import ArrowIcon from "../components/icons/ArrowIcon.astro";
+import EducationIcon from "../components/icons/EducationIcon.astro";
+import WorkIcon from "../components/icons/WorkIcon.astro";
+import CheckCircleIcon from "../components/icons/CheckCircleIcon.astro";
+import LocationIcon from "../components/icons/LocationIcon.astro";
+import DownloadIcon from "../components/icons/DownloadIcon.astro";
+
+import { Image } from "astro:assets";
+import avatar from "../assets/avatar.webp";
+import lyceum from "../assets/lyceum.webp";
+import skive from "../assets/skive.webp";
+import cz from "../assets/cz.webp";
+import muni from "../assets/muni.webp";
+import vut from "../assets/vut.webp";
+
+const timelineItems = [
+  {
+    date: "2018 - 2020",
+    title: "Business IT Student",
+    location: "Russia",
+    institution: "Business High School",
+    imageUrl: lyceum,
+    imageAlt: "Business High School",
+    isLeft: true,
+  },
+  {
+    date: "April 2019",
+    title: "International Exchange",
+    location: "Denmark",
+    institution: "Skive College",
+    imageUrl: skive,
+    imageAlt: "Skive College",
+    isLeft: true,
+  },
+  {
+    date: "2020 - 2021",
+    title: "Czech Language Course",
+    location: "Czech Republic",
+    institution: "GoStudy Language School",
+    imageUrl: cz,
+    imageAlt: "GoStudy",
+    isLeft: true,
+  },
+  {
+    date: "April 2023 - Now",
+    title: "Frontend Developer",
+    location: "Czech Republic",
+    institution: "Masaryk University",
+    imageUrl: muni,
+    imageAlt: "Masaryk University",
+    isLeft: false,
+  },
+  {
+    date: "2023 - Now",
+    title: "Information Technology Student",
+    location: "Czech Republic",
+    institution: "Brno University of Technology",
+    imageUrl: vut,
+    imageAlt: "Brno University of Technology",
+    isLeft: true,
+  },
+];
+---
+
+<Layout
+  title="About"
+  description="Have a look at my journey and technical expertise"
+>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <div class="flex flex-col justify-center min-h-[calc(100vh-8rem)]">
+      <!-- Hero Section -->
+      <section class="py-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-12">
+          <div class="md:col-span-1">
+            <div class="flex flex-col items-center space-y-6">
+              <div class="relative group">
+                <div
+                  class="absolute -inset-0.5 bg-gradient-to-r from-gray-400 to-gray-600 rounded-full opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt blur"
+                >
+                </div>
+                <div
+                  class="relative rounded-full overflow-hidden w-32 h-32 md:w-48 md:h-48"
+                >
+                  <Image
+                    src={avatar}
+                    alt="Profile picture"
+                    sizes="(max-width: 768px) 8rem, 16rem"
+                    format="webp"
+                    fit="cover"
+                  />
+                </div>
+              </div>
+
+              <div
+                class="w-full border border-gray-800 rounded-xl p-4 bg-gray-900/50"
+              >
+                <h3 class="font-semibold mb-4 text-gray-100">Quick Info</h3>
+                <div class="space-y-4">
+                  <div class="flex items-center gap-3 text-gray-300">
+                    <CheckCircleIcon classes="w-5 h-5 text-white" />
+                    <span>2+ years experience</span>
+                  </div>
+                  <div class="flex items-center gap-3 text-gray-300">
+                    <LocationIcon classes="w-5 h-5 text-white" />
+                    <span>Brno, Czech Republic</span>
+                  </div>
+                  <div class="flex items-center gap-3 text-gray-300">
+                    <WorkIcon classes="w-5 h-5 text-white" />
+                    <span>Frontend Developer</span>
+                  </div>
+                  <div class="flex items-center gap-3 text-gray-300">
+                    <EducationIcon classes="w-5 h-5 text-white" />
+                    <span>IT Student</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-6 w-full">
+                <a
+                  href="/Dmitrii-Ivanushkin-CV.pdf"
+                  download="Dmitrii-Ivanushkin-CV"
+                  class="w-full inline-block text-center px-4 py-2.5 text-black bg-gray-300 rounded hover:bg-gray-50 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors"
+                >
+                  <DownloadIcon />
+                  Download CV
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Main Content -->
+          <div class="md:col-span-3">
+            <div class="space-y-8">
+              <div>
+                <h1 class="text-2xl md:text-4xl font-bold tracking-tight mb-6">
+                  About Me
+                </h1>
+
+                <p class="text-base md:text-xl text-gray-300 leading-relaxed">
+                  I am a software
+                  <span class="font-semibold text-gray-200">developer</span>
+                  with a passion for
+                  <span class="font-semibold text-gray-200">frontend</span>. I
+                  have experience with various technologies and frameworks
+                  specializing in modern
+                  <span class="font-semibold text-gray-200">web</span> and
+                  <span class="font-semibold text-gray-200">mobile</span> applications.
+                </p>
+              </div>
+
+              <div class="border-t border-gray-800 pt-8">
+                <h2
+                  class="text-xl md:text-2xl font-semibold mb-6 text-gray-100"
+                >
+                  Technical Expertise
+                </h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div
+                    class="group border border-gray-800 rounded-xl p-6 bg-gray-900/50 sm:col-span-2"
+                  >
+                    <h3 class="font-semibold mb-3 text-white">Frontend Core</h3>
+                    <p class="text-gray-300">
+                      JavaScript, TypeScript, HTML, CSS, Tailwind, Redux,
+                      Zustand
+                    </p>
+                  </div>
+                  <div
+                    class="group border border-gray-800 rounded-xl p-6 bg-gray-900/50"
+                  >
+                    <h3 class="font-semibold mb-3 text-white">Web Specific</h3>
+                    <p class="text-gray-300">
+                      React, Next.js, Astro, Three.js, MUI
+                    </p>
+                  </div>
+                  <div
+                    class="group border border-gray-800 rounded-xl p-6 bg-gray-900/50"
+                  >
+                    <h3 class="font-semibold mb-3 text-white">
+                      Mobile Specific
+                    </h3>
+                    <p class="text-gray-300">
+                      Expo, React Native, Java, Gluestack UI
+                    </p>
+                  </div>
+                  <div
+                    class="group border border-gray-800 rounded-xl p-6 bg-gray-900/50 sm:col-span-2"
+                  >
+                    <h3 class="font-semibold mb-3 text-white">
+                      Tools & Methods
+                    </h3>
+                    <p class="text-gray-300">
+                      Git, Jest, Cypress, Webpack, Vite, Docker, CI/CD, Linux
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Scroll Button -->
+      <div class="hidden md:flex justify-center">
+        <button
+          id="scrollButton"
+          class="group rounded-full border-2 border-gray-700 w-12 h-16 flex items-center justify-center cursor-pointer hover:bg-gray-800/50 transition-all duration-300 hover:scale-110 backdrop-blur-sm"
+        >
+          <ArrowIcon />
+        </button>
+      </div>
+    </div>
+
+    <!-- Timeline Section -->
+    <section id="journey" class="py-12">
+      <h2 class="text-xl md:text-2xl font-bold text-center mb-12">
+        Journey Timeline
+      </h2>
+
+      <div class="relative pb-12">
+        <div
+          class="absolute left-1/2 -translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-gray-600 to-transparent"
+        >
+        </div>
+
+        {timelineItems.map((item) => <TimelineItem {...item} />)}
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .animate-tilt {
+    animation: tilt 10s infinite linear;
+  }
+
+  @keyframes tilt {
+    0%,
+    100% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(90deg);
+    }
+    50% {
+      transform: rotate(180deg);
+    }
+    75% {
+      transform: rotate(270deg);
+    }
+  }
+</style>
+
+<script>
+  const scrollButton = document.getElementById("scrollButton");
+  const journeySection = document.getElementById("journey");
+
+  scrollButton?.addEventListener("click", () => {
+    journeySection?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  });
+
+  function handleScrollAnimations() {
+    const timelineItems = document.querySelectorAll(".timeline-item");
+
+    timelineItems.forEach((item) => {
+      const rect = item.getBoundingClientRect();
+      const isVisible = rect.top <= window.innerHeight * 0.8;
+
+      if (isVisible && !item.classList.contains("is-visible")) {
+        item.classList.add("is-visible");
+
+        // Remove initial hidden styles and apply visibility
+        item.classList.remove("opacity-0", "translate-y-10");
+        item.classList.add("opacity-100", "translate-y-0");
+      }
+    });
+  }
+
+  window.addEventListener("scroll", handleScrollAnimations);
+  window.addEventListener("DOMContentLoaded", handleScrollAnimations);
+</script>

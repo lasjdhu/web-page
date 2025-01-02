@@ -1,9 +1,10 @@
-# Portfolio web page
+# dmitrii.online
 
-## January 2023 - Present
+## January 2023 - now
 
-### Made with
+### Technology stack
 
-- React
-- Tailwind CSS
-- Three JS
++ Astro
++ React
++ TailwindCSS
++ Three.js
