@@ -4,7 +4,7 @@
 
 ### Technology stack
 
-+ Astro
-+ React
-+ TailwindCSS
-+ Three.js
+- Astro
+- React
+- TailwindCSS
+- Three.js
