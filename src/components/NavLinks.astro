@@ -4,8 +4,7 @@ const { navStyle } = Astro.props;
 const links = [
   { href: "/", text: "Home" },
   { href: "/about", text: "About" },
-  //{ href: "/blog", text: "Blog" },
-  { href: "/projects", text: "Projects" },
+  { href: "/blog", text: "Blog" },
   { href: "/contact", text: "Contact" },
 ];
 ---
@@ -16,9 +15,9 @@ const links = [
       <a
         href={href}
         class={`
-          hover:text-gray-100 focus:text-gray-100 active:text-gray-100
+          hover:text-white focus:text-white active:text-white
           transition-all duration-300
-          ${activeLink === href ? "text-gray-100 font-bold" : "text-gray-400 font-medium"}
+          ${activeLink === href ? "text-white" : "text-gray-400"}
         `}
       >
         {text}
