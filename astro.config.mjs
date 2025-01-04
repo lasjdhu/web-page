@@ -27,9 +27,5 @@ export default defineConfig({
     },
   },
   site: "https://dmitrii.online",
-  integrations: [
-    react(),
-    tailwind(),
-    sitemap(),
-  ],
+  integrations: [react(), tailwind(), sitemap()],
 });

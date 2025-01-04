@@ -15,6 +15,9 @@ import skive from "../assets/skive.webp";
 import cz from "../assets/cz.webp";
 import muni from "../assets/muni.webp";
 import vut from "../assets/vut.webp";
+import webPage from "../assets/web-page-zoom.webp";
+import gameOfLife from "../assets/game-of-life-zoom.webp";
+import cane from "../assets/cane-zoom.webp";
 
 const timelineItems = [
   {
@@ -63,13 +66,36 @@ const timelineItems = [
     isLeft: true,
   },
 ];
+
+const projectItems = [
+  {
+    title: "This Website",
+    description: "Personal portfolio, playground, blog and more",
+    imageUrl: webPage,
+    link: "/",
+    sourceCode: "https://github.com/lasjdhu/web-page",
+  },
+  {
+    title: "Game of Life",
+    description: "Conway's Game of Life simulation",
+    imageUrl: gameOfLife,
+    link: "https://lasjdhu.github.io/game-of-life",
+    sourceCode: "https://github.com/lasjdhu/game-of-life",
+  },
+  {
+    title: "AI Mental Health Monitoring",
+    description:
+      "Cross-platform application that helps people with mental disorders to track their emotions",
+    imageUrl: cane,
+  },
+];
 ---
 
 <Layout
   title="About"
   description="Have a look at my journey and technical expertise"
 >
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
+  <div class="max-w-6xl mx-auto md:px-8 overflow-hidden">
     <div class="flex flex-col justify-center min-h-[calc(100vh-8rem)]">
       <!-- Hero Section -->
       <section class="py-8">
@@ -90,6 +116,7 @@ const timelineItems = [
                     sizes="(max-width: 768px) 8rem, 16rem"
                     format="webp"
                     fit="cover"
+                    loading="eager"
                   />
                 </div>
               </div>
@@ -122,7 +149,7 @@ const timelineItems = [
                 <a
                   href="/Dmitrii-Ivanushkin-CV.pdf"
                   download="Dmitrii-Ivanushkin-CV"
-                  class="w-full inline-block text-center px-4 py-2.5 text-black bg-gray-300 rounded hover:bg-gray-50 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors"
+                  class="w-full inline-block text-center px-4 py-2 text-black bg-gray-300 rounded hover:bg-gray-50 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors"
                 >
                   <DownloadIcon />
                   Download CV
@@ -157,9 +184,9 @@ const timelineItems = [
                 >
                   Technical Expertise
                 </h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div
-                    class="group border border-gray-800 rounded-xl p-6 bg-gray-900/50 sm:col-span-2"
+                    class="group border border-gray-800 rounded-xl p-6 bg-gray-900/50 md:col-span-2"
                   >
                     <h3 class="font-semibold mb-3 text-white">Frontend Core</h3>
                     <p class="text-gray-300">
@@ -186,7 +213,7 @@ const timelineItems = [
                     </p>
                   </div>
                   <div
-                    class="group border border-gray-800 rounded-xl p-6 bg-gray-900/50 sm:col-span-2"
+                    class="group border border-gray-800 rounded-xl p-6 bg-gray-900/50 md:col-span-2"
                   >
                     <h3 class="font-semibold mb-3 text-white">
                       Tools & Methods
@@ -219,13 +246,67 @@ const timelineItems = [
         Journey Timeline
       </h2>
 
-      <div class="relative pb-12">
+      <div class="relative">
         <div
           class="absolute left-1/2 -translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-gray-600 to-transparent"
         >
         </div>
 
         {timelineItems.map((item) => <TimelineItem {...item} />)}
+      </div>
+    </section>
+
+    <!-- Featured Projects Section -->
+    <section id="projects" class="pb-24">
+      <h2 class="text-xl md:text-2xl font-bold text-center mb-12">
+        Featured Projects
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {
+          projectItems.map((item) => (
+            <div class="group border border-gray-800 rounded-xl p-6 bg-gray-900/50 flex flex-col">
+              <Image
+                src={item.imageUrl}
+                alt={item.title}
+                class="rounded-2xl mb-4 h-56 object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                format="webp"
+                fit="cover"
+                loading="eager"
+              />
+              <h3 class="font-semibold mb-3 text-white">{item.title}</h3>
+              <p class="text-gray-300 mb-auto">{item.description}</p>
+              <div class="flex gap-4 flex-col md:flex-row mt-8">
+                {item.link && (
+                  <a
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="w-full md:w-1/2 px-4 py-2 text-sm text-black bg-gray-300 rounded hover:bg-gray-50 transition-colors text-center"
+                  >
+                    Launch Project
+                  </a>
+                )}
+                {item.sourceCode && (
+                  <a
+                    href={item.sourceCode}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="w-full md:w-1/2 px-4 py-2 text-sm text-gray-400 rounded border border-gray-800 bg-gray-900/50 hover:bg-gray-800/50 transition-colors text-center"
+                  >
+                    Source Code
+                  </a>
+                )}
+                {!item.sourceCode && (
+                  <div class="w-full text-gray-400 text-sm text-center">
+                    Restricted Access <span class="font-bold">(︶︹︺)</span>
+                  </div>
+                )}
+              </div>
+            </div>
+          ))
+        }
       </div>
     </section>
   </div>
