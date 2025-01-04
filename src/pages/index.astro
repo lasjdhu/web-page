@@ -8,7 +8,7 @@ import Terminal from "../components/Terminal";
   description="Personal portfolio, playground, blog and more"
 >
   <section
-    class="h-[calc(90vh)] md:h-[100%] md:w-1/2 flex flex-col justify-center px-3 md:px-16 max-w-3xl"
+    class="min-h-[calc(80vh)] md:h-auto md:w-1/2 flex flex-col justify-center md:px-16 max-w-3xl pb-8 md:pb-0"
   >
     <h1 class="text-4xl md:text-6xl font-bold tracking-tight mb-4">
       Hi! <br class="md:hidden" />I'm Dmitrii
@@ -41,9 +41,7 @@ import Terminal from "../components/Terminal";
       </a>
     </div>
   </section>
-  <section
-    class="h-[calc(50vh)] md:h-[100%] md:w-1/2 flex items-center justify-center mb-8 md:mb-0"
-  >
+  <section class="md:w-1/2 flex items-center justify-center mb-8 md:mb-0">
     <Terminal client:only="react" />
   </section>
 </Layout>
