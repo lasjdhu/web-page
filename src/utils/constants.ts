@@ -18,7 +18,7 @@ export const AVAILABLE_COMMANDS = [
 export const INITIAL_HISTORY: HistoryEntry[] = [
   {
     content:
-      "Navigate my website using this terminal\nStart by typing 'help' to see available commands",
+      "WARNING! In the meantime terminal supports only basic commands\nType 'help' to see available options",
     type: "system",
     timestamp: new Date(),
   },
