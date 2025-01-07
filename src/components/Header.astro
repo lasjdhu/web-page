@@ -6,12 +6,12 @@ import CloseIcon from "./icons/CloseIcon.astro";
 ---
 
 <header class="flex flex-wrap items-center justify-between px-5 py-5 md:px-10">
-  <a href="/" class="flex items-center">
+  <div class="flex items-center">
     <Model client:load transition:persist />
-    <h1 class="text-md font-semibold tracking-tighter ml-4 md:text-2xl">
+    <a href="/" class="text-md font-semibold tracking-tighter ml-4 md:text-2xl">
       Dmitrii Ivanushkin
-    </h1>
-  </a>
+    </a>
+  </div>
 
   <div class="lg:hidden">
     <button
