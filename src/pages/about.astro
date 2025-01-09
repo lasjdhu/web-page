@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import TimelineItem from "../components/TimelineItem.astro";
-import ArrowIcon from "../components/icons/ArrowIcon.astro";
+import ScrollButton from "../components/ScrollButton.astro";
 import EducationIcon from "../components/icons/EducationIcon.astro";
 import WorkIcon from "../components/icons/WorkIcon.astro";
 import CheckCircleIcon from "../components/icons/CheckCircleIcon.astro";
@@ -168,7 +168,9 @@ const projectItems = [
 
                 <p class="text-base md:text-lg text-gray-300 leading-relaxed">
                   I am a
-                  <span class="font-semibold text-gray-200">developer</span>
+                  <span class="font-semibold text-gray-200"
+                    >software developer</span
+                  >
                   with a passion for
                   <span class="font-semibold text-gray-200">frontend</span>. I
                   have experience with various technologies and frameworks
@@ -229,15 +231,7 @@ const projectItems = [
         </div>
       </section>
 
-      <!-- Scroll Button -->
-      <div class="hidden md:flex justify-center">
-        <button
-          id="scrollButton"
-          class="group rounded-full border-2 border-gray-700 w-12 h-16 flex items-center justify-center cursor-pointer hover:bg-gray-800/50 transition-all duration-300 hover:scale-110 backdrop-blur-sm"
-        >
-          <ArrowIcon />
-        </button>
-      </div>
+      <ScrollButton classes="hidden md:flex justify-center" />
     </div>
 
     <!-- Timeline Section -->

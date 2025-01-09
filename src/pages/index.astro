@@ -1,7 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import ScrollButton from "../components/ScrollButton.astro";
+import Note from "../components/Note.astro";
 import Terminal from "../components/Terminal";
-import ArrowIcon from "../components/icons/ArrowIcon.astro";
 ---
 
 <Layout
@@ -9,13 +10,13 @@ import ArrowIcon from "../components/icons/ArrowIcon.astro";
   description="Personal portfolio, playground, blog and more"
 >
   <section
-    class="min-h-[calc(100vh-6rem)] md:min-h-[70vh] md:w-1/2 flex flex-col justify-center md:px-16 max-w-3xl pb-8 md:pb-0"
+    class="min-h-[calc(100vh-6rem)] md:min-h-0 md:w-1/2 flex flex-col justify-center md:px-16 max-w-3xl"
   >
     <h1 class="text-4xl md:text-6xl font-bold tracking-tight">
       Hi! <br class="md:hidden" />I'm Dmitrii
     </h1>
     <h2 class="text-2xl md:text-4xl font-bold tracking-tight mt-4">
-      Frontend developer
+      Software developer
     </h2>
     <p
       class="text-base md:text-lg text-gray-300 leading-relaxed tracking-wide mt-4"
@@ -39,32 +40,18 @@ import ArrowIcon from "../components/icons/ArrowIcon.astro";
     <!--    Visit my blog-->
     <!--  </a>-->
     <!--</div>-->
-    <div
-      class="bg-sky-900/50 p-4 mt-8 mb-16 md:mb-0 rounded border border-gray-700"
-    >
-      <span class="text-gray-300 font-bold mr-2">🚧 Little note:</span>
-      <p class="text-sm leading-relaxed text-gray-300 mt-2">
-        Very soon the terminal will contain all the information from this
-        website. Now it's a playground for you to play with. Try typing <code
-          class="py-0.5 px-1.5 bg-sky-800/50 rounded">help</code
-        > to get started. Stay tuned! 🚀
-      </p>
-    </div>
-
-    <!-- Scroll Button -->
-    <div class="flex md:hidden justify-center">
-      <button
-        id="scrollButton"
-        class="group rounded-full border-2 border-gray-700 w-12 h-16 flex items-center justify-center cursor-pointer hover:bg-gray-800/50 transition-all duration-300 hover:scale-110 backdrop-blur-sm"
-      >
-        <ArrowIcon />
-      </button>
-    </div>
+    <Note
+      classes="hidden md:flex md:flex-col bg-sky-900/50 p-4 mt-8 rounded border border-gray-700"
+    />
+    <ScrollButton classes="flex md:hidden justify-center mt-24" />
   </section>
   <section
     id="terminal"
-    class="md:w-1/2 flex items-center justify-center mb-16 md:mb-0"
+    class="md:w-1/2 flex flex-col items-center justify-center mb-16 md:mb-0"
   >
+    <Note
+      classes="flex flex-col md:hidden bg-sky-900/50 p-4 mb-8 rounded border border-gray-700"
+    />
     <Terminal client:only="react" />
   </section>
 </Layout>
