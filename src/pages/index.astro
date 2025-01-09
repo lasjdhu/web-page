@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Terminal from "../components/Terminal";
+import ArrowIcon from "../components/icons/ArrowIcon.astro";
 ---
 
 <Layout
@@ -8,7 +9,7 @@ import Terminal from "../components/Terminal";
   description="Personal portfolio, playground, blog and more"
 >
   <section
-    class="min-h-[calc(80vh)] md:h-auto md:w-1/2 flex flex-col justify-center md:px-16 max-w-3xl pb-8 md:pb-0"
+    class="min-h-[calc(100vh-8rem)] md:min-h-[70vh] md:w-1/2 flex flex-col justify-center md:px-16 max-w-3xl pb-8 md:pb-0"
   >
     <h1 class="text-4xl md:text-6xl font-bold tracking-tight">
       Hi! <br class="md:hidden" />I'm Dmitrii
@@ -38,7 +39,9 @@ import Terminal from "../components/Terminal";
     <!--    Visit my blog-->
     <!--  </a>-->
     <!--</div>-->
-    <div class="bg-sky-900/50 p-4 mt-8 rounded border border-gray-700">
+    <div
+      class="bg-sky-900/50 p-4 mt-8 mb-16 md:mb-0 rounded border border-gray-700"
+    >
       <span class="text-gray-300 font-bold mr-2">🚧 Little note:</span>
       <p class="text-sm leading-relaxed text-gray-300 mt-2">
         Very soon the terminal will contain all the information from this
@@ -47,8 +50,33 @@ import Terminal from "../components/Terminal";
         > to get started. Stay tuned! 🚀
       </p>
     </div>
+
+    <!-- Scroll Button -->
+    <div class="flex md:hidden justify-center">
+      <button
+        id="scrollButton"
+        class="group rounded-full border-2 border-gray-700 w-12 h-16 flex items-center justify-center cursor-pointer hover:bg-gray-800/50 transition-all duration-300 hover:scale-110 backdrop-blur-sm"
+      >
+        <ArrowIcon />
+      </button>
+    </div>
   </section>
-  <section class="md:w-1/2 flex items-center justify-center mb-8 md:mb-0">
+  <section
+    id="terminal"
+    class="md:w-1/2 flex items-center justify-center mb-16 md:mb-0"
+  >
     <Terminal client:only="react" />
   </section>
 </Layout>
+
+<script>
+  const scrollButton = document.getElementById("scrollButton");
+  const terminalSection = document.getElementById("terminal");
+
+  scrollButton?.addEventListener("click", () => {
+    terminalSection?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  });
+</script>
