@@ -9,12 +9,12 @@ import LinkedInIcon from "../components/icons/LinkedInIcon.astro";
   title="Contact"
   description="Reach out to me for questions, collaborations or just to say hi"
 >
-  <div class="flex flex-col md:flex-row max-w-7xl md:px-8">
+  <div class="flex flex-col md:flex-row max-w-7xl md:px-8 md:items-center">
     <section class="py-8 md:pr-12">
       <h1 class="text-2xl md:text-4xl font-bold tracking-tight mb-6">
         Have a question? Want to work together?
       </h1>
-      <p class="text-gray-300 mb-6">
+      <p class="text-gray-300 md:mb-6 mb-4">
         Leave me a message and I'll get in touch with you as soon as possible.
         <br />
         You can also find me on social media.
@@ -25,6 +25,7 @@ import LinkedInIcon from "../components/icons/LinkedInIcon.astro";
           href="https://github.com/lasjdhu"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="GitHub"
           class="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full border-2 border-gray-300 hover:bg-gray-600 hover:bg-opacity-50 text-gray-300 transition-colors duration-200"
         >
           <GitHubIcon classes="w-5 h-5 md:w-6 md:h-6" />
@@ -33,6 +34,7 @@ import LinkedInIcon from "../components/icons/LinkedInIcon.astro";
           href="https://linkedin.com/in/dmitrii-ivanushkin"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="LinkedIn"
           class="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full border-2 border-gray-300 hover:bg-blue-800 hover:bg-opacity-50 text-gray-300 transition-colors duration-200"
         >
           <LinkedInIcon classes="-5 h-5 md:w-6 md:h-6" />
@@ -40,7 +42,7 @@ import LinkedInIcon from "../components/icons/LinkedInIcon.astro";
       </div>
     </section>
 
-    <section class="flex mx-auto">
+    <section class="flex">
       <ContactForm />
     </section>
   </div>
