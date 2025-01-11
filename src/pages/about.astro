@@ -107,17 +107,16 @@ const projectItems = [
                   class="absolute -inset-0.5 bg-gradient-to-r from-gray-400 to-gray-600 rounded-full opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt blur"
                 >
                 </div>
-                <div
-                  class="relative rounded-full overflow-hidden w-32 h-32 md:w-48 md:h-48"
-                >
+                <div class="relative rounded-full w-48 h-48 overflow-hidden">
                   <Image
                     src={avatar}
                     alt="Profile picture"
-                    sizes="(max-width: 768px) 8rem, 16rem"
+                    width={192}
+                    height={192}
                     format="webp"
                     fit="cover"
                     loading="eager"
-                    priority={true}
+                    quality={100}
                     class="opacity-0 duration-700 ease-in-out"
                     onload="this.classList.remove('opacity-0')"
                   />
@@ -268,11 +267,11 @@ const projectItems = [
               <Image
                 src={item.imageUrl}
                 alt={item.title}
-                class="rounded-2xl mb-4 h-56 object-contain"
-                sizes="(max-width: 768px) 8rem, 16rem"
+                class="rounded-xl mb-4"
+                width={420}
+                height={288}
                 format="webp"
-                quality="100"
-                fit="cover"
+                quality={100}
               />
               <h3 class="font-semibold mb-3 text-white">{item.title}</h3>
               <p class="text-gray-300 mb-auto">{item.description}</p>

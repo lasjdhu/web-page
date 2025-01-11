@@ -20,12 +20,14 @@ const { date, title, location, institution, imageUrl, imageAlt, isLeft } =
         isLeft ? (
           <div class="p-6 rounded-lg border border-gray-800 bg-gray-900/50 transition-all duration-300 backdrop-blur-sm">
             <div class="flex flex-row gap-4 items-center">
-              <div class="relative flex items-center w-12 h-16 mr-auto">
+              <div class="relative flex items-center mr-auto">
                 <Image
                   src={imageUrl}
                   alt={imageAlt}
+                  width={64}
+                  height={64}
                   format="webp"
-                  fit="cover"
+                  fit="contain"
                 />
               </div>
               <div class="flex-1">
@@ -75,12 +77,14 @@ const { date, title, location, institution, imageUrl, imageAlt, isLeft } =
                   <span>{location}</span>
                 </div>
               </div>
-              <div class="relative flex items-center w-24 h-12 mr-auto">
+              <div class="relative flex items-center ml-auto">
                 <Image
                   src={imageUrl}
                   alt={imageAlt}
+                  width={128}
+                  height={64}
                   format="webp"
-                  fit="cover"
+                  fit="contain"
                 />
               </div>
             </div>
@@ -129,13 +133,14 @@ const { date, title, location, institution, imageUrl, imageAlt, isLeft } =
               <span>{location}</span>
             </div>
           </div>
-          <div class="relative flex items-center w-10 h-5 flex-shrink-0">
+          <div class="relative flex items-center flex-shrink-0">
             <Image
               src={imageUrl}
               alt={imageAlt}
-              sizes="(max-width: 768px) 4rem, 8rem"
+              width={48}
+              height={48}
               format="webp"
-              fit="cover"
+              fit="contain"
             />
           </div>
         </div>
