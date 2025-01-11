@@ -24,6 +24,7 @@ If you (for some reason) want to setup dev environment for this project you can 
 ```sh
 pnpm i
 ```
+
 ```sh
 pnpm dev
 ```

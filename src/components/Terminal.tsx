@@ -133,6 +133,7 @@ export default function Terminal() {
               </span>
             </pre>
             <textarea
+              name="terminal"
               aria-labelledby="terminal-label"
               ref={textareaRef}
               value={`${getPrompt()}${input}`}
