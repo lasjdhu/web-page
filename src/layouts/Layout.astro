@@ -2,50 +2,61 @@
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import PostHog from "../components/Posthog.astro";
-const { title, description } = Astro.props;
 import { ClientRouter } from "astro:transitions";
+import webPage from "../assets/web-page.png";
+
+const { title, description } = Astro.props;
+const siteName = "Dmitrii Ivanushkin";
+const defaultDescription = "Personal portfolio, playground, blog and more";
+const imageUrl = new URL(webPage.src, Astro.url).toString();
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
-    <meta
-      name="description"
-      content={description || "Personal portfolio, playground, blog and more"}
-    />
 
-    <meta property="og:title" content={title || "Dmitrii Ivanushkin"} />
+    <title>{title || siteName}</title>
+    <meta name="title" content={title || siteName} />
+    <meta name="description" content={description || defaultDescription} />
+    <meta name="theme-color" content="#000000" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={title || siteName} />
     <meta
       property="og:description"
-      content={description || "Default description"}
+      content={description || defaultDescription}
     />
-    <!--<meta property="og:image" content="/path-to-image.jpg" />-->
-    <meta property="og:url" content={Astro.url} />
-    <meta property="og:type" content="website" />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:site_name" content={siteName} />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title || "Dmitrii Ivanushkin"} />
+    <meta name="twitter:url" content={Astro.url} />
+    <meta name="twitter:title" content={title || siteName} />
     <meta
       name="twitter:description"
-      content={description || "Personal portfolio, playground, blog and more"}
+      content={description || defaultDescription}
     />
-    <meta name="twitter:image" content="/path-to-image.jpg" />
+    <meta name="twitter:image" content={imageUrl} />
 
     <link rel="canonical" href={Astro.url} />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <title>{title || "Dmitrii Ivanushkin"}</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/manifest.json" />
 
     <ClientRouter />
     <PostHog />
   </head>
-  <body class="flex flex-col min-h-screen text-white bg-black">
+  <body class="flex flex-col min-h-screen text-white bg-black antialiased">
     <Header />
     <main
-      class="flex flex-col items-center justify-center my-auto mx-12 lg:flex-row align-center"
+      class="flex-1 flex flex-col items-center justify-center mx-12 my-auto lg:flex-row"
       transition:animate="fade"
     >
       <slot />
@@ -55,11 +66,11 @@ import { ClientRouter } from "astro:transitions";
 </html>
 
 <style>
-  html,
-  body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scrollbar-gutter: stable;
   }
 </style>
