@@ -16,4 +16,4 @@
 - TailwindCSS
 - Three.js
 
-![Screenshot](src/assets/web-page-zoom.webp)
+![Screenshot](src/assets/web-page.png)
