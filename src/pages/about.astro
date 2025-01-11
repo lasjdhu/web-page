@@ -4,20 +4,20 @@ import TimelineItem from "../components/TimelineItem.astro";
 import ScrollButton from "../components/ScrollButton.astro";
 import EducationIcon from "../components/icons/EducationIcon.astro";
 import WorkIcon from "../components/icons/WorkIcon.astro";
-import CheckCircleIcon from "../components/icons/CheckCircleIcon.astro";
+import StarIcon from "../components/icons/StarIcon.astro";
 import LocationIcon from "../components/icons/LocationIcon.astro";
 import DownloadIcon from "../components/icons/DownloadIcon.astro";
 
 import { Image } from "astro:assets";
-import avatar from "../assets/avatar.webp";
-import lyceum from "../assets/lyceum.webp";
-import skive from "../assets/skive.webp";
-import cz from "../assets/cz.webp";
-import muni from "../assets/muni.webp";
-import vut from "../assets/vut.webp";
-import webPage from "../assets/web-page-zoom.webp";
-import gameOfLife from "../assets/game-of-life-zoom.webp";
-import cane from "../assets/cane-zoom.webp";
+import avatar from "../assets/avatar.jpg";
+import lyceum from "../assets/lyceum.png";
+import skive from "../assets/skive.png";
+import cz from "../assets/cz.png";
+import muni from "../assets/muni.png";
+import vut from "../assets/vut.png";
+import webPage from "../assets/web-page.png";
+import gameOfLife from "../assets/game-of-life.png";
+import cane from "../assets/cane.png";
 
 const timelineItems = [
   {
@@ -49,7 +49,7 @@ const timelineItems = [
   },
   {
     date: "April 2023 - Now",
-    title: "Frontend Developer",
+    title: "Front-end Developer",
     location: "Czech Republic",
     institution: "Masaryk University",
     imageUrl: muni,
@@ -117,6 +117,9 @@ const projectItems = [
                     format="webp"
                     fit="cover"
                     loading="eager"
+                    priority={true}
+                    class="opacity-0 duration-700 ease-in-out"
+                    onload="this.classList.remove('opacity-0')"
                   />
                 </div>
               </div>
@@ -127,7 +130,7 @@ const projectItems = [
                 <h3 class="font-semibold mb-4 text-gray-100">Quick Info</h3>
                 <div class="space-y-4">
                   <div class="flex items-center gap-3 text-gray-300">
-                    <CheckCircleIcon classes="w-5 h-5 text-white" />
+                    <StarIcon classes="w-5 h-5 text-white" />
                     <span>2 years of experience</span>
                   </div>
                   <div class="flex items-center gap-3 text-gray-300">
@@ -136,7 +139,7 @@ const projectItems = [
                   </div>
                   <div class="flex items-center gap-3 text-gray-300">
                     <WorkIcon classes="w-5 h-5 text-white" />
-                    <span>Frontend Developer</span>
+                    <span>Front-end Developer</span>
                   </div>
                   <div class="flex items-center gap-3 text-gray-300">
                     <EducationIcon classes="w-5 h-5 text-white" />
@@ -169,14 +172,16 @@ const projectItems = [
                 <p class="text-base md:text-lg text-gray-300 leading-relaxed">
                   I am a
                   <span class="font-semibold text-gray-200"
-                    >software developer</span
+                    >software engineer</span
                   >
-                  with a passion for
-                  <span class="font-semibold text-gray-200">frontend</span>. I
-                  have experience with various technologies and frameworks
-                  specializing in modern
-                  <span class="font-semibold text-gray-200">web</span> and
-                  <span class="font-semibold text-gray-200">mobile</span> applications.
+                  who loves
+                  <span class="font-semibold text-gray-200">front-end</span> development.
+                  <br />
+                  I specialize in making modern <span
+                    class="font-semibold text-gray-200">web</span
+                  > and
+                  <span class="font-semibold text-gray-200">mobile</span> apps and
+                  have experience with various technologies and frameworks.
                 </p>
               </div>
 
@@ -190,7 +195,7 @@ const projectItems = [
                   <div
                     class="group border border-gray-800 rounded-xl p-6 bg-gray-900/50 md:col-span-2"
                   >
-                    <h3 class="font-semibold mb-3 text-white">Frontend Core</h3>
+                    <h3 class="font-semibold mb-3 text-white">Core</h3>
                     <p class="text-gray-300">
                       JavaScript, TypeScript, HTML, CSS, Tailwind, Redux,
                       Zustand
@@ -263,11 +268,11 @@ const projectItems = [
               <Image
                 src={item.imageUrl}
                 alt={item.title}
-                class="rounded-2xl mb-4 h-56 object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
+                class="rounded-2xl mb-4 h-56 object-contain"
+                sizes="(max-width: 768px) 8rem, 16rem"
                 format="webp"
+                quality="100"
                 fit="cover"
-                loading="eager"
               />
               <h3 class="font-semibold mb-3 text-white">{item.title}</h3>
               <p class="text-gray-300 mb-auto">{item.description}</p>
