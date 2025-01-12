@@ -18,7 +18,7 @@ const { date, title, location, institution, imageUrl, imageAlt, isLeft } =
     <div class="w-1/2 pr-8 text-right">
       {
         isLeft ? (
-          <div class="p-6 rounded-lg border border-gray-800 bg-gray-900/50 transition-all duration-300 backdrop-blur-sm">
+          <div class="card backdrop-blur-sm">
             <div class="flex flex-row gap-4 items-center">
               <div class="relative flex items-center mr-auto">
                 <Image
@@ -31,13 +31,9 @@ const { date, title, location, institution, imageUrl, imageAlt, isLeft } =
                 />
               </div>
               <div class="flex-1">
-                <h3 class="text-xl font-semibold mb-1.5 text-gray-100">
-                  {title}
-                </h3>
-                <h4 class="text-base font-medium text-gray-200 mb-6">
-                  {institution}
-                </h4>
-                <div class="absolute flex gap-1.5 text-sm text-gray-400 items-center right-6 bottom-6">
+                <h3 class="heading-3">{title}</h3>
+                <p class="paragraph mt-1 mb-6">{institution}</p>
+                <div class="absolute flex gap-1.5 text-xs md:text-sm text-gray-400 items-center right-6 bottom-6">
                   <LocationIcon classes="w-4 h-4" />
                   <span>{location}</span>
                 </div>
@@ -45,12 +41,12 @@ const { date, title, location, institution, imageUrl, imageAlt, isLeft } =
             </div>
           </div>
         ) : (
-          <p class="text-gray-500 font-medium">{date}</p>
+          <p class="paragraph">{date}</p>
         )
       }
     </div>
     <div
-      class="absolute left-1/2 -translate-x-1/2 w-12 h-12 bg-gray-900 rounded-full border-4 border-gray-700 shadow-lg flex items-center justify-center z-10"
+      class="absolute left-1/2 -translate-x-1/2 w-12 h-12 bg-gray-950 rounded-full border-4 border-gray-800 shadow-xl flex items-center justify-center z-10"
     >
       {
         isLeft ? (
@@ -63,15 +59,11 @@ const { date, title, location, institution, imageUrl, imageAlt, isLeft } =
     <div class="w-1/2 pl-8">
       {
         !isLeft ? (
-          <div class="group p-6 rounded-lg border border-gray-800 bg-gray-900/50 transition-all duration-300 backdrop-blur-sm">
+          <div class="card backdrop-blur-sm">
             <div class="flex flex-row gap-4 items-center">
               <div class="flex-1">
-                <h3 class="text-xl font-semibold mb-1.5 text-gray-100">
-                  {title}
-                </h3>
-                <h4 class="text-base font-medium text-gray-200 mb-6">
-                  {institution}
-                </h4>
+                <h3 class="heading-3">{title}</h3>
+                <p class="paragraph mt-1 mb-6">{institution}</p>
                 <div class="absolute flex gap-1.5 text-sm text-gray-400 items-center left-6 bottom-6">
                   <LocationIcon classes="w-4 h-4" />
                   <span>{location}</span>
@@ -90,7 +82,7 @@ const { date, title, location, institution, imageUrl, imageAlt, isLeft } =
             </div>
           </div>
         ) : (
-          <p class="text-gray-500 font-medium">{date}</p>
+          <p class="paragraph">{date}</p>
         )
       }
     </div>
@@ -98,13 +90,13 @@ const { date, title, location, institution, imageUrl, imageAlt, isLeft } =
 
   <div class="md:hidden">
     <div
-      class="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-700"
+      class="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-800"
       aria-hidden="true"
     >
     </div>
     <div class="flex items-center mb-4">
       <div
-        class="absolute left-4 -translate-x-1/2 w-8 h-8 bg-gray-900 rounded-full border-4 border-gray-700 shadow-lg flex items-center justify-center"
+        class="absolute left-4 -translate-x-1/2 w-8 h-8 bg-gray-950 rounded-full border-4 border-gray-800 shadow-xl flex items-center justify-center"
       >
         {
           isLeft ? (
@@ -114,20 +106,20 @@ const { date, title, location, institution, imageUrl, imageAlt, isLeft } =
           )
         }
       </div>
-      <p class="ml-12 text-sm text-gray-500 font-medium">{date}</p>
+      <p class="paragraph ml-12">
+        {date}
+      </p>
     </div>
     <div class="ml-12">
-      <div
-        class="p-4 rounded-lg border border-gray-800 bg-gray-950 transition-all duration-300 backdrop-blur-sm"
-      >
+      <div class="card backdrop-blur-sm">
         <div class="flex flex-row gap-3 items-center">
           <div class="flex-1">
-            <h3 class="text-md font-semibold mb-1.5 text-gray-100">
+            <h3 class="heading-3">
               {title}
             </h3>
-            <h4 class="text-sm font-medium text-gray-200 mb-2">
+            <p class="paragraph my-1">
               {institution}
-            </h4>
+            </p>
             <div class="flex gap-1.5 text-xs text-gray-400 items-center">
               <LocationIcon classes="w-4 h-4" />
               <span>{location}</span>
