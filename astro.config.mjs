@@ -27,7 +27,10 @@ export default defineConfig({
     },
   },
   site: "https://dmitrii.online",
-  trailingSlash: 'never',
+  trailingSlash: "never",
+  build: {
+    format: "file",
+  },
   integrations: [react(), tailwind(), sitemap()],
   image: {
     experimentalLayout: "responsive",
