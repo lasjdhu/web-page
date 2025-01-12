@@ -7,6 +7,7 @@ import WorkIcon from "../components/icons/WorkIcon.astro";
 import StarIcon from "../components/icons/StarIcon.astro";
 import LocationIcon from "../components/icons/LocationIcon.astro";
 import DownloadIcon from "../components/icons/DownloadIcon.astro";
+import CodeIcon from "../components/icons/CodeIcon.astro";
 
 import { Image } from "astro:assets";
 import avatar from "../assets/avatar.jpg";
@@ -97,14 +98,13 @@ const projectItems = [
 >
   <div class="max-w-7xl mx-auto md:px-8 overflow-hidden">
     <div class="flex flex-col justify-center min-h-[calc(100vh-8rem)]">
-      <!-- Hero Section -->
-      <section class="py-8">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-12">
+      <section class="pt-12 pb-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div class="md:col-span-1">
             <div class="flex flex-col items-center space-y-6">
               <div class="relative group">
                 <div
-                  class="absolute -inset-0.5 bg-gradient-to-r from-gray-400 to-gray-600 rounded-full opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt blur"
+                  class="absolute -inset-0.5 bg-gradient-to-r from-gray-400 to-gray-600 rounded-full opacity-75 group-hover:opacity-100 transition duration-700 group-hover:duration-200 animate-tilt blur"
                 >
                 </div>
                 <div class="relative rounded-full w-48 h-48 overflow-hidden">
@@ -123,35 +123,31 @@ const projectItems = [
                 </div>
               </div>
 
-              <div
-                class="w-full border border-gray-800 rounded-xl p-4 bg-gray-900/50"
-              >
-                <h3 class="font-semibold mb-4 text-gray-100">Quick Info</h3>
-                <div class="space-y-4">
-                  <div class="flex items-center gap-3 text-gray-300">
-                    <StarIcon classes="w-5 h-5 text-white" />
-                    <span>2 years of experience</span>
-                  </div>
-                  <div class="flex items-center gap-3 text-gray-300">
-                    <LocationIcon classes="w-5 h-5 text-white" />
-                    <span>Brno, Czech Republic</span>
-                  </div>
-                  <div class="flex items-center gap-3 text-gray-300">
-                    <WorkIcon classes="w-5 h-5 text-white" />
-                    <span>Front-end Developer</span>
-                  </div>
-                  <div class="flex items-center gap-3 text-gray-300">
-                    <EducationIcon classes="w-5 h-5 text-white" />
-                    <span>IT Student</span>
-                  </div>
+              <div class="w-full card">
+                <h3 class="heading-3">Key Details</h3>
+                <div class="flex items-center gap-3 mt-4">
+                  <StarIcon classes="w-5 h-5 text-gray-100" />
+                  <p class="paragraph">2 years of experience</p>
+                </div>
+                <div class="flex items-center gap-3 my-3">
+                  <LocationIcon classes="w-5 h-5 text-gray-100" />
+                  <p class="paragraph">Brno, Czech Republic</p>
+                </div>
+                <div class="flex items-center gap-3 my-3">
+                  <WorkIcon classes="w-5 h-5 text-gray-100" />
+                  <p class="paragraph">Masaryk University</p>
+                </div>
+                <div class="flex items-center gap-3 md:mb-3">
+                  <EducationIcon classes="w-5 h-5 text-gray-100" />
+                  <p class="paragraph">BUT IT Student</p>
                 </div>
               </div>
 
-              <div class="mt-6 w-full">
+              <div class="w-full">
                 <a
                   href="/Dmitrii-Ivanushkin-CV.pdf"
                   download="Dmitrii-Ivanushkin-CV"
-                  class="w-full inline-block text-center px-4 py-2 text-black bg-gray-300 rounded hover:bg-gray-50 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors"
+                  class="w-full inline-block text-center px-4 py-2 text-black bg-gray-300 rounded hover:bg-gray-50 focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 transition-colors"
                 >
                   <DownloadIcon />
                   Download CV
@@ -160,75 +156,47 @@ const projectItems = [
             </div>
           </div>
 
-          <!-- Main Content -->
-          <div class="md:col-span-3">
-            <div class="space-y-8">
-              <div>
-                <h1 class="text-2xl md:text-4xl font-bold tracking-tight mb-6">
-                  About Me
-                </h1>
+          <div class="md:col-span-3 space-y-6">
+            <h1 class="heading-1">About Me</h1>
+            <p class="paragraph">
+              I am a
+              <span class="font-semibold text-gray-100">software engineer</span>
+              who loves
+              <span class="font-semibold text-gray-100">front-end</span> development.
+              I specialize in making modern <span
+                class="font-semibold text-gray-100">web</span
+              > and
+              <span class="font-semibold text-gray-100">mobile</span> apps and have
+              experience with various technologies and frameworks.
+            </p>
 
-                <p class="text-base md:text-lg text-gray-300 leading-relaxed">
-                  I am a
-                  <span class="font-semibold text-gray-200"
-                    >software engineer</span
-                  >
-                  who loves
-                  <span class="font-semibold text-gray-200">front-end</span> development.
-                  <br />
-                  I specialize in making modern <span
-                    class="font-semibold text-gray-200">web</span
-                  > and
-                  <span class="font-semibold text-gray-200">mobile</span> apps and
-                  have experience with various technologies and frameworks.
+            <h2 class="heading-2 border-t pt-6 border-gray-800">
+              Technical Expertise
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="group card md:col-span-2">
+                <h3 class="heading-3">Core</h3>
+                <p class="paragraph mt-2">
+                  JavaScript, TypeScript, HTML, CSS, Tailwind, Redux, Zustand
                 </p>
               </div>
-
-              <div class="border-t border-gray-800 pt-8">
-                <h2
-                  class="text-xl md:text-2xl font-semibold mb-6 text-gray-100"
-                >
-                  Technical Expertise
-                </h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div
-                    class="group border border-gray-800 rounded-xl p-6 bg-gray-900/50 md:col-span-2"
-                  >
-                    <h3 class="font-semibold mb-3 text-white">Core</h3>
-                    <p class="text-gray-300">
-                      JavaScript, TypeScript, HTML, CSS, Tailwind, Redux,
-                      Zustand
-                    </p>
-                  </div>
-                  <div
-                    class="group border border-gray-800 rounded-xl p-6 bg-gray-900/50"
-                  >
-                    <h3 class="font-semibold mb-3 text-white">Web Specific</h3>
-                    <p class="text-gray-300">
-                      React, Next.js, Astro, Three.js, MUI
-                    </p>
-                  </div>
-                  <div
-                    class="group border border-gray-800 rounded-xl p-6 bg-gray-900/50"
-                  >
-                    <h3 class="font-semibold mb-3 text-white">
-                      Mobile Specific
-                    </h3>
-                    <p class="text-gray-300">
-                      Expo, React Native, Java, Gluestack UI
-                    </p>
-                  </div>
-                  <div
-                    class="group border border-gray-800 rounded-xl p-6 bg-gray-900/50 md:col-span-2"
-                  >
-                    <h3 class="font-semibold mb-3 text-white">
-                      Tools & Methods
-                    </h3>
-                    <p class="text-gray-300">
-                      Git, Jest, Cypress, Webpack, Vite, Docker, CI/CD, Jira
-                    </p>
-                  </div>
-                </div>
+              <div class="group card">
+                <h3 class="heading-3">Web Specific</h3>
+                <p class="paragraph mt-2">
+                  React, Next.js, Astro, Three.js, MUI
+                </p>
+              </div>
+              <div class="group card">
+                <h3 class="heading-3">Mobile Specific</h3>
+                <p class="paragraph mt-2">
+                  Expo, React Native, Java, Gluestack UI
+                </p>
+              </div>
+              <div class="group card md:col-span-2">
+                <h3 class="heading-3">Tools & Methods</h3>
+                <p class="paragraph mt-2">
+                  Git, Jest, Cypress, Webpack, Vite, Docker, CI/CD, Jira
+                </p>
               </div>
             </div>
           </div>
@@ -238,15 +206,12 @@ const projectItems = [
       <ScrollButton classes="hidden md:flex justify-center" />
     </div>
 
-    <!-- Timeline Section -->
-    <section id="journey" class="py-12">
-      <h2 class="text-xl md:text-2xl font-bold text-center mb-12">
-        Journey Timeline
-      </h2>
+    <section id="journey" class="py-6">
+      <h2 class="heading-2 text-center">Journey Timeline</h2>
 
-      <div class="relative">
+      <div class="relative mt-12">
         <div
-          class="absolute left-1/2 -translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-gray-600 to-transparent"
+          class="absolute left-1/2 -translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-gray-600 to-gray-900/50"
         >
         </div>
 
@@ -254,28 +219,44 @@ const projectItems = [
       </div>
     </section>
 
-    <!-- Featured Projects Section -->
-    <section id="projects" class="pb-24">
-      <h2 class="text-xl md:text-2xl font-bold text-center mb-12">
-        Featured Projects
-      </h2>
+    <section class="pb-24">
+      <h2 class="heading-2 text-center">Featured Projects</h2>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
         {
           projectItems.map((item) => (
-            <div class="group border border-gray-800 rounded-xl p-6 bg-gray-900/50 flex flex-col">
-              <Image
-                src={item.imageUrl}
-                alt={item.title}
-                class="rounded-xl mb-4"
-                width={420}
-                height={288}
-                format="webp"
-                quality={100}
-              />
-              <h3 class="font-semibold mb-3 text-white">{item.title}</h3>
-              <p class="text-gray-300 mb-auto">{item.description}</p>
-              <div class="flex gap-4 flex-col md:flex-row mt-8">
+            <div class="group card flex flex-col">
+              {item.link ? (
+                <a
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="block cursor-pointer md:transition-all md:duration-700 md:hover:scale-105"
+                >
+                  <Image
+                    src={item.imageUrl}
+                    alt={item.title}
+                    class="rounded-xl mb-4"
+                    width={420}
+                    height={288}
+                    format="webp"
+                    quality={100}
+                  />
+                </a>
+              ) : (
+                <Image
+                  src={item.imageUrl}
+                  alt={item.title}
+                  class="rounded-xl mb-4"
+                  width={420}
+                  height={288}
+                  format="webp"
+                  quality={100}
+                />
+              )}
+              <h3 class="heading-3">{item.title}</h3>
+              <p class="paragraph mt-2 mb-auto">{item.description}</p>
+              <div class="flex gap-4 flex-col md:flex-row mt-8 mt-6">
                 {item.link && (
                   <a
                     href={item.link}
@@ -291,14 +272,16 @@ const projectItems = [
                     href={item.sourceCode}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="w-full md:w-1/2 px-4 py-2 text-sm text-gray-400 rounded border border-gray-800 bg-gray-900/50 hover:bg-gray-800/50 transition-colors text-center"
+                    class="w-full md:w-1/2 px-4 py-2 text-sm text-gray-400 rounded border border-gray-700 bg-gray-800/50 hover:bg-gray-700/50 hover:border-gray-600 transition-colors text-center"
                   >
                     Source Code
                   </a>
                 )}
                 {!item.sourceCode && (
-                  <div class="w-full text-gray-400 text-sm text-center">
-                    Restricted Access <span class="font-bold">(︶︹︺)</span>
+                  <div class="w-full text-center">
+                    <p class="text-sm md:text-base text-gray-400 leading-relaxed tracking-wide">
+                      Restricted Access (︶︹︺)
+                    </p>
                   </div>
                 )}
               </div>

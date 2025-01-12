@@ -5,17 +5,16 @@ import Note from "../components/Note.astro";
 import Terminal from "../components/Terminal";
 ---
 
-<Layout
-  title="Dmitrii Ivanushkin"
-  description="Personal portfolio, playground, blog and more"
->
+<Layout>
   <section
     class="min-h-[calc(100vh-6rem)] md:min-h-0 md:w-1/2 flex flex-col justify-center md:px-16 max-w-3xl"
   >
-    <h1 class="text-4xl md:text-6xl font-bold tracking-tight">
-      Hi! <br class="md:hidden" />I'm Dmitrii
+    <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-gray-100">
+      Hi! I'm Dmitrii
     </h1>
-    <h2 class="text-2xl md:text-4xl font-bold tracking-tight mt-4">
+    <h2
+      class="text-2xl md:text-4xl font-bold tracking-tight mt-2 text-gray-100"
+    >
       Software Engineer
     </h2>
     <p
@@ -41,16 +40,16 @@ import Terminal from "../components/Terminal";
     <!--  </a>-->
     <!--</div>-->
     <Note
-      classes="hidden md:flex md:flex-col bg-sky-900/50 p-4 mt-8 rounded border border-gray-700"
+      classes="hidden md:flex md:flex-col bg-gray-900/50 p-4 mt-8 rounded-xl border border-gray-800"
     />
-    <ScrollButton classes="flex md:hidden justify-center mt-24" />
+    <ScrollButton classes="flex md:hidden justify-center mt-12" />
   </section>
   <section
     id="terminal"
     class="md:w-1/2 flex flex-col items-center justify-center mb-16 md:mb-0"
   >
     <Note
-      classes="flex flex-col md:hidden bg-sky-900/50 p-4 mb-8 rounded border border-gray-700"
+      classes="flex flex-col md:hidden bg-gray-900/50 p-4 mb-8 rounded-xl border border-gray-800"
     />
     <Terminal client:only="react" />
   </section>

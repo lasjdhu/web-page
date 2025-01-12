@@ -4,6 +4,7 @@ import Header from "../components/Header.astro";
 import PostHog from "../components/Posthog.astro";
 import { ClientRouter } from "astro:transitions";
 import webPage from "../assets/web-page.png";
+import "../styles/global.css";
 
 const { title, description } = Astro.props;
 const siteName = "Dmitrii Ivanushkin";
@@ -18,14 +19,17 @@ const imageUrl = new URL(webPage.src, Astro.url).toString();
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
 
-    <title>{title || siteName}</title>
-    <meta name="title" content={title || siteName} />
+    <title>{title ? `${title} - ${siteName}` : siteName}</title>
+    <meta name="title" content={title ? `${title} - ${siteName}` : siteName} />
     <meta name="description" content={description || defaultDescription} />
     <meta name="theme-color" content="#000000" />
 
     <meta property="og:type" content="website" />
     <meta property="og:url" content={Astro.url} />
-    <meta property="og:title" content={title || siteName} />
+    <meta
+      property="og:title"
+      content={title ? `${title} - ${siteName}` : siteName}
+    />
     <meta
       property="og:description"
       content={description || defaultDescription}
@@ -35,7 +39,10 @@ const imageUrl = new URL(webPage.src, Astro.url).toString();
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content={Astro.url} />
-    <meta name="twitter:title" content={title || siteName} />
+    <meta
+      name="twitter:title"
+      content={title ? `${title} - ${siteName}` : siteName}
+    />
     <meta
       name="twitter:description"
       content={description || defaultDescription}
@@ -56,7 +63,7 @@ const imageUrl = new URL(webPage.src, Astro.url).toString();
   <body class="flex flex-col min-h-screen text-white bg-black antialiased">
     <Header />
     <main
-      class="flex-1 flex flex-col items-center justify-center mx-12 my-auto lg:flex-row"
+      class="flex-1 flex flex-col items-center justify-center mx-12 my-auto md:flex-row"
       transition:animate="fade"
     >
       <slot />
