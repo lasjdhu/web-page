@@ -41,7 +41,7 @@ export default function Terminal() {
             ? "fixed inset-0 z-50"
             : "md:w-3/4 w-full h-[400px] border-2 border-gray-800 rounded-xl"
         }
-        bg-gray-950 overflow-hidden font-mono shadow-xl transition-all duration-200
+        text-sm md:text-base bg-gray-950 overflow-hidden font-mono shadow-xl transition-opacity duration-700
         ${isVisible ? "opacity-100" : "opacity-0"}
       `}
     >
