@@ -27,6 +27,7 @@ export default defineConfig({
     },
   },
   site: "https://dmitrii.online",
+  trailingSlash: 'never',
   integrations: [react(), tailwind(), sitemap()],
   image: {
     experimentalLayout: "responsive",
