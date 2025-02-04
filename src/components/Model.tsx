@@ -1,3 +1,4 @@
+import "../styles/global.css";
 import { useThreeScene } from "../utils/useThreeScene";
 
 export default function Model() {
