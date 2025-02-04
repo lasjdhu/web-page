@@ -1,8 +1,8 @@
 // @ts-check
 import { defineConfig, envField } from "astro/config";
+import tailwindcss from "@tailwindcss/vite";
 
 import react from "@astrojs/react";
-import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
@@ -28,7 +28,8 @@ export default defineConfig({
   },
   site: "https://dmitrii.online",
   trailingSlash: 'never',
-  integrations: [react(), tailwind(), sitemap()],
+  integrations: [react(), sitemap()],
+  vite: { plugins: [tailwindcss()], },
   image: {
     experimentalLayout: "responsive",
   },

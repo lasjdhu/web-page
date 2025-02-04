@@ -7,7 +7,6 @@ import WorkIcon from "../components/icons/WorkIcon.astro";
 import StarIcon from "../components/icons/StarIcon.astro";
 import LocationIcon from "../components/icons/LocationIcon.astro";
 import DownloadIcon from "../components/icons/DownloadIcon.astro";
-import CodeIcon from "../components/icons/CodeIcon.astro";
 
 import { Image } from "astro:assets";
 import avatar from "../assets/avatar.jpg";
@@ -19,6 +18,8 @@ import vut from "../assets/vut.png";
 import webPage from "../assets/web-page.png";
 import gameOfLife from "../assets/game-of-life.png";
 import cane from "../assets/cane.png";
+import npm from "../assets/npm.png";
+import qmaps from "../assets/qmaps.png";
 
 const timelineItems = [
   {
@@ -70,7 +71,33 @@ const timelineItems = [
 
 const projectItems = [
   {
+    title: "motion-event",
+    years: "2025 - Now",
+    description:
+      "Expo module that provides seamless access to Android's native MotionEvent API, allowing developers to capture and interact with low-level touch and motion events ",
+    link: "dev",
+    sourceCode: "https://github.com/lasjdhu/motion-event",
+    imageUrl: npm,
+  },
+  {
+    title: "QMaps",
+    years: "2025 - Now",
+    description:
+      "Maps application that uses quantum randomness to generate directions and marker points",
+    link: "dev",
+    sourceCode: "https://github.com/lasjdhu/qmaps",
+    imageUrl: qmaps,
+  },
+  {
+    title: "AI Medical Platform",
+    years: "2024",
+    description:
+      "Cross-platform application that helps people with mental disorders to track their emotions",
+    imageUrl: cane,
+  },
+  {
     title: "This Website",
+    years: "2023 - Now",
     description: "Personal portfolio, playground, blog and more",
     imageUrl: webPage,
     link: "/",
@@ -78,16 +105,11 @@ const projectItems = [
   },
   {
     title: "Game of Life",
+    years: "2022",
     description: "Conway's Game of Life simulation",
     imageUrl: gameOfLife,
     link: "https://lasjdhu.github.io/game-of-life",
     sourceCode: "https://github.com/lasjdhu/game-of-life",
-  },
-  {
-    title: "AI Mental Health Monitoring",
-    description:
-      "Cross-platform application that helps people with mental disorders to track their emotions",
-    imageUrl: cane,
   },
 ];
 ---
@@ -226,9 +248,13 @@ const projectItems = [
         {
           projectItems.map((item) => (
             <div class="group card flex flex-col">
-              {item.link ? (
+              {(item.link && item.link !== "dev") || item.sourceCode ? (
                 <a
-                  href={item.link}
+                  href={
+                    item.link && item.link !== "dev"
+                      ? item.link
+                      : item.sourceCode
+                  }
                   target="_blank"
                   rel="noopener noreferrer"
                   class="block cursor-pointer md:transition-all md:duration-700 md:hover:scale-105"
@@ -255,9 +281,12 @@ const projectItems = [
                 />
               )}
               <h3 class="heading-3">{item.title}</h3>
+              <p class="mt-2 text-sm md:text-base text-gray-400 leading-relaxed tracking-wide">
+                {item.years}
+              </p>
               <p class="paragraph mt-2 mb-auto">{item.description}</p>
               <div class="flex gap-4 flex-col md:flex-row mt-8 mt-6">
-                {item.link && (
+                {item.link && item.link !== "dev" ? (
                   <a
                     href={item.link}
                     target="_blank"
@@ -266,7 +295,11 @@ const projectItems = [
                   >
                     Launch Project
                   </a>
-                )}
+                ) : item.link === "dev" ? (
+                  <span class="w-full md:w-1/2 px-4 py-2 text-sm text-gray-400 text-center">
+                    In Development
+                  </span>
+                ) : null}
                 {item.sourceCode && (
                   <a
                     href={item.sourceCode}
