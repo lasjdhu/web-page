@@ -27,9 +27,9 @@ export default defineConfig({
     },
   },
   site: "https://dmitrii.online",
-  trailingSlash: 'never',
+  trailingSlash: "never",
   integrations: [react(), sitemap()],
-  vite: { plugins: [tailwindcss()], },
+  vite: { plugins: [tailwindcss()] },
   image: {
     experimentalLayout: "responsive",
   },
