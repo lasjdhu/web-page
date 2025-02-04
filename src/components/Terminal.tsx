@@ -1,3 +1,4 @@
+import "../styles/global.css";
 import { useRef, useState, useEffect } from "react";
 import { useTerminal } from "../utils/useTerminal";
 
