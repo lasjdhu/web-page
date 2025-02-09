@@ -18,7 +18,7 @@ const { date, title, location, institution, imageUrl, imageAlt, isLeft } =
     <div class="w-1/2 pr-8 text-right">
       {
         isLeft ? (
-          <div class="card backdrop-blur-sm">
+          <div class="card backdrop-blur-xs">
             <div class="flex flex-row gap-4 items-center">
               <div class="relative flex items-center mr-auto">
                 <Image
@@ -59,7 +59,7 @@ const { date, title, location, institution, imageUrl, imageAlt, isLeft } =
     <div class="w-1/2 pl-8">
       {
         !isLeft ? (
-          <div class="card backdrop-blur-sm">
+          <div class="card backdrop-blur-xs">
             <div class="flex flex-row gap-4 items-center">
               <div class="flex-1">
                 <h3 class="heading-3">{title}</h3>
@@ -111,7 +111,7 @@ const { date, title, location, institution, imageUrl, imageAlt, isLeft } =
       </p>
     </div>
     <div class="ml-12">
-      <div class="card backdrop-blur-sm">
+      <div class="card backdrop-blur-xs">
         <div class="flex flex-row gap-3 items-center">
           <div class="flex-1">
             <h3 class="heading-3">
@@ -125,7 +125,7 @@ const { date, title, location, institution, imageUrl, imageAlt, isLeft } =
               <span>{location}</span>
             </div>
           </div>
-          <div class="relative flex items-center flex-shrink-0">
+          <div class="relative flex items-center shrink-0">
             <Image
               src={imageUrl}
               alt={imageAlt}
