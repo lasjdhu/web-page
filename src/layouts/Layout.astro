@@ -57,7 +57,7 @@ const imageUrl = new URL(webPage.src, Astro.url).toString();
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/manifest.json" />
 
-    <ClientRouter />
+    <ClientRouter fallback="animate" />
     <PostHog />
   </head>
   <body class="flex flex-col min-h-screen text-white bg-black antialiased">

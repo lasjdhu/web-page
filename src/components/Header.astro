@@ -1,8 +1,15 @@
 ---
 import Model from "./Model";
-import NavLinks from "./NavLinks.astro";
 import MenuIcon from "./icons/MenuIcon.astro";
 import CloseIcon from "./icons/CloseIcon.astro";
+
+let activeLink = new URL(Astro.request.url).pathname;
+const links = [
+  { href: "/", text: "Home" },
+  { href: "/about", text: "About" },
+  //{ href: "/blog", text: "Blog" },
+  { href: "/contact", text: "Contact" },
+];
 ---
 
 <header class="flex flex-wrap items-center justify-between px-5 py-5 md:px-10">
@@ -27,17 +34,34 @@ import CloseIcon from "./icons/CloseIcon.astro";
     </button>
   </div>
 
-  <NavLinks navStyle="hidden md:flex space-x-12" />
+  <nav class="hidden md:flex space-x-12">
+    {
+      links.map(({ href, text }) => (
+        <a
+          href={href}
+          class={`hover:text-gray-100 focus:text-gray-100 active:text-gray-100
+          transition-all duration-200 text-base font-semibold
+          ${activeLink === href ? "text-gray-100" : "text-gray-400"}
+        `}
+        >
+          {text}
+        </a>
+      ))
+    }
+  </nav>
 
+  <!-- Overlay -->
   <div
     id="mobile-menu"
-    class="fixed inset-0 z-10 bg-black bg-opacity-50 hidden"
+    class="fixed inset-0 z-10 bg-black/50 opacity-0 pointer-events-none transition-opacity duration-300"
     onclick="toggleMenu()"
   >
   </div>
+
+  <!-- Sliding Menu -->
   <div
     id="mobile-menu-content"
-    class="fixed inset-y-0 right-0 z-20 w-3/4 bg-black px-6 py-6 hidden"
+    class="fixed inset-y-0 right-0 z-20 w-3/4 bg-black px-6 py-6 transform translate-x-full transition-transform duration-300 ease-in-out"
   >
     <div class="flex items-center justify-between">
       <button
@@ -52,7 +76,22 @@ import CloseIcon from "./icons/CloseIcon.astro";
       </button>
     </div>
 
-    <NavLinks navStyle="flex flex-col mt-6 space-y-4" />
+    <nav class="flex flex-col mt-6 space-y-4">
+      {
+        links.map(({ href, text }) => (
+          <a
+            href={href}
+            class={`hover:text-gray-100 focus:text-gray-100 active:text-gray-100
+            transition-all duration-200 text-base font-semibold
+            ${activeLink === href ? "text-gray-100" : "text-gray-400"}
+          `}
+            onclick="closeMenuBeforeNavigate(event, this.href)"
+          >
+            {text}
+          </a>
+        ))
+      }
+    </nav>
   </div>
 </header>
 
@@ -60,15 +99,25 @@ import CloseIcon from "./icons/CloseIcon.astro";
   const toggleMenu = () => {
     const menu = document.getElementById("mobile-menu");
     const menuContent = document.getElementById("mobile-menu-content");
-    const isOpen = menu.classList.contains("hidden");
+    const isOpen = menu.classList.contains("opacity-0");
+
     if (isOpen) {
-      menu.classList.remove("hidden");
-      menuContent.classList.remove("hidden");
+      menu.classList.remove("opacity-0", "pointer-events-none");
+      menuContent.classList.remove("translate-x-full");
       menu.setAttribute("aria-expanded", "true");
     } else {
-      menu.classList.add("hidden");
-      menuContent.classList.add("hidden");
+      menu.classList.add("opacity-0", "pointer-events-none");
+      menuContent.classList.add("translate-x-full");
       menu.setAttribute("aria-expanded", "false");
     }
+  };
+
+  const closeMenuBeforeNavigate = (event, url) => {
+    event.preventDefault();
+    toggleMenu();
+
+    setTimeout(() => {
+      window.location.href = url;
+    }, 300);
   };
 </script>

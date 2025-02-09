@@ -1,7 +1,4 @@
 @import "tailwindcss";
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 @layer utilities {
   .heading-1 {
@@ -21,6 +18,12 @@
   }
 
   .card {
-    @apply border border-gray-800 rounded-xl p-6 bg-gray-900/50;
+    @apply border border-gray-800 rounded-sm p-6 bg-gray-950;
+  }
+
+  .button {
+    @apply w-full px-4 py-2 text-black bg-gray-300 rounded-sm
+          hover:bg-gray-50 focus:ring-3 focus:ring-gray-400
+          focus:ring-offset-2 transition-colors;
   }
 }
