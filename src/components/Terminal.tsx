@@ -37,9 +37,10 @@ export default function Terminal() {
   return (
     <div
       className={`
-        ${isFullscreen
-          ? "fixed inset-0 z-50"
-          : "md:w-3/4 w-full h-[400px] border-2 border-gray-800 rounded-sm"
+        ${
+          isFullscreen
+            ? "fixed inset-0 z-50"
+            : "md:w-3/4 w-full h-[400px] border-2 border-gray-800 rounded-sm"
         }
         text-sm md:text-base bg-gray-950 overflow-hidden font-mono shadow-xl transition-opacity duration-700
         ${isVisible ? "opacity-100" : "opacity-0"}
@@ -78,20 +79,22 @@ export default function Terminal() {
           {history.map((entry, i) => (
             <div
               key={i}
-              className={`whitespace-pre-wrap mb-1 ${entry.type === "system"
-                ? "text-blue-400"
-                : entry.type === "input"
-                  ? "text-green-400"
-                  : "text-gray-400"
-                }`}
+              className={`whitespace-pre-wrap mb-1 ${
+                entry.type === "system"
+                  ? "text-blue-400"
+                  : entry.type === "input"
+                    ? "text-green-400"
+                    : "text-gray-400"
+              }`}
             >
               {entry.type === "input" ? (
                 <pre className="pointer-events-none whitespace-pre-wrap text-green-400 break-words">
                   <span
-                    className={`whitespace-nowrap ${entry.prompt?.includes("root")
-                      ? "text-red-500"
-                      : "text-green-400"
-                      }`}
+                    className={`whitespace-nowrap ${
+                      entry.prompt?.includes("root")
+                        ? "text-red-500"
+                        : "text-green-400"
+                    }`}
                   >
                     {entry.prompt}
                   </span>
@@ -111,10 +114,11 @@ export default function Terminal() {
               aria-hidden="true"
             >
               <span
-                className={`whitespace-nowrap select-none ${getPrompt().includes("root")
-                  ? "text-red-500"
-                  : "text-green-400"
-                  }`}
+                className={`whitespace-nowrap select-none ${
+                  getPrompt().includes("root")
+                    ? "text-red-500"
+                    : "text-green-400"
+                }`}
               >
                 {getPrompt()}
               </span>

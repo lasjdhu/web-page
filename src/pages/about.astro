@@ -71,10 +71,10 @@ const timelineItems = [
 
 const projectItems = [
   {
-    title: "motion-event",
+    title: "expo-motion-event",
     years: "2025 - Now",
     description:
-      "Expo module that provides seamless access to Android's native MotionEvent API, allowing developers to capture and interact with low-level touch and motion events ",
+      "Lightweight and efficient Expo module for handling raw motion events on Android",
     link: "dev",
     sourceCode: "https://github.com/lasjdhu/motion-event",
     imageUrl: npm,
@@ -132,7 +132,7 @@ const projectItems = [
                 <div class="relative rounded-full w-48 h-48 overflow-hidden">
                   <Image
                     src={avatar}
-                    alt="Profile picture"
+                    alt="Me"
                     width={192}
                     height={192}
                     format="webp"
@@ -357,22 +357,28 @@ const projectItems = [
     });
   });
 
-  function handleScrollAnimations() {
+  function setupObserver() {
     const timelineItems = document.querySelectorAll(".timeline-item");
 
-    timelineItems.forEach((item) => {
-      const rect = item.getBoundingClientRect();
-      const isVisible = rect.top <= window.innerHeight * 0.8;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            entry.target.classList.remove("opacity-0", "translate-y-10");
+            entry.target.classList.add("opacity-100", "translate-y-0");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.2,
+      },
+    );
 
-      if (isVisible && !item.classList.contains("is-visible")) {
-        item.classList.add("is-visible");
-
-        item.classList.remove("opacity-0", "translate-y-10");
-        item.classList.add("opacity-100", "translate-y-0");
-      }
-    });
+    timelineItems.forEach((item) => observer.observe(item));
   }
 
-  window.addEventListener("scroll", handleScrollAnimations);
-  window.addEventListener("DOMContentLoaded", handleScrollAnimations);
+  document.addEventListener("astro:after-swap", setupObserver);
+  document.addEventListener("DOMContentLoaded", setupObserver);
 </script>
