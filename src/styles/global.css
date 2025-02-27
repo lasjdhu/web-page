@@ -27,3 +27,46 @@
           focus:ring-offset-2 transition-colors;
   }
 }
+
+@theme {
+  --font-sans: "Inter", "sans-serif";
+
+  --animate-fade-in: fade-in 0.7s ease-out forwards;
+  --animate-blink: blink 1s step-end infinite;
+  --animate-tilt: tilt 10s infinite linear;
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes tilt {
+    0%,
+    100% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(90deg);
+    }
+    50% {
+      transform: rotate(180deg);
+    }
+    75% {
+      transform: rotate(270deg);
+    }
+  }
+}

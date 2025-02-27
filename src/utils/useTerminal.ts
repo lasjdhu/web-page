@@ -243,7 +243,10 @@ export function useTerminal({
         return { output: ls(currentPath, args), type: "output" };
       case "whoami":
         if (args.length > 0)
-          return { output: "whoami: extra operand ‘asd’", type: "error" };
+          return {
+            output: `whoami: extra operand '${args[0]}'`,
+            type: "error",
+          };
         return { output: currentUser, type: "output" };
       case "echo":
         return { output: args.join(" "), type: "output" };
@@ -337,7 +340,7 @@ export function useTerminal({
       }
     } else {
       if (historyIndex === commandHistory.length - 1) {
-        newIndex = commandHistory.length - 1;
+        newIndex = -1;
       } else {
         newIndex = Math.min(commandHistory.length - 1, historyIndex + 1);
       }
@@ -349,13 +352,17 @@ export function useTerminal({
   };
 
   const getOS = () => {
-    const platform = navigator.platform.toLowerCase();
-    if (platform.includes("win")) return "windows";
+    const platform = window.navigator.userAgent;
+    return mapPlatform(platform.toLowerCase());
+  };
+
+  const mapPlatform = (platform: string) => {
+    if (platform.includes("win")) return "Windows";
     if (platform.includes("mac")) return "macOS";
-    if (platform.includes("linux")) return "linux";
-    if (platform.includes("iphone") || platform.includes("ipad")) return "iOS";
-    if (platform.includes("android")) return "android";
-    return "unknownOS";
+    if (platform.includes("linux")) return "Linux";
+    if (platform.includes("android")) return "Android";
+    if (/iphone|ipad|ipod/.test(platform)) return "iOS";
+    return "Unknown OS";
   };
 
   const getPrompt = () => {
@@ -451,9 +458,8 @@ export function useTerminal({
     const promptPrefix = getPrompt();
 
     if (!newValue.startsWith(promptPrefix)) {
-      // Instead of clearing the input entirely, restore the prompt and append the new character
-      setInput(newValue.replace(/^[^\s]* /, "")); // Remove unexpected prefix
-      setCaretPosition(newValue.length - promptPrefix.length); // Correct caret position
+      setInput(newValue.replace(/^[^\s]* /, ""));
+      setCaretPosition(newValue.length - promptPrefix.length);
     } else {
       setInput(newValue.slice(promptPrefix.length));
       setCaretPosition(
