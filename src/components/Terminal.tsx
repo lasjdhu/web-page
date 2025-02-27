@@ -1,11 +1,11 @@
 import "../styles/global.css";
-import { useRef, useState, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTerminal } from "../utils/useTerminal";
 
 export default function Terminal() {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const terminalRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
 
   const {
     input,
@@ -18,14 +18,13 @@ export default function Terminal() {
     setIsFullscreen,
   } = useTerminal({ terminalRef, textareaRef });
 
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setIsVisible(true);
-    }, 0);
-    return () => clearTimeout(timeout);
-  }, []);
+  const handleTerminalClick = () => {
+    textareaRef.current?.focus();
+    setIsFocused(true);
+  };
 
-  const handleFocus = () => {
+  const handleTextareaFocus = () => {
+    setIsFocused(true);
     if (textareaRef.current) {
       const promptText = getPrompt();
       textareaRef.current.value = promptText + input;
@@ -33,6 +32,28 @@ export default function Terminal() {
       textareaRef.current.selectionEnd = textareaRef.current.value.length;
     }
   };
+
+  const handleTextareaBlur = () => {
+    setIsFocused(false);
+  };
+
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "visible") {
+        const isTextareaFocused =
+          document.activeElement === textareaRef.current;
+        if (isTextareaFocused !== isFocused) {
+          setIsFocused(isTextareaFocused);
+        }
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, [isFocused]);
 
   return (
     <div
@@ -42,8 +63,8 @@ export default function Terminal() {
             ? "fixed inset-0 z-50"
             : "md:w-3/4 w-full h-[400px] border-2 border-gray-800 rounded-sm"
         }
-        text-sm md:text-base bg-gray-950 overflow-hidden font-mono shadow-xl transition-opacity duration-700
-        ${isVisible ? "opacity-100" : "opacity-0"}
+        text-sm md:text-base bg-gray-950 overflow-hidden font-mono shadow-xl
+        opacity-0 animate-fade-in
       `}
     >
       <div className="bg-gray-800 p-2 flex items-center justify-between select-none relative">
@@ -71,7 +92,7 @@ export default function Terminal() {
       </div>
 
       <div
-        onClick={() => textareaRef.current?.focus()}
+        onClick={handleTerminalClick}
         ref={terminalRef}
         className="p-4 h-[calc(100%-2.5rem)] overflow-y-auto text-white cursor-text"
       >
@@ -89,7 +110,7 @@ export default function Terminal() {
             >
               {entry.type === "input" ? (
                 <pre className="pointer-events-none whitespace-pre-wrap text-green-400 break-words">
-                  <span
+                  <code
                     className={`whitespace-nowrap ${
                       entry.prompt?.includes("root")
                         ? "text-red-500"
@@ -97,10 +118,10 @@ export default function Terminal() {
                     }`}
                   >
                     {entry.prompt}
-                  </span>
-                  <span className="text-white break-words select-text">
+                  </code>
+                  <code className="text-white break-words select-text">
                     {entry.content}
-                  </span>
+                  </code>
                 </pre>
               ) : (
                 entry.content
@@ -113,7 +134,7 @@ export default function Terminal() {
               className="relative pointer-events-auto whitespace-pre-wrap text-green-400 break-words"
               aria-hidden="true"
             >
-              <span
+              <code
                 className={`whitespace-nowrap select-none ${
                   getPrompt().includes("root")
                     ? "text-red-500"
@@ -121,17 +142,19 @@ export default function Terminal() {
                 }`}
               >
                 {getPrompt()}
-              </span>
-              <span className="text-white break-words select-text relative group">
+              </code>
+              <code className="text-white break-words select-text relative group">
                 {input === "" ? " " : input}
                 <span
-                  className="absolute w-[8px] h-[1.2em] bg-gray-400 animate-blink pointer-events-none"
+                  className={`absolute w-[8px] h-[1.2em] bg-gray-400 pointer-events-none ${
+                    isFocused ? "animate-blink" : "opacity-0"
+                  }`}
                   style={{
                     left: `${caretPosition}ch`,
                     top: "0",
                   }}
                 />
-              </span>
+              </code>
             </pre>
             <textarea
               name="terminal"
@@ -140,7 +163,8 @@ export default function Terminal() {
               value={`${getPrompt()}${input}`}
               onChange={handleInputChange}
               onKeyDown={handleKeyDown}
-              onFocus={handleFocus}
+              onFocus={handleTextareaFocus}
+              onBlur={handleTextareaBlur}
               spellCheck={false}
               className="w-full bg-transparent outline-hidden text-transparent caret-transparent resize-none overflow-hidden break-words select-none absolute top-0 left-0"
               style={{
