@@ -31,7 +31,7 @@ export default defineConfig({
   integrations: [react(), sitemap()],
   vite: { plugins: [tailwindcss()] },
   image: {
-    experimentalLayout: "responsive",
+    experimentalLayout: "constrained",
   },
   experimental: {
     responsiveImages: true,
