@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import {
   GLTFLoader,
   type GLTF,
-} from "three/examples/jsm/loaders/GLTFLoader.js";
+} from "three/addons/loaders/GLTFLoader.js";
+import { isWebGLAvailable } from "./isWebGLAvailable";
 
 interface ThreeSceneOptions {
   modelPath: string;
@@ -25,6 +26,9 @@ export const useThreeScene = ({
   targetPosition = new THREE.Vector3(-0.5, 1.2, 0),
 }: ThreeSceneOptions) => {
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [webGLSupported, setWebGLSupported] = useState(true);
+
   const sceneRef = useRef<{
     scene: THREE.Scene;
     camera: THREE.OrthographicCamera;
@@ -58,62 +62,108 @@ export const useThreeScene = ({
       return model;
     } catch (error) {
       console.error("Error loading model:", error);
+      setError("Failed to load 3D model");
       throw error;
     }
   };
 
   const setupScene = useCallback(
     (container: HTMLElement) => {
+      if (!isWebGLAvailable()) {
+        setWebGLSupported(false);
+        setError("WebGL is not supported in your browser");
+        setLoading(false);
+        return;
+      } else {
+        setWebGLSupported(true);
+      }
+
       const { clientWidth: width, clientHeight: height } = container;
 
-      // Initialize renderer
-      const renderer = new THREE.WebGLRenderer({
-        antialias: true,
-        alpha: true,
-      });
-      renderer.setPixelRatio(window.devicePixelRatio);
-      renderer.setSize(width, height);
-      renderer.outputColorSpace = THREE.SRGBColorSpace;
-      container.appendChild(renderer.domElement);
+      // Initialize renderer with try/catch to handle failures
+      let renderer: THREE.WebGLRenderer;
+      try {
+        renderer = new THREE.WebGLRenderer({
+          antialias: false, // Try disabling this first
+          alpha: true,
+          powerPreference: 'low-power', // Try 'low-power' instead of 'default'
+          precision: 'mediump', // Lower precision might help
+          failIfMajorPerformanceCaveat: false, // IMPORTANT: don't fail on performance issues
+          canvas: document.createElement('canvas'), // Create a new canvas element
+          preserveDrawingBuffer: true // This helps with some browser configurations
+        });
+      } catch (e) {
+        console.error("WebGL renderer creation failed:", e);
+        setError("Could not initialize 3D renderer");
+        setLoading(false);
+        return;
+      }
 
-      // Initialize scene
-      const scene = new THREE.Scene();
-      const scale = height * 0.005 + 4.8;
-      const camera = new THREE.OrthographicCamera(
-        -scale,
-        scale,
-        scale,
-        -scale,
-        0.01,
-        50000,
-      );
-      camera.position.copy(initialCameraPosition);
-      camera.lookAt(targetPosition);
+      try {
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(width, height);
+        renderer.outputColorSpace = THREE.SRGBColorSpace;
+        container.appendChild(renderer.domElement);
 
-      // Add lighting
-      const ambientLight = new THREE.AmbientLight(0xcccccc, Math.PI);
-      scene.add(ambientLight);
+        // Initialize scene
+        const scene = new THREE.Scene();
+        const scale = height * 0.005 + 4.8;
+        const camera = new THREE.OrthographicCamera(
+          -scale,
+          scale,
+          scale,
+          -scale,
+          0.01,
+          50000,
+        );
+        camera.position.copy(initialCameraPosition);
+        camera.lookAt(targetPosition);
 
-      // Setup controls
-      const controls = new OrbitControls(camera, renderer.domElement);
-      controls.autoRotate = true;
-      controls.target = targetPosition;
+        // Add lighting
+        const ambientLight = new THREE.AmbientLight(0xcccccc, Math.PI);
+        scene.add(ambientLight);
 
-      sceneRef.current = {
-        scene,
-        camera,
-        renderer,
-        controls,
-        animationFrame: 0,
-      };
+        // Setup controls
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.autoRotate = true;
+        controls.target = targetPosition;
 
-      // Load model and start animation
-      loadModel(scene)
-        .then(() => {
-          setLoading(false);
-          animate();
-        })
-        .catch((error) => console.error("Failed to load model:", error));
+        sceneRef.current = {
+          scene,
+          camera,
+          renderer,
+          controls,
+          animationFrame: 0,
+        };
+
+        // Load model and start animation
+        loadModel(scene)
+          .then(() => {
+            setLoading(false);
+            animate();
+          })
+          .catch((error) => {
+            console.error("Failed to load model:", error);
+            setError("Failed to load 3D model");
+            setLoading(false);
+          });
+      } catch (e) {
+        console.error("Error in scene setup:", e);
+        setError("Failed to initialize 3D scene");
+        setLoading(false);
+
+        // Clean up on error
+        if (renderer && renderer.domElement) {
+          try {
+            renderer.dispose();
+            if (renderer.domElement.parentNode) {
+              renderer.domElement.parentNode.removeChild(renderer.domElement);
+            }
+          } catch (cleanupError) {
+            console.error("Error during cleanup:", cleanupError);
+          }
+        }
+      }
     },
     [initialCameraPosition, targetPosition, modelScale, modelPath],
   );
@@ -149,7 +199,11 @@ export const useThreeScene = ({
 
   useEffect(() => {
     const container = document.getElementById("model-container");
-    if (!container) return;
+    if (!container) {
+      setError("Model container not found");
+      setLoading(false);
+      return;
+    }
 
     setupScene(container);
 
@@ -162,11 +216,17 @@ export const useThreeScene = ({
         const { renderer, scene, animationFrame } = sceneRef.current;
         cancelAnimationFrame(animationFrame);
         scene.clear();
-        renderer.dispose();
-        renderer.domElement.remove();
+        try {
+          renderer.dispose();
+          if (renderer.domElement.parentNode) {
+            renderer.domElement.parentNode.removeChild(renderer.domElement);
+          }
+        } catch (e) {
+          console.error("Error cleaning up renderer:", e);
+        }
       }
     };
   }, [setupScene, handleResize]);
 
-  return { loading };
+  return { loading, error, webGLSupported };
 };
