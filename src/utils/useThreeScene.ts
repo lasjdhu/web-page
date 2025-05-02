@@ -1,10 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import {
-  GLTFLoader,
-  type GLTF,
-} from "three/addons/loaders/GLTFLoader.js";
+import { GLTFLoader, type GLTF } from "three/addons/loaders/GLTFLoader.js";
 import { isWebGLAvailable } from "./isWebGLAvailable";
 
 interface ThreeSceneOptions {
@@ -86,11 +83,11 @@ export const useThreeScene = ({
         renderer = new THREE.WebGLRenderer({
           antialias: false, // Try disabling this first
           alpha: true,
-          powerPreference: 'low-power', // Try 'low-power' instead of 'default'
-          precision: 'mediump', // Lower precision might help
+          powerPreference: "low-power", // Try 'low-power' instead of 'default'
+          precision: "mediump", // Lower precision might help
           failIfMajorPerformanceCaveat: false, // IMPORTANT: don't fail on performance issues
-          canvas: document.createElement('canvas'), // Create a new canvas element
-          preserveDrawingBuffer: true // This helps with some browser configurations
+          canvas: document.createElement("canvas"), // Create a new canvas element
+          preserveDrawingBuffer: true, // This helps with some browser configurations
         });
       } catch (e) {
         console.error("WebGL renderer creation failed:", e);
