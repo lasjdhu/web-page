@@ -2,19 +2,19 @@
 
 @layer utilities {
   .heading-1 {
-    @apply text-2xl md:text-4xl font-bold tracking-tight;
+    @apply text-2xl lg:text-4xl font-bold tracking-tight;
   }
 
   .heading-2 {
-    @apply text-xl md:text-2xl font-bold tracking-tight text-gray-100;
+    @apply text-xl lg:text-2xl font-bold tracking-tight text-gray-100;
   }
 
   .heading-3 {
-    @apply text-base md:text-lg font-semibold tracking-tight text-gray-100;
+    @apply text-base lg:text-lg font-semibold tracking-tight text-gray-100;
   }
 
   .paragraph {
-    @apply text-sm md:text-base text-gray-300 leading-relaxed tracking-wide;
+    @apply text-sm lg:text-base text-gray-300 leading-relaxed tracking-wide;
   }
 
   .card {
@@ -22,9 +22,15 @@
   }
 
   .button {
-    @apply w-full px-4 py-2 text-black bg-gray-300 rounded-sm
-          hover:bg-gray-50 focus:ring-3 focus:ring-gray-400
-          focus:ring-offset-2 transition-colors;
+    @apply px-6 py-2 text-black bg-gray-300 rounded-sm
+           hover:bg-gray-50 focus:ring-3 focus:ring-gray-400
+           focus:ring-offset-2 transition-colors text-center cursor-pointer;
+  }
+
+  .button-secondary {
+    @apply px-6 py-2 text-sm text-gray-400 rounded-sm
+           border border-gray-800 bg-gray-800/50 hover:bg-gray-700/50
+           hover:border-gray-600 transition-colors text-center cursor-pointer;
   }
 }
 

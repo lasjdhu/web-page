@@ -12,15 +12,15 @@ const links = [
 ];
 ---
 
-<header class="flex flex-wrap items-center justify-between px-5 py-5 md:px-10">
+<header class="flex flex-wrap items-center justify-between px-5 py-5 lg:px-10">
   <div class="flex items-center">
     <Model client:load transition:persist />
-    <a href="/" class="text-xl md:text-2xl font-semibold tracking-tighter ml-4">
+    <a href="/" class="text-xl lg:text-2xl font-semibold tracking-tighter ml-4">
       Dmitrii Ivanushkin
     </a>
   </div>
 
-  <div class="md:hidden">
+  <div class="lg:hidden">
     <button
       type="button"
       id="menu-toggle"
@@ -34,7 +34,7 @@ const links = [
     </button>
   </div>
 
-  <nav class="hidden md:flex space-x-12">
+  <nav class="hidden lg:flex space-x-12">
     {
       links.map(({ href, text }) => (
         <a

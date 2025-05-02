@@ -10,7 +10,7 @@ export default function Model() {
     return (
       <div
         id="model-container"
-        className="w-16 h-16 md:w-24 md:h-24 flex items-center justify-center transition-opacity duration-700"
+        className="w-16 h-16 lg:w-24 lg:h-24 flex items-center justify-center transition-opacity duration-700"
       >
         <img src="/favicon.ico" />
       </div>
@@ -20,7 +20,7 @@ export default function Model() {
   return (
     <div
       id="model-container"
-      className={`w-16 h-16 md:w-24 md:h-24 transition-opacity duration-700 ${loading ? "opacity-0" : "opacity-100"}`}
+      className={`w-16 h-16 lg:w-24 lg:h-24 transition-opacity duration-700 ${loading ? "opacity-0" : "opacity-100"}`}
       aria-busy={loading}
     />
   );
