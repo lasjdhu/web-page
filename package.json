@@ -7,7 +7,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "check": "astro check",
+    "astro:check": "astro check",
+    "ts:check": "tsc --noEmit",
     "style": "prettier . --write",
     "lint": "eslint . --fix"
   },

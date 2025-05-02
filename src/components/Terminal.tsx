@@ -61,7 +61,7 @@ export default function Terminal() {
         ${
           isFullscreen
             ? "fixed inset-0 z-50"
-            : "w-full h-[400px] border-2 border-gray-800 rounded-sm"
+            : "w-full md:w-3/4 h-[400px] border-2 border-gray-800 rounded-sm"
         }
         text-sm md:text-base bg-gray-950 overflow-hidden font-mono shadow-xl
         opacity-0 animate-fade-in

@@ -26,13 +26,3 @@ import Terminal from "../components/Terminal";
     </section>
   </div>
 </BaseLayout>
-<script>
-  const scrollButton = document.getElementById("scrollButton");
-  const terminalSection = document.getElementById("terminal");
-  scrollButton?.addEventListener("click", () => {
-    terminalSection?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  });
-</script>

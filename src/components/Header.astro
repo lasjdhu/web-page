@@ -85,7 +85,7 @@ const links = [
             transition-all duration-200 text-base font-semibold
             ${activeLink === href ? "text-gray-100" : "text-gray-400"}
           `}
-            onclick="closeMenuBeforeNavigate(event, this.href)"
+            onclick="(event) => closeMenuBeforeNavigate(event, this.href)"
           >
             {text}
           </a>
