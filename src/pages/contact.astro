@@ -1,24 +1,25 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 import ContactForm from "../components/ContactForm.astro";
 import GitHubIcon from "../components/icons/GitHubIcon.astro";
 import LinkedInIcon from "../components/icons/LinkedInIcon.astro";
 ---
 
-<Layout
+<BaseLayout
   title="Contact"
   description="Reach out to me for questions, collaborations or just to say hi"
 >
-  <div class="flex flex-col md:flex-row max-w-7xl md:px-8 md:items-center">
-    <section class="py-8 md:pr-12">
+  <div
+    class="w-full flex flex-col lg:flex-row lg:justify-center items-stretch gap-12 lg:gap-0 m-8"
+  >
+    <section class="lg:w-1/2 flex flex-col justify-center max-w-3xl lg:px-16">
       <h1 class="heading-1">Have a question? Want to work together?</h1>
       <p class="paragraph mt-4">
         Leave me a message and I'll get in touch with you as soon as possible.
-        <br />
         You can also find me on social media.
       </p>
 
-      <div class="flex space-x-4 mt-4 mb-8 md:mb-0">
+      <div class="flex gap-4 lg:flex-row mt-8 mb-8 lg:mb-0">
         <a
           href="https://github.com/lasjdhu"
           target="_blank"
@@ -42,8 +43,8 @@ import LinkedInIcon from "../components/icons/LinkedInIcon.astro";
       </div>
     </section>
 
-    <section class="flex">
+    <section class="lg:w-1/2 h-[400px] flex items-center justify-center">
       <ContactForm />
     </section>
   </div>
-</Layout>
+</BaseLayout>

@@ -1,68 +1,28 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import ScrollButton from "../components/ScrollButton.astro";
-import Note from "../components/Note.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 import Terminal from "../components/Terminal";
 ---
 
-<Layout>
-  <section
-    class="min-h-[calc(100vh-6rem)] md:min-h-0 md:w-1/2 flex flex-col justify-center md:px-16 max-w-3xl"
+<BaseLayout>
+  <div
+    class="w-full flex flex-col lg:flex-row lg:justify-center items-stretch gap-12 lg:gap-0 m-8"
   >
-    <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-gray-100">
-      Hi! I'm Dmitrii
-    </h1>
-    <h2
-      class="text-2xl md:text-4xl font-bold tracking-tight mt-2 text-gray-100"
-    >
-      Software Engineer
-    </h2>
-    <p
-      class="text-base md:text-lg text-gray-300 leading-relaxed tracking-wide mt-4"
-    >
-      Welcome to my digital playground. I’ve crafted this space to share my
-      projects, write about tech, and experiment with UX.
-    </p>
-    <!--<div class="flex gap-4 flex-col md:flex-row">-->
-    <!--  <a-->
-    <!--    href="/about"-->
-    <!--    aria-label="About me"-->
-    <!--    class="w-full md:w-auto px-4 py-2 text-black bg-gray-300 rounded-sm hover:bg-gray-50 transition-colors text-center md:text-left"-->
-    <!--  >-->
-    <!--    About me-->
-    <!--  </a>-->
-    <!--  <a-->
-    <!--    href="/blog"-->
-    <!--    aria-label="Visit blog"-->
-    <!--    class="w-full md:w-auto px-4 py-2 text-gray-400 rounded-sm border border-gray-800 bg-gray-900/50 hover:bg-gray-800/50 transition-colors text-center md:text-left"-->
-    <!--  >-->
-    <!--    Visit my blog-->
-    <!--  </a>-->
-    <!--</div>-->
-    <Note
-      classes="hidden md:flex md:flex-col bg-gray-900/50 p-4 mt-8 rounded-sm border border-gray-800"
-    />
-    <ScrollButton classes="flex md:hidden justify-center mt-12" />
-  </section>
-  <section
-    id="terminal"
-    class="md:w-1/2 flex flex-col items-center justify-center mb-16 md:mb-0"
-  >
-    <Note
-      classes="flex flex-col md:hidden bg-gray-900/50 p-4 mb-8 rounded-sm border border-gray-800"
-    />
-    <Terminal client:only="react" />
-  </section>
-</Layout>
-
-<script>
-  const scrollButton = document.getElementById("scrollButton");
-  const terminalSection = document.getElementById("terminal");
-
-  scrollButton?.addEventListener("click", () => {
-    terminalSection?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  });
-</script>
+    <section class="lg:w-1/2 flex flex-col justify-center max-w-3xl lg:px-16">
+      <h1 class="heading-1 mb-4">Welcome to my digital space</h1>
+      <p class="paragraph">
+        This is where you can find my projects, blog posts, and a bit about my
+        background. I share what I'm working on and write about tech topics that
+        interest me.
+      </p>
+      <nav class="flex gap-4 flex-col lg:flex-row mt-8">
+        <a href="/about" aria-label="About me" class="button"> About me </a>
+        <a href="/blog" aria-label="Visit blog" class="button-secondary">
+          Visit my blog
+        </a>
+      </nav>
+    </section>
+    <section class="lg:w-1/2 h-[400px] flex items-center justify-center">
+      <Terminal client:only="react" />
+    </section>
+  </div>
+</BaseLayout>

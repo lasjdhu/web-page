@@ -14,7 +14,7 @@ const { date, title, location, institution, imageUrl, imageAlt, isLeft } =
     isLeft ? "from-left" : "from-right"
   } opacity-0 translate-y-10 transform transition-all duration-700 ease-out mb-20 w-full`}
 >
-  <div class="hidden md:flex items-center justify-center">
+  <div class="hidden lg:flex items-center justify-center">
     <div class="w-1/2 pr-8 text-right">
       {
         isLeft ? (
@@ -33,7 +33,7 @@ const { date, title, location, institution, imageUrl, imageAlt, isLeft } =
               <div class="flex-1">
                 <h3 class="heading-3">{title}</h3>
                 <p class="paragraph mt-1 mb-6">{institution}</p>
-                <div class="absolute flex gap-1.5 text-xs md:text-sm text-gray-400 items-center right-6 bottom-6">
+                <div class="absolute flex gap-1.5 text-xs lg:text-sm text-gray-400 items-center right-6 bottom-6">
                   <LocationIcon classes="w-4 h-4" />
                   <span>{location}</span>
                 </div>
@@ -88,7 +88,7 @@ const { date, title, location, institution, imageUrl, imageAlt, isLeft } =
     </div>
   </div>
 
-  <div class="md:hidden">
+  <div class="lg:hidden">
     <div
       class="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-800"
       aria-hidden="true"

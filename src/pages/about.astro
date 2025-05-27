@@ -1,5 +1,5 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 import TimelineItem from "../components/TimelineItem.astro";
 import ScrollButton from "../components/ScrollButton.astro";
 import EducationIcon from "../components/icons/EducationIcon.astro";
@@ -9,119 +9,19 @@ import LocationIcon from "../components/icons/LocationIcon.astro";
 
 import { Image } from "astro:assets";
 import avatar from "../assets/avatar.jpg";
-import lyceum from "../assets/lyceum.png";
-import skive from "../assets/skive.png";
-import cz from "../assets/cz.png";
-import muni from "../assets/muni.png";
-import vut from "../assets/vut.png";
-import webPage from "../assets/web-page.png";
-import gameOfLife from "../assets/game-of-life.png";
-import cane from "../assets/cane.png";
-import npm from "../assets/npm.png";
-import qmaps from "../assets/qmaps.png";
 
-const timelineItems = [
-  {
-    date: "2018 - 2020",
-    title: "Business IT Student",
-    location: "Russia",
-    institution: "Business High School",
-    imageUrl: lyceum,
-    imageAlt: "Business High School",
-    isLeft: true,
-  },
-  {
-    date: "April 2019",
-    title: "International Exchange",
-    location: "Denmark",
-    institution: "Skive College",
-    imageUrl: skive,
-    imageAlt: "Skive College",
-    isLeft: true,
-  },
-  {
-    date: "2020 - 2021",
-    title: "Czech Language Course",
-    location: "Czech Republic",
-    institution: "GoStudy Language School",
-    imageUrl: cz,
-    imageAlt: "GoStudy",
-    isLeft: true,
-  },
-  {
-    date: "April 2023 - Now",
-    title: "Front-end Developer",
-    location: "Czech Republic",
-    institution: "Masaryk University",
-    imageUrl: muni,
-    imageAlt: "Masaryk University",
-    isLeft: false,
-  },
-  {
-    date: "2023 - Now",
-    title: "Information Technology Student",
-    location: "Czech Republic",
-    institution: "Brno University of Technology",
-    imageUrl: vut,
-    imageAlt: "Brno University of Technology",
-    isLeft: true,
-  },
-];
-
-const projectItems = [
-  {
-    title: "motion-event",
-    years: "2025 - Now",
-    description:
-      "Lightweight and efficient Expo module for handling raw motion events on Android",
-    link: "https://www.npmjs.com/package/motion-event",
-    sourceCode: "https://github.com/lasjdhu/motion-event",
-    imageUrl: npm,
-  },
-  {
-    title: "QMaps",
-    years: "2025 - Now",
-    description:
-      "Maps application that uses quantum randomness to generate directions and marker points",
-    link: "dev",
-    sourceCode: "https://github.com/lasjdhu/qmaps",
-    imageUrl: qmaps,
-  },
-  {
-    title: "AI Medical Platform",
-    years: "2024",
-    description:
-      "Cross-platform application that helps people with mental disorders to track their emotions",
-    imageUrl: cane,
-  },
-  {
-    title: "This Website",
-    years: "2023 - Now",
-    description: "Personal portfolio, playground, blog and more",
-    imageUrl: webPage,
-    link: "/",
-    sourceCode: "https://github.com/lasjdhu/web-page",
-  },
-  {
-    title: "Game of Life",
-    years: "2022",
-    description: "Conway's Game of Life simulation",
-    imageUrl: gameOfLife,
-    link: "https://lasjdhu.github.io/game-of-life",
-    sourceCode: "https://github.com/lasjdhu/game-of-life",
-  },
-];
+import { timelineItems, projectItems } from "../utils/constants.ts";
 ---
 
-<Layout
+<BaseLayout
   title="About"
   description="Have a look at my journey and technical expertise"
 >
-  <div class="max-w-7xl mx-auto md:px-8 overflow-hidden">
+  <div class="max-w-7xl mx-auto lg:px-8 overflow-hidden">
     <div class="flex flex-col justify-center min-h-[calc(100vh-8rem)]">
       <section class="pt-12 pb-8">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div class="md:col-span-1">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          <div class="lg:col-span-1">
             <div class="flex flex-col items-center space-y-7">
               <div class="relative group">
                 <div
@@ -148,7 +48,7 @@ const projectItems = [
                 <h3 class="heading-3">Key Details</h3>
                 <div class="flex items-center gap-3 mt-4">
                   <StarIcon classes="w-5 h-5 text-gray-100" />
-                  <p class="paragraph">2 years of experience</p>
+                  <p class="paragraph">2+ years of experience</p>
                 </div>
                 <div class="flex items-center gap-3 my-3">
                   <LocationIcon classes="w-5 h-5 text-gray-100" />
@@ -156,9 +56,9 @@ const projectItems = [
                 </div>
                 <div class="flex items-center gap-3 my-3">
                   <WorkIcon classes="w-5 h-5 text-gray-100" />
-                  <p class="paragraph">Masaryk University</p>
+                  <p class="paragraph">Innovis</p>
                 </div>
-                <div class="flex items-center gap-3 md:mb-2">
+                <div class="flex items-center gap-3 lg:mb-2">
                   <EducationIcon classes="w-5 h-5 text-gray-100" />
                   <p class="paragraph">BUT IT Student</p>
                 </div>
@@ -166,7 +66,7 @@ const projectItems = [
             </div>
           </div>
 
-          <div class="md:col-span-3 space-y-6">
+          <div class="lg:col-span-3 space-y-6">
             <h1 class="heading-1">About Me</h1>
             <p class="paragraph">
               I am a
@@ -183,8 +83,8 @@ const projectItems = [
             <h2 class="heading-2 border-t pt-6 border-gray-800">
               Technical Expertise
             </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div class="group card md:col-span-2">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+              <div class="group card lg:col-span-2">
                 <h3 class="heading-3">Core</h3>
                 <p class="paragraph mt-2">
                   JavaScript, TypeScript, HTML, CSS, Tailwind, Redux, Zustand
@@ -202,7 +102,7 @@ const projectItems = [
                   Expo, React Native, Java, Kotlin, Gluestack UI
                 </p>
               </div>
-              <div class="group card md:col-span-2">
+              <div class="group card lg:col-span-2">
                 <h3 class="heading-3">Tools & Methods</h3>
                 <p class="paragraph mt-2">
                   Git, Linux, Jest, Cypress, Webpack, Vite, Docker, CI/CD, Jira
@@ -213,7 +113,7 @@ const projectItems = [
         </div>
       </section>
 
-      <ScrollButton classes="hidden md:flex justify-center" />
+      <ScrollButton classes="hidden lg:flex justify-center" />
     </div>
 
     <section id="journey" class="py-6">
@@ -232,7 +132,7 @@ const projectItems = [
     <section class="pb-24">
       <h2 class="heading-2 text-center">Featured Projects</h2>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-12">
         {
           projectItems.map((item) => (
             <div class="group card flex flex-col">
@@ -245,7 +145,7 @@ const projectItems = [
                   }
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="block cursor-pointer md:transition-all md:duration-700 md:hover:scale-105"
+                  class="block cursor-pointer lg:transition-all lg:duration-700 lg:hover:scale-105"
                 >
                   <Image
                     src={item.imageUrl}
@@ -269,38 +169,34 @@ const projectItems = [
                 />
               )}
               <h3 class="heading-3">{item.title}</h3>
-              <p class="mt-2 text-sm md:text-base text-gray-400 leading-relaxed tracking-wide">
+              <p class="mt-2 text-sm lg:text-base text-gray-400 leading-relaxed tracking-wide">
                 {item.years}
               </p>
               <p class="paragraph mt-2 mb-auto">{item.description}</p>
-              <div class="flex gap-4 flex-col md:flex-row mt-8 mt-6">
+              <div class="flex gap-4 flex-col lg:flex-row mt-8 mt-6">
                 {item.link && item.link !== "dev" ? (
                   <a
                     href={item.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="w-full md:w-1/2 px-4 py-2 text-sm text-black bg-gray-300 rounded-sm hover:bg-gray-50 transition-colors text-center"
+                    class="button w-full"
                   >
                     Launch
                   </a>
-                ) : item.link === "dev" ? (
-                  <span class="w-full md:w-1/2 px-4 py-2 text-sm text-gray-400 text-center">
-                    In Development
-                  </span>
                 ) : null}
                 {item.sourceCode && (
                   <a
                     href={item.sourceCode}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="w-full md:w-1/2 px-4 py-2 text-sm text-gray-400 rounded-sm border border-gray-800 bg-gray-800/50 hover:bg-gray-700/50 hover:border-gray-600 transition-colors text-center"
+                    class="button-secondary w-full"
                   >
                     Source Code
                   </a>
                 )}
                 {!item.sourceCode && (
                   <div class="w-full text-center">
-                    <p class="text-sm md:text-base text-gray-400 leading-relaxed tracking-wide">
+                    <p class="text-sm lg:text-base text-gray-400 leading-relaxed tracking-wide">
                       Restricted Access (︶︹︺)
                     </p>
                   </div>
@@ -312,7 +208,7 @@ const projectItems = [
       </div>
     </section>
   </div>
-</Layout>
+</BaseLayout>
 
 <script>
   const scrollButton = document.getElementById("scrollButton");

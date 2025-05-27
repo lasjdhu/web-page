@@ -1,5 +1,16 @@
 import { type HistoryEntry, type Directory } from "./types";
 
+import lyceum from "../assets/lyceum.png";
+import skive from "../assets/skive.png";
+import cz from "../assets/cz.png";
+import muni from "../assets/muni.png";
+import vut from "../assets/vut.png";
+import webPage from "../assets/web-page.png";
+import gameOfLife from "../assets/game-of-life.png";
+import cane from "../assets/cane.png";
+import npm from "../assets/npm.png";
+import innovis from "../assets/innovis.png";
+
 export const AVAILABLE_COMMANDS = [
   "help",
   "clear",
@@ -18,7 +29,7 @@ export const AVAILABLE_COMMANDS = [
 export const INITIAL_HISTORY: HistoryEntry[] = [
   {
     content:
-      "WARNING! In the meantime terminal supports only basic commands\nType 'help' to see available options",
+      "Hate GUI? You can navigate this website using terminal\nType 'help' to see available options",
     type: "system",
     timestamp: new Date(),
   },
@@ -98,3 +109,95 @@ export const filesystem: Directory = {
   created: new Date(),
   modified: new Date(),
 };
+
+export const timelineItems = [
+  {
+    date: "2018 - 2020",
+    title: "Business IT Student",
+    location: "Russia",
+    institution: "Business High School",
+    imageUrl: lyceum,
+    imageAlt: "Business High School",
+    isLeft: true,
+  },
+  {
+    date: "April 2019",
+    title: "International Exchange",
+    location: "Denmark",
+    institution: "Skive College",
+    imageUrl: skive,
+    imageAlt: "Skive College",
+    isLeft: true,
+  },
+  {
+    date: "2020 - 2021",
+    title: "Czech Language Course",
+    location: "Czech Republic",
+    institution: "GoStudy Language School",
+    imageUrl: cz,
+    imageAlt: "GoStudy",
+    isLeft: true,
+  },
+  {
+    date: "April 2023 - May 2025",
+    title: "Front-end Developer",
+    location: "Czech Republic",
+    institution: "Masaryk University",
+    imageUrl: muni,
+    imageAlt: "Masaryk University",
+    isLeft: false,
+  },
+  {
+    date: "2023 - Now",
+    title: "Information Technology Student",
+    location: "Czech Republic",
+    institution: "Brno University of Technology",
+    imageUrl: vut,
+    imageAlt: "Brno University of Technology",
+    isLeft: true,
+  },
+  {
+    date: "May 2025 - Now",
+    title: "Front-end Developer",
+    location: "Czech Republic",
+    institution: "Innovis",
+    imageUrl: innovis,
+    imageAlt: "Innovis",
+    isLeft: false,
+  },
+];
+
+export const projectItems = [
+  {
+    title: "motion-event",
+    years: "2025 - Now",
+    description:
+      "Lightweight and efficient Expo module for handling raw motion events on Android",
+    link: "https://www.npmjs.com/package/motion-event",
+    sourceCode: "https://github.com/lasjdhu/motion-event",
+    imageUrl: npm,
+  },
+  {
+    title: "AI Medical Platform",
+    years: "2024",
+    description:
+      "Cross-platform application that helps people with mental disorders to track their emotions",
+    imageUrl: cane,
+  },
+  {
+    title: "This Website",
+    years: "2023 - Now",
+    description: "Personal portfolio, playground, blog and more",
+    imageUrl: webPage,
+    link: "dev",
+    sourceCode: "https://github.com/lasjdhu/web-page",
+  },
+  {
+    title: "Game of Life",
+    years: "2022",
+    description: "Conway's Game of Life simulation",
+    imageUrl: gameOfLife,
+    link: "https://lasjdhu.github.io/game-of-life",
+    sourceCode: "https://github.com/lasjdhu/game-of-life",
+  },
+];
