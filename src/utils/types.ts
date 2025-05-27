@@ -21,20 +21,20 @@ export type Command =
   | "su"
   | "exit";
 
-export interface File {
+export type File = {
   type: "file";
   content: string;
   permissions: string;
   owner: string;
   created: Date;
   modified: Date;
-}
+};
 
-export interface Directory {
+export type Directory = {
   type: "dir";
   contents: Record<string, File | Directory>;
   permissions: string;
   owner: string;
   created: Date;
   modified: Date;
-}
+};

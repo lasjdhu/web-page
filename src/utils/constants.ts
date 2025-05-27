@@ -9,7 +9,7 @@ import webPage from "../assets/web-page.png";
 import gameOfLife from "../assets/game-of-life.png";
 import cane from "../assets/cane.png";
 import npm from "../assets/npm.png";
-import qmaps from "../assets/qmaps.png";
+import innovis from "../assets/innovis.png";
 
 export const AVAILABLE_COMMANDS = [
   "help",
@@ -139,7 +139,7 @@ export const timelineItems = [
     isLeft: true,
   },
   {
-    date: "April 2023 - Now",
+    date: "April 2023 - May 2025",
     title: "Front-end Developer",
     location: "Czech Republic",
     institution: "Masaryk University",
@@ -156,6 +156,15 @@ export const timelineItems = [
     imageAlt: "Brno University of Technology",
     isLeft: true,
   },
+  {
+    date: "May 2025 - Now",
+    title: "Front-end Developer",
+    location: "Czech Republic",
+    institution: "Innovis",
+    imageUrl: innovis,
+    imageAlt: "Innovis",
+    isLeft: false,
+  },
 ];
 
 export const projectItems = [
@@ -167,15 +176,6 @@ export const projectItems = [
     link: "https://www.npmjs.com/package/motion-event",
     sourceCode: "https://github.com/lasjdhu/motion-event",
     imageUrl: npm,
-  },
-  {
-    title: "QMaps",
-    years: "2025 - Now",
-    description:
-      "Maps application that uses quantum randomness to generate directions and marker points",
-    link: "dev",
-    sourceCode: "https://github.com/lasjdhu/qmaps",
-    imageUrl: qmaps,
   },
   {
     title: "AI Medical Platform",
