@@ -159,6 +159,7 @@ export default function Terminal() {
             <textarea
               name="terminal"
               aria-labelledby="terminal-label"
+              rows={1}
               ref={textareaRef}
               value={`${getPrompt()}${input}`}
               onChange={handleInputChange}
@@ -166,6 +167,9 @@ export default function Terminal() {
               onFocus={handleTextareaFocus}
               onBlur={handleTextareaBlur}
               spellCheck={false}
+              autoCorrect="off"
+              autoCapitalize="off"
+              inputMode="text"
               className="w-full bg-transparent outline-hidden text-transparent caret-transparent resize-none overflow-hidden break-words select-none absolute top-0 left-0"
               style={{
                 minHeight: "1.5rem",
@@ -175,7 +179,6 @@ export default function Terminal() {
                 msUserSelect: "none",
                 userSelect: "none",
               }}
-              rows={1}
             />
           </div>
         </div>
