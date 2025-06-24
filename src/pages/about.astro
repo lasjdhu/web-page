@@ -39,6 +39,7 @@ import { timelineItems, projectItems } from "../utils/constants.ts";
                     loading="eager"
                     quality={100}
                     class="opacity-0 duration-700 ease-in-out"
+                    layout="constrained"
                     onload="this.classList.remove('opacity-0')"
                   />
                 </div>
@@ -70,10 +71,9 @@ import { timelineItems, projectItems } from "../utils/constants.ts";
             <h1 class="heading-1">About Me</h1>
             <p class="paragraph">
               I am a
-              <span class="font-semibold text-gray-100">software engineer</span>
-              who loves
-              <span class="font-semibold text-gray-100">front-end</span> development.
-              I specialize in making modern <span
+              <span class="font-semibold text-gray-100"
+                >front-end developer</span
+              >. I specialize in making modern <span
                 class="font-semibold text-gray-100">web</span
               > and
               <span class="font-semibold text-gray-100">mobile</span> apps and have
@@ -87,25 +87,21 @@ import { timelineItems, projectItems } from "../utils/constants.ts";
               <div class="group card lg:col-span-2">
                 <h3 class="heading-3">Core</h3>
                 <p class="paragraph mt-2">
-                  JavaScript, TypeScript, HTML, CSS, Tailwind, Redux, Zustand
+                  JavaScript, TypeScript, HTML, CSS, Tailwind
                 </p>
               </div>
               <div class="group card">
                 <h3 class="heading-3">Web Specific</h3>
-                <p class="paragraph mt-2">
-                  React, Next.js, Astro, Three.js, MUI
-                </p>
+                <p class="paragraph mt-2">React, Astro, Three.js</p>
               </div>
               <div class="group card">
                 <h3 class="heading-3">Mobile Specific</h3>
-                <p class="paragraph mt-2">
-                  Expo, React Native, Java, Kotlin, Gluestack UI
-                </p>
+                <p class="paragraph mt-2">Expo, React Native, Java, Kotlin</p>
               </div>
               <div class="group card lg:col-span-2">
                 <h3 class="heading-3">Tools & Methods</h3>
                 <p class="paragraph mt-2">
-                  Git, Linux, Jest, Cypress, Webpack, Vite, Docker, CI/CD, Jira
+                  Git, Linux, Jest, Cypress, Webpack, Vite, Docker, CI/CD
                 </p>
               </div>
             </div>
@@ -151,6 +147,7 @@ import { timelineItems, projectItems } from "../utils/constants.ts";
                     src={item.imageUrl}
                     alt={item.title}
                     class="rounded-sm mb-4"
+                    layout="constrained"
                     width={420}
                     height={288}
                     format="webp"
@@ -162,6 +159,7 @@ import { timelineItems, projectItems } from "../utils/constants.ts";
                   src={item.imageUrl}
                   alt={item.title}
                   class="rounded-sm mb-4"
+                  layout="constrained"
                   width={420}
                   height={288}
                   format="webp"

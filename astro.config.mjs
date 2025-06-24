@@ -9,16 +9,6 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   env: {
     schema: {
-      POSTHOG_KEY: envField.string({
-        context: "client",
-        access: "public",
-        optional: true,
-      }),
-      POSTHOG_HOST: envField.string({
-        context: "client",
-        access: "public",
-        optional: true,
-      }),
       WEB3_ACCESS_KEY: envField.string({
         context: "client",
         access: "public",
@@ -30,10 +20,4 @@ export default defineConfig({
   trailingSlash: "never",
   integrations: [react(), sitemap()],
   vite: { plugins: [tailwindcss()] },
-  image: {
-    experimentalLayout: "constrained",
-  },
-  experimental: {
-    responsiveImages: true,
-  },
 });

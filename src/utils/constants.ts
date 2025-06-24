@@ -158,7 +158,7 @@ export const timelineItems = [
   },
   {
     date: "May 2025 - Now",
-    title: "Front-end Developer",
+    title: "Front-end Developer II",
     location: "Czech Republic",
     institution: "Innovis",
     imageUrl: innovis,
