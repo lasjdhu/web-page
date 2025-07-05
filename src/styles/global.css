@@ -22,15 +22,17 @@
   }
 
   .button {
-    @apply px-6 py-2 text-black bg-gray-300 rounded-sm
-           hover:bg-gray-50 focus:ring-3 focus:ring-gray-400
-           focus:ring-offset-2 transition-colors text-center cursor-pointer;
+    @apply flex items-center justify-center 
+         px-6 py-2 text-black bg-gray-300 rounded-sm
+         hover:bg-gray-50 focus:ring-3 focus:ring-gray-400
+         focus:ring-offset-2 transition-colors text-center cursor-pointer;
   }
 
   .button-secondary {
-    @apply px-6 py-2 text-sm text-gray-400 rounded-sm
-           border border-gray-800 bg-gray-800/50 hover:bg-gray-700/50
-           hover:border-gray-600 transition-colors text-center cursor-pointer;
+    @apply flex items-center justify-center
+         px-6 py-2 text-sm text-gray-400 rounded-sm
+         border border-gray-800 bg-gray-800/50 hover:bg-gray-700/50
+         hover:border-gray-600 transition-colors text-center cursor-pointer;
   }
 }
 

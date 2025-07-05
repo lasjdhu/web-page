@@ -34,12 +34,12 @@ import { timelineItems, projectItems } from "../utils/constants.ts";
                     alt="Me"
                     width={192}
                     height={192}
+                    layout="constrained"
                     format="webp"
                     fit="cover"
                     loading="eager"
                     quality={100}
                     class="opacity-0 duration-700 ease-in-out"
-                    layout="constrained"
                     onload="this.classList.remove('opacity-0')"
                   />
                 </div>
@@ -141,29 +141,29 @@ import { timelineItems, projectItems } from "../utils/constants.ts";
                   }
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="block cursor-pointer lg:transition-all lg:duration-700 lg:hover:scale-105"
+                  class="block cursor-pointer lg:transition-all lg:duration-700 lg:hover:scale-105 self-center"
                 >
                   <Image
                     src={item.imageUrl}
                     alt={item.title}
                     class="rounded-sm mb-4"
-                    layout="constrained"
                     width={420}
                     height={288}
-                    format="webp"
                     quality={100}
+                    layout="constrained"
+                    format="webp"
                   />
                 </a>
               ) : (
                 <Image
                   src={item.imageUrl}
                   alt={item.title}
-                  class="rounded-sm mb-4"
-                  layout="constrained"
+                  class="rounded-sm mb-4 self-center"
                   width={420}
                   height={288}
-                  format="webp"
                   quality={100}
+                  layout="constrained"
+                  format="webp"
                 />
               )}
               <h3 class="heading-3">{item.title}</h3>
@@ -177,7 +177,7 @@ import { timelineItems, projectItems } from "../utils/constants.ts";
                     href={item.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="button w-full"
+                    class="button flex-1"
                   >
                     Launch
                   </a>
@@ -187,7 +187,7 @@ import { timelineItems, projectItems } from "../utils/constants.ts";
                     href={item.sourceCode}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="button-secondary w-full"
+                    class="button-secondary flex-1"
                   >
                     Source Code
                   </a>
