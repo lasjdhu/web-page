@@ -61,7 +61,7 @@ export default function Terminal() {
         ${
           isFullscreen
             ? "fixed inset-0 z-50"
-            : "w-full md:w-3/4 h-[400px] border-2 border-gray-800 rounded-sm"
+            : "w-full md:w-3/4 h-[400px] border-2 border-gray-800 rounded-md"
         }
         text-sm md:text-base bg-gray-950 overflow-hidden font-mono shadow-xl
         opacity-0 animate-fade-in
@@ -85,9 +85,17 @@ export default function Terminal() {
         </div>
         <div
           id="terminal-label"
+          role="text"
           className="absolute left-1/2 transform -translate-x-1/2 text-white text-sm opacity-50"
         >
-          🚀 Reactivitty
+          <span className="sr-only">Reactivitty</span>
+          <span aria-hidden="true">🚀 Reactivi</span>
+          <span
+            aria-hidden="true"
+            className="inline-block align-baseline bg-gray-300 text-gray-800 px-0.5 rounded-sm leading-tight"
+          >
+            tty
+          </span>
         </div>
       </div>
 

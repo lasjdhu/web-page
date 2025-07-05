@@ -20,7 +20,7 @@ export default function Model() {
   return (
     <div
       id="model-container"
-      className={`w-16 h-16 lg:w-24 lg:h-24 transition-opacity duration-700 ${loading ? "opacity-0" : "opacity-100"}`}
+      className={`w-16 h-16 lg:w-24 lg:h-24 aspect-square transition-opacity duration-700 ${loading ? "opacity-0" : "opacity-100"}`}
       aria-busy={loading}
     />
   );
