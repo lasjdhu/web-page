@@ -2,15 +2,15 @@
 
 @layer utilities {
   .heading-1 {
-    @apply text-2xl lg:text-4xl font-bold tracking-tight;
+    @apply text-xl md:text-2xl lg:text-4xl font-bold tracking-tight;
   }
 
   .heading-2 {
-    @apply text-xl lg:text-2xl font-bold tracking-tight text-gray-100;
+    @apply text-lg md:text-xl lg:text-2xl font-bold tracking-tight text-gray-100;
   }
 
   .heading-3 {
-    @apply text-base lg:text-lg font-semibold tracking-tight text-gray-100;
+    @apply text-sm md:text-base lg:text-lg font-semibold tracking-tight text-gray-100;
   }
 
   .paragraph {
