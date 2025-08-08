@@ -11,14 +11,9 @@ interface ThreeSceneOptions {
   targetPosition?: THREE.Vector3;
 }
 
-interface ModelOptions {
-  receiveShadow?: boolean;
-  castShadow?: boolean;
-}
-
 export const useThreeScene = ({
   modelPath,
-  modelScale = 1.5,
+  modelScale = 0.8,
   initialCameraPosition = new THREE.Vector3(20, 10, 20),
   targetPosition = new THREE.Vector3(-0.5, 1.2, 0),
 }: ThreeSceneOptions) => {
@@ -36,7 +31,7 @@ export const useThreeScene = ({
 
   const loadModel = async (
     scene: THREE.Scene,
-    options: ModelOptions = { receiveShadow: false, castShadow: false },
+    options = { receiveShadow: false, castShadow: false },
   ) => {
     try {
       const loader = new GLTFLoader();
@@ -77,17 +72,16 @@ export const useThreeScene = ({
 
       const { clientWidth: width, clientHeight: height } = container;
 
-      // Initialize renderer with try/catch to handle failures
       let renderer: THREE.WebGLRenderer;
       try {
         renderer = new THREE.WebGLRenderer({
-          antialias: false, // Try disabling this first
+          antialias: true,
           alpha: true,
-          powerPreference: "low-power", // Try 'low-power' instead of 'default'
-          precision: "mediump", // Lower precision might help
-          failIfMajorPerformanceCaveat: false, // IMPORTANT: don't fail on performance issues
-          canvas: document.createElement("canvas"), // Create a new canvas element
-          preserveDrawingBuffer: true, // This helps with some browser configurations
+          powerPreference: "high-performance",
+          precision: "mediump",
+          failIfMajorPerformanceCaveat: false,
+          canvas: document.createElement("canvas"),
+          preserveDrawingBuffer: true,
         });
       } catch (e) {
         console.error("WebGL renderer creation failed:", e);
@@ -100,9 +94,10 @@ export const useThreeScene = ({
         renderer.setPixelRatio(window.devicePixelRatio);
         renderer.setSize(width, height);
         renderer.outputColorSpace = THREE.SRGBColorSpace;
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1.2;
         container.appendChild(renderer.domElement);
 
-        // Initialize scene
         const scene = new THREE.Scene();
         const scale = height * 0.005 + 4.8;
         const camera = new THREE.OrthographicCamera(
@@ -116,11 +111,18 @@ export const useThreeScene = ({
         camera.position.copy(initialCameraPosition);
         camera.lookAt(targetPosition);
 
-        // Add lighting
-        const ambientLight = new THREE.AmbientLight(0xcccccc, Math.PI);
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.35);
         scene.add(ambientLight);
 
-        // Setup controls
+        const dirLight = new THREE.DirectionalLight(0xffffff, 2.5);
+        dirLight.position.set(10, 10, 5);
+        dirLight.castShadow = true;
+        dirLight.shadow.mapSize.set(2048, 2048);
+        scene.add(dirLight);
+
+        const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444, 0.4);
+        scene.add(hemiLight);
+
         const controls = new OrbitControls(camera, renderer.domElement);
         controls.autoRotate = true;
         controls.target = targetPosition;
@@ -133,7 +135,6 @@ export const useThreeScene = ({
           animationFrame: 0,
         };
 
-        // Load model and start animation
         loadModel(scene)
           .then(() => {
             setLoading(false);
@@ -149,7 +150,6 @@ export const useThreeScene = ({
         setError("Failed to initialize 3D scene");
         setLoading(false);
 
-        // Clean up on error
         if (renderer && renderer.domElement) {
           try {
             renderer.dispose();
@@ -185,7 +185,6 @@ export const useThreeScene = ({
 
     renderer.setSize(width, height);
 
-    // Update camera frustum
     const scale = height * 0.005 + 4.8;
     camera.left = -scale;
     camera.right = scale;

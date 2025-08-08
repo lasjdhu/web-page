@@ -3,7 +3,7 @@ import { useThreeScene } from "../utils/useThreeScene";
 
 export default function Model() {
   const { loading, error, webGLSupported } = useThreeScene({
-    modelPath: "/duck.glb",
+    modelPath: "/duck.gltf",
   });
 
   if (!webGLSupported || error) {
